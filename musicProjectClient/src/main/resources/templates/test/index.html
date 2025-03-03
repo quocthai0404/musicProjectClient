@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test Retrofit</title>
+</head>
+<body>
+<h1>Test API</h1>
+<form th:action="@{/test/process}" method="get">
+    <button type="submit">Gọi API Test</button>
+</form>
+<div id="result"></div>
+</body>
+</html>
