@@ -1,0 +1,79 @@
+<div th:fragment="sidebar" class="ms_sidemenu_wrapper">
+    <div class="ms_nav_close">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </div>
+    <div class="ms_sidemenu_inner">
+        <div class="ms_logo_inner">
+            <div class="ms_logo">
+                <a th:href="@{/}"><img th:src="@{/images/logo.png}" alt="" class="img-fluid"/></a>
+            </div>
+            <div class="ms_logo_open">
+                <a th:href="@{/}"><img th:src="@{/images/open_logo.png}" alt="" class="img-fluid"/></a>
+            </div>
+        </div>
+        <div class="ms_nav_wrapper">
+            <ul>
+                <li>
+                    <a th:href="@{/}" title="Discover" th:classappend="${activePage == 'home/index'} ? 'active'">
+                        <span class="nav_icon"><span class="icon icon_discover"></span></span>
+                        <span class="nav_text">discover</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/album/index}" title="Albums" th:classappend="${activePage == 'album/index'} ? 'active'">
+                        <span class="nav_icon"><span class="icon icon_albums"></span></span>
+                        <span class="nav_text">albums</span>
+                    </a>
+                </li>
+                <li><a th:href="@{/artist/index}" title="Artists" th:classappend="${activePage == 'artist/index'} ? 'active'">
+                    <span class="nav_icon"><span class="icon icon_artists"></span></span>
+                    <span class="nav_text">artists</span>
+                </a></li>
+                <li><a th:href="@{/genre/index}" title="Genre"  th:classappend="${activePage == 'genre/index'} ? 'active'">
+                    <span class="nav_icon"><span class="icon icon_genres"></span></span>
+                    <span class="nav_text">genres</span>
+                </a></li>
+                <li><a th:href="@{/top_track}" title="Top Tracks">
+                    <span class="nav_icon"><span class="icon icon_tracks"></span></span>
+                    <span class="nav_text">top tracks</span>
+                </a></li>
+                <li><a th:href="@{/free_music}" title="Free Music">
+                    <span class="nav_icon"><span class="icon icon_music"></span></span>
+                    <span class="nav_text">free music</span>
+                </a></li>
+                <li><a th:href="@{/stations}" title="Stations">
+                    <span class="nav_icon"><span class="icon icon_station"></span></span>
+                    <span class="nav_text">stations</span>
+                </a></li>
+            </ul>
+            <ul class="nav_downloads">
+                <li><a th:href="@{/download}" title="Downloads">
+                    <span class="nav_icon"><span class="icon icon_download"></span></span>
+                    <span class="nav_text">downloads</span>
+                </a></li>
+                <li><a th:href="@{/purchase}" title="Purchased">
+                    <span class="nav_icon"><span class="icon icon_purchased"></span></span>
+                    <span class="nav_text">purchased</span>
+                </a></li>
+                <li><a th:href="@{/favourite}" title="Favourites">
+                    <span class="nav_icon"><span class="icon icon_favourite"></span></span>
+                    <span class="nav_text">favourites</span>
+                </a></li>
+                <li><a th:href="@{/history}" title="History">
+                    <span class="nav_icon"><span class="icon icon_history"></span></span>
+                    <span class="nav_text">history</span>
+                </a></li>
+            </ul>
+            <ul class="nav_playlist">
+                <li><a th:href="@{/feature_playlist}" title="Featured Playlist">
+                    <span class="nav_icon"><span class="icon icon_fe_playlist"></span></span>
+                    <span class="nav_text">featured playlist</span>
+                </a></li>
+                <li><a th:href="@{/add_playlist}" title="Create Playlist">
+                    <span class="nav_icon"><span class="icon icon_c_playlist"></span></span>
+                    <span class="nav_text">create playlist</span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
