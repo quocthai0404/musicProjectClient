@@ -48,7 +48,8 @@
 <!--                                <span th:text="#{register.alreadyAccount}">Already Have An Account?</span>-->
                                 <span th:text="abc">Already Have An Account?</span>
 <!--                                <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel" th:text="#{register.loginHere}">Login Here</a>-->
-                                <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel" th:text="abc">Login Here</a>
+                                <a href="javascript:;"  class="ms_modal" data-bs-toggle="modal" data-bs-target="#myModal1" th:text="login">Login Here</a>
+
                             </p>
                         </div>
                     </div>
@@ -70,7 +71,7 @@
                         </div>
                         <div class="ms_register_form">
 <!--                            <h2 th:text="#{login.title}">Login / Sign In</h2>-->
-                            <h2 th:text="abc">Login / Sign In</h2>
+                            <h2 >Login / Sign In</h2>
                             <div class="form-group">
 <!--                                <input type="text" th:placeholder="#{login.email}" class="form-control">-->
                                 <input type="text" th:placeholder="abc" class="form-control">
@@ -97,13 +98,81 @@
                             <a th:href="@{/profile}" class="ms_btn" target="_blank" th:text="abc">Login Now</a>
                             <div class="popup_forgot">
 <!--                                <a th:href="@{/forgot-password}" th:text="#{login.forgotPassword}">Forgot Password?</a>-->
-                                <a th:href="@{/forgot-password}" th:text="abc">Forgot Password?</a>
+                                <a href="javascript:;" data-toggle="modal" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
                             </div>
                             <p>
 <!--                                <span th:text="#{login.noAccount}">Don't Have An Account?</span>-->
                                 <span th:text="abc">Don't Have An Account?</span>
 <!--                                <a href="#myModal" data-toggle="modal" class="ms_modal1 hideCurrentModel" th:text="#{login.registerHere}">Register Here</a>-->
-                                <a href="#myModal" data-toggle="modal" class="ms_modal1 hideCurrentModel" th:text="abc">Register Here</a>
+                                <a href="javascript:;" data-toggle="modal" data-bs-toggle="modal" data-bs-target="#myModal">Register Here</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Modal -->
+        <div id="forgotPasswordModal" class="modal centered-modal" role="dialog">
+            <div class="modal-dialog forgot_password_dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <i class="fa_icon form_close"></i>
+                    </button>
+                    <div class="modal-body">
+                        <div class="ms_register_img">
+                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+                        </div>
+                        <div class="ms_register_form">
+                            <h2 >Forgot Password</h2>
+                            <p >Enter your email to receive OTP</p>
+                            <div class="form-group">
+                                <input type="email" th:placeholder="abc" placeholder="Enter Your Email" class="form-control">
+                                <span class="form_icon">
+                                    <i class="fa_icon form-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+
+                            <p>
+                                <span >Send</span>
+                                <a href="javascript:;"  class="ms_modal" data-bs-toggle="modal" data-bs-target="#otpModal" >Send</a>
+                            </p>
+                            <p>
+                                <span th:text="abc">Back to Login?</span>
+                                <a href="javascript:;"  class="ms_modal" data-bs-toggle="modal" data-bs-target="#myModal1" th:text="login">Login Here</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTP Modal -->
+        <div id="otpModal" class="modal centered-modal" role="dialog">
+            <div class="modal-dialog otp_dialog">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <i class="fa_icon form_close"></i>
+                    </button>
+                    <div class="modal-body">
+                        <div class="ms_register_img">
+                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+                        </div>
+                        <div class="ms_register_form">
+                            <h2 >Enter OTP</h2>
+                            <p >We have sent an OTP to your registered email/phone.</p>
+                            <div class="form-group">
+                            <input type="text" th:placeholder="abc" placeholder="Enter OTP" class="form-control">
+                            <span class="form_icon">
+                                    <i class="fa_icon form-key" aria-hidden="true"></i>
+                                </span>
+                        </div>
+                            <a th:href="@{/verify-otp}" class="ms_btn" th:text="verify">Verify OTP</a>
+                            <p>
+                                <span th:text="abc">Didn't receive the OTP?</span>
+                                <a href="#forgotPasswordModal" data-toggle="modal" class="resend_otp hideCurrentModel" th:text="abc">Resend OTP</a>
                             </p>
                         </div>
                     </div>
