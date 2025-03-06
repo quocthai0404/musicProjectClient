@@ -11,7 +11,7 @@ public class GenreController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        model.addAttribute("activePage", "index");
+        model.addAttribute("activePage", "genre/index");
         return "genre/index";
     }
 

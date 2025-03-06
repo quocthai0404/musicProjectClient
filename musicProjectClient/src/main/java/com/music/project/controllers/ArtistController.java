@@ -16,4 +16,9 @@ public class ArtistController {
         return "artist/index";
     }
 
+    @GetMapping("/index/detail")
+    public String artistDetail(Model model) {
+        model.addAttribute("activePage", "artist/index");
+        return "artist/artistDetail";
+    }
 }
