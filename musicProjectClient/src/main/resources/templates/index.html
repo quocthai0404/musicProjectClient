@@ -197,6 +197,76 @@
 
 
 
+<!--<script>
+    date picker
+</script>-->
+<!-- jQuery và jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#dob").datepicker({
+            dateFormat: "dd/mm/yy", // Định dạng ngày
+            changeMonth: true, // Hiển thị chọn tháng
+            changeYear: true, // Hiển thị chọn năm
+            yearRange: "1900:2025", // Giới hạn năm từ 1900 đến 2025
+            maxDate: new Date() // Không cho chọn ngày trong tương lai
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#btn_register").click(function () {
+            var user = {
+                email: $("#email").val(),
+                password: $("#password").val(),
+                fullname: $("#fullname").val(),
+                dob: $("#dob").val(),
+                photo: "https://res.cloudinary.com/dhee9ysz4/image/upload/v1741076584/ypj7xyshwjq9zhuazfq9.webp", 
+                isActive: true
+            };
+
+            $.ajax({
+                url: "http://localhost:8085/api/users/register",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(user),
+				success: function (response, textStatus, xhr) {
+				    console.log("Response:", response);
+				    console.log("Status Code:", xhr.status);
+
+				    if (xhr.status === 200 && response.code === 200) { // 
+				        console.log("User registered successfully");
+
+				        // Ẩn modal đăng ký và hiển thị modal OTP
+				        $("#myModal").modal("hide");
+				        setTimeout(function () {
+				            if (typeof bootstrap !== "undefined") {
+				                var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+				                otpModal.show();
+				            } else {
+				                $("#otpModal").modal("show");
+				            }
+				        }, 500);
+				    } else {
+				        alert("Registration failed: " + response.message);
+				    }
+				},
+
+                error: function (xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        alert("Error: " + xhr.responseJSON.message);
+                    } else {
+                        alert("An unexpected error occurred.");
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 
 </body>
