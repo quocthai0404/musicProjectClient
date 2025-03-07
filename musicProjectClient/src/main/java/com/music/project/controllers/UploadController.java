@@ -5,20 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
-@RequestMapping("artist")
-public class ArtistController {
+@RequestMapping("upload")
+public class UploadController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        model.addAttribute("activePage", "artist/index");
-        return "artist/index";
+//        model.addAttribute("activePage", "artist/index");
+        return "upload/index";
     }
 
-    @GetMapping("/index/detail")
-    public String artistDetail(Model model) {
-        model.addAttribute("activePage", "artist/index");
-        return "artist/artistDetail";
-    }
+
 }
