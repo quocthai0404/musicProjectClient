@@ -928,13 +928,78 @@
 	        $(".ms_top_btn:not(#profileBtn)").hide();
 
 	        // Cập nhật text cho profileBtn với fullname của user
-	        $("#profileBtn a span").text(userData.fullName);
+	        $("#profileBtn a span").text(userData.fullname);
 
 	        // Hiển thị profileBtn
 	        $("#profileBtn").show();
+			
+			$("#emailOld").val(userData.email);
+			$("#new_fullname").val(userData.fullname);
 	    }
 	});
 
+
+</script>
+
+<script>
+	$(document).ready(function () {
+	    $("#btn_changeInfo").click(function () {
+	        let token = sessionStorage.getItem("token");
+	        if (!token) {
+	            alert("You are not logged in!");
+	            return;
+	        }
+
+	        // Lấy thông tin từ input
+	        let changeInfoData = {
+	            email: $("#emailOld").val().trim(), 
+	            fullname: $("#new_fullname").val().trim(),
+	            password: $("#new_password").val().trim(),
+	            rePassword: $("#re_password").val().trim()
+	        };
+
+	        // Kiểm tra mật khẩu nhập lại có trùng khớp không
+	        if (changeInfoData.password !== changeInfoData.rePassword) {
+	            alert("Passwords do not match!");
+	            return;
+	        }
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/change-info",
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify(changeInfoData),
+	            headers: {
+	                Authorization: "Bearer " + token
+	            },
+	            success: function (response) {
+	                if (response.code === 200) {
+	                    alert("User info updated successfully!");
+
+	                    // Cập nhật lại token và user trong sessionStorage
+	                    let updatedUser = response.result;
+	                    sessionStorage.setItem("user", JSON.stringify(updatedUser));
+	                    sessionStorage.setItem("token", updatedUser.token); // Cập nhật lại token mới
+
+	                    location.reload();
+	                } else {
+	                    alert(response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                let errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : "An error occurred!";
+	                alert("Error: " + errorMessage);
+	            }
+	        });
+	    });
+
+	    $("#btn_logOut").click(function () {
+	        sessionStorage.removeItem("token");
+	        sessionStorage.removeItem("user");
+	        alert("Logged out successfully");
+	        location.reload();
+	    });
+	});
 
 </script>
 

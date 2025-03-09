@@ -1,176 +1,243 @@
 <th:block th:fragment="authModal">
-    <div class="ms_register_popup">
-        <!-- Register Modal -->
-        <div id="myModal" class="modal centered-modal" role="dialog">
-            <div class="modal-dialog register_dialog">
-                <div class="modal-content">
-<!--                    <button type="button" class="close" data-dismiss="modal">-->
-<!--                        <i class="fa_icon form_close"></i>-->
-<!--                    </button>-->
-                    <div class="modal-body">
-                        <div class="ms_register_img">
-                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
-                        </div>
-                        <div class="ms_register_form">
-<!--                            <h2 th:text="#{register.title}">Register / Sign Up</h2>-->
-                            <h2 th:text="Register">Register / Sign Up</h2>
-                            <div class="form-group">
-<!--                                <input type="text" th:placeholder="#{register.name}" class="form-control">-->
-                                <input type="email" id="email" th:placeholder="Email" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon  form-envelope" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="form-group">
-<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
-                                <input type="password" id="password" th:placeholder="Password" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon form-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="form-group">
-<!--                                <input type="password" th:placeholder="#{register.password}" class="form-control">-->
-                                <input type="text" id="fullname" th:placeholder="Fullname" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon form-user " aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="form-group">
-<!--                                <input type="password" th:placeholder="#{register.confirmPassword}" class="form-control">-->
-                                <input type="text" id="dob" th:placeholder="Dob" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon form-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-<!--                            <a th:href="@{/register}" class="ms_btn" th:text="#{register.registerNow}">Register Now</a>-->
-                            <a href="javascript:;" id="btn_register" class="ms_btn"   >register</a>
-                            <p>
-<!--                                <span th:text="#{register.alreadyAccount}">Already Have An Account?</span>-->
-                                <span text="Already Have An Account?">Already Have An Account?</span>
-<!--                                <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel" th:text="#{register.loginHere}">Login Here</a>-->
-                                <a href="javascript:;"  class="ms_modal" data-bs-toggle="modal" data-bs-target="#myModal1" th:text="login">Login Here</a>
+	<div class="ms_register_popup">
+		<!-- Register Modal -->
+		<div id="myModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog register_dialog">
+				<div class="modal-content">
+					<!--                    <button type="button" class="close" data-dismiss="modal">-->
+					<!--                        <i class="fa_icon form_close"></i>-->
+					<!--                    </button>-->
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<!--                            <h2 th:text="#{register.title}">Register / Sign Up</h2>-->
+							<h2 th:text="Register">Register / Sign Up</h2>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.name}" class="form-control">-->
+								<input type="email" id="email" th:placeholder="Email" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon  form-envelope" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
+								<input type="password" id="password" th:placeholder="Password" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="password" th:placeholder="#{register.password}" class="form-control">-->
+								<input type="text" id="fullname" th:placeholder="Fullname" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-user " aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="password" th:placeholder="#{register.confirmPassword}" class="form-control">-->
+								<input type="text" id="dob" th:placeholder="Dob" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+							<!--                            <a th:href="@{/register}" class="ms_btn" th:text="#{register.registerNow}">Register Now</a>-->
+							<a href="javascript:;" id="btn_register" class="ms_btn">register</a>
+							<p>
+								<!--                                <span th:text="#{register.alreadyAccount}">Already Have An Account?</span>-->
+								<span text="Already Have An Account?">Already Have An Account?</span>
+								<!--                                <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel" th:text="#{register.loginHere}">Login Here</a>-->
+								<a href="javascript:;" class="ms_modal" data-bs-toggle="modal"
+									data-bs-target="#myModal1" th:text="login">Login Here</a>
 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Login Modal -->
-        <div id="myModal1" class="modal centered-modal" role="dialog">
-            <div class="modal-dialog login_dialog">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <i class="fa_icon form_close"></i>
-                    </button>
-                    <div class="modal-body">
-                        <div class="ms_register_img">
-<!--                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />-->
-                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
-                        </div>
-                        <div class="ms_register_form">
-<!--                            <h2 th:text="#{login.title}">Login / Sign In</h2>-->
-                            <h2 >Login / Sign In</h2>
-                            <div class="form-group">
-<!--                                <input type="text" th:placeholder="#{login.email}" class="form-control">-->
-                                <input type="email" id="emailLogin" placeholder="email" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon form-envelope" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="form-group">
-<!--                                <input type="password" th:placeholder="#{login.password}" class="form-control">-->
-                                <input type="password" id="passwordLogin" placeholder="password" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon form-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            
-<!--                            <a th:href="@{/profile}" class="ms_btn" target="_blank" th:text="#{login.loginNow}">Login Now</a>-->
-                            <a  id="btnLogin" class="ms_btn" target="_blank" text="Login Now">Login Now</a>
-                            <div class="popup_forgot">
-<!--                                <a th:href="@{/forgot-password}" th:text="#{login.forgotPassword}">Forgot Password?</a>-->
-                                <a href="javascript:;" data-toggle="modal" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
-                            </div>
-                            <p>
-<!--                                <span th:text="#{login.noAccount}">Don't Have An Account?</span>-->
-                                <span text="Don't Have An Account?">Don't Have An Account?</span>
-<!--                                <a href="#myModal" data-toggle="modal" class="ms_modal1 hideCurrentModel" th:text="#{login.registerHere}">Register Here</a>-->
-                                <a href="javascript:;" data-toggle="modal" data-bs-toggle="modal" data-bs-target="#myModal">Register Here</a>
+		<!-- Login Modal -->
+		<div id="myModal1" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog login_dialog">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa_icon form_close"></i>
+					</button>
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<!--                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />-->
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<!--                            <h2 th:text="#{login.title}">Login / Sign In</h2>-->
+							<h2>Login / Sign In</h2>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{login.email}" class="form-control">-->
+								<input type="email" id="emailLogin" placeholder="email" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-envelope" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="password" th:placeholder="#{login.password}" class="form-control">-->
+								<input type="password" id="passwordLogin" placeholder="password" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
+							</div>
 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+							<!--                            <a th:href="@{/profile}" class="ms_btn" target="_blank" th:text="#{login.loginNow}">Login Now</a>-->
+							<a id="btnLogin" class="ms_btn" target="_blank" text="Login Now">Login Now</a>
+							<div class="popup_forgot">
+								<!--                                <a th:href="@{/forgot-password}" th:text="#{login.forgotPassword}">Forgot Password?</a>-->
+								<a href="javascript:;" data-toggle="modal" data-bs-toggle="modal"
+									data-bs-target="#forgotPasswordModal">Forgot password?</a>
+							</div>
+							<p>
+								<!--                                <span th:text="#{login.noAccount}">Don't Have An Account?</span>-->
+								<span text="Don't Have An Account?">Don't Have An Account?</span>
+								<!--                                <a href="#myModal" data-toggle="modal" class="ms_modal1 hideCurrentModel" th:text="#{login.registerHere}">Register Here</a>-->
+								<a href="javascript:;" data-toggle="modal" data-bs-toggle="modal"
+									data-bs-target="#myModal">Register Here</a>
 
-        <!-- Forgot Password Modal -->
-        <div id="forgotPasswordModal" class="modal centered-modal" role="dialog">
-            <div class="modal-dialog forgot_password_dialog">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <i class="fa_icon form_close"></i>
-                    </button>
-                    <div class="modal-body">
-                        <div class="ms_register_img">
-                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
-                        </div>
-                        <div class="ms_register_form">
-                            <h2 >Forgot Password</h2>
-                            <p >Enter your email to receive OTP</p>
-                            <div class="form-group">
-                                <input type="email" th:placeholder="abc" placeholder="Enter Your Email" class="form-control">
-                                <span class="form_icon">
-                                    <i class="fa_icon form-envelope" aria-hidden="true"></i>
-                                </span>
-                            </div>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Forgot Password Modal -->
+		<div id="forgotPasswordModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog forgot_password_dialog">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa_icon form_close"></i>
+					</button>
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<h2>Forgot Password</h2>
+							<p>Enter your email to receive OTP</p>
+							<div class="form-group">
+								<input type="email"  placeholder="Enter Your Email"
+									class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-envelope" aria-hidden="true"></i>
+								</span>
+							</div>
 
 
-                            <p>
-                                <span >Send</span>
-                                <a href="javascript:;"  class="ms_modal" data-bs-toggle="modal" data-bs-target="#otpModal" >Send</a>
-                            </p>
-                            <p>
-                                <span th:text="abc">Back to Login?</span>
-                                <a href="javascript:;"  class="ms_modal" data-bs-toggle="modal" data-bs-target="#myModal1" th:text="login">Login Here</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+							<p>
+								
+								<a href="javascript:;" class="ms_modal" data-bs-toggle="modal"
+									data-bs-target="#otpModal">Send</a>
+							</p>
+							<p>
+								<span>Back to Login?</span>
+								<a href="javascript:;" class="ms_modal" data-bs-toggle="modal"
+									data-bs-target="#myModal1">Login Here</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- OTP Modal -->
-        <div id="otpModal" class="modal centered-modal" role="dialog">
-            <div class="modal-dialog otp_dialog">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <i class="fa_icon form_close"></i>
-                    </button>
-                    <div class="modal-body">
-                        <div class="ms_register_img">
-                            <img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
-                        </div>
-                        <div class="ms_register_form">
-                            <h2 >Enter OTP</h2>
-                            <p >We have sent an OTP to your registered email.</p>
-                            <div class="form-group">
-                            <input type="text" id="otp" placeholder="Enter OTP" class="form-control">
-                            <span class="form_icon">
-                                    <i class="fa_iconform-key" aria-hidden="true"></i>
-                                </span>
-                        </div>
-                            <a id="btn_verify" class="ms_btn" th:text="verify">Verify OTP</a>
-                            <p>
-                                <span th:text="abc">Didn't receive the OTP?</span>
-                                <a href="#forgotPasswordModal" data-toggle="modal" class="resend_otp hideCurrentModel" th:text="abc">Resend OTP</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<!-- OTP Modal -->
+		<div id="otpModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog otp_dialog">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa_icon form_close"></i>
+					</button>
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<h2>Enter OTP</h2>
+							<p>We have sent an OTP to your registered email.</p>
+							<div class="form-group">
+								<input type="text" id="otp" placeholder="Enter OTP" class="form-control">
+								<span class="form_icon">
+									<i class="fa_iconform-key" aria-hidden="true"></i>
+								</span>
+							</div>
+							<a id="btn_verify" class="ms_btn" th:text="verify">Verify OTP</a>
+							<p>
+								<span th:text="abc">Didn't receive the OTP?</span>
+								<a href="#forgotPasswordModal" data-toggle="modal" class="resend_otp hideCurrentModel"
+									th:text="abc">Resend OTP</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- change info Modal -->
+		<div id="infoModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog register_dialog">
+				<div class="modal-content">
+					<!--                    <button type="button" class="close" data-dismiss="modal">-->
+					<!--                        <i class="fa_icon form_close"></i>-->
+					<!--                    </button>-->
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<!--                            <h2 th:text="#{register.title}">Register / Sign Up</h2>-->
+							<h2>Your Infomation</h2>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.name}" class="form-control">-->
+								<input type="email" id="emailOld" th:placeholder="Email" class="form-control" readonly>
+								<span class="form_icon">
+									<i class="fa_icon  form-envelope" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="password" th:placeholder="#{register.password}" class="form-control">-->
+								<input type="text" id="new_fullname" placeholder="Fullname" class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-user " aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
+								<input type="password" id="new_password" placeholder="New password"
+									class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
+								<input type="password" id="re_password" placeholder="Re-type Password"
+									class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+
+
+							<!--                            <a th:href="@{/register}" class="ms_btn" th:text="#{register.registerNow}">Register Now</a>-->
+							<a href="javascript:;" id="btn_changeInfo" class="ms_btn">Change Infomation</a>
+							<a href="javascript:;" id="btn_logOut" class="ms_btn">Log out</a>
+							<p>
+								<!--                                <span th:text="#{register.alreadyAccount}">Already Have An Account?</span>-->
+
+
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </th:block>
