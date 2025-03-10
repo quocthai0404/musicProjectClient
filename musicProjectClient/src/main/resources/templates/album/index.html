@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${album.name + ' - Miraculous'}">Album Details - Miraculous</title>
+    <title th:text="${albums != null ? 'Albums - Miraculous' : 'No Albums - Miraculous'}">Albums - Miraculous</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Music">

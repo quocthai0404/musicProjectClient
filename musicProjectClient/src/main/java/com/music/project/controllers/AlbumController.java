@@ -23,9 +23,10 @@ public class AlbumController {
     public String index(Model model) {
         // goi api lay ds album
         List<Album> albums = albumService.getAllAlbums();
-        
+
         // truyen ds albums
         model.addAttribute("albums", albums);
+        model.addAttribute("album", new Album()); // them album moi
         model.addAttribute("activePage", "album/index");
         return "album/index";
     }
