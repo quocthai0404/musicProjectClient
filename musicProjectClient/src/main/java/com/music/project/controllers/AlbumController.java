@@ -21,10 +21,10 @@ public class AlbumController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        // Gọi API để lấy danh sách albums
+        // goi api lay ds album
         List<Album> albums = albumService.getAllAlbums();
         
-        // Truyền danh sách albums vào model
+        // truyen ds albums
         model.addAttribute("albums", albums);
         model.addAttribute("activePage", "album/index");
         return "album/index";
@@ -32,10 +32,10 @@ public class AlbumController {
     
     @GetMapping("/detail/{albumId}")
     public String detail(@PathVariable int albumId, Model model) {
-        // Gọi API để lấy chi tiết album theo ID
+        // goi api lay chi tiet album theo id
         Album album = albumService.getAlbumById(albumId);
         
-        // Truyền album vào model
+        // truyen album
         model.addAttribute("album", album);
         model.addAttribute("activePage", "album/index");
         return "album/detail";
