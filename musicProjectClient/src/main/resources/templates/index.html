@@ -10,7 +10,20 @@
     <meta name="MobileOptimized" content="320">
     <!--Start Style -->
     <!-- Bootstrap CSS từ CDN -->
-    <head th:replace="fragments/head :: head"></head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/plugins/swiper/css/swiper.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/plugins/nice_select/nice-select.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/plugins/player/volume.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/js/plugins/scroll/jquery.mCustomScrollbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}">
+    <script th:src="@{/js/musicPlayer.js}" defer></script> <!-- Load JavaScript -->
 </head>
 <body>
 <!----Loader Start---->
@@ -45,7 +58,7 @@
                             <div class="ms_banner_btn">
                                 <a href="#" class="ms_btn">Listen Now</a>
                                 <a href="#" class="ms_btn">Add To Queue</a>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -53,19 +66,19 @@
         </div>
 
         <!--recently played music-->
-        <!-- Recently Played Music (3 bài hát) -->
         <div class="ms_rcnt_slider">
             <div class="ms_heading">
-                <h1>Recently Played</h1>
+                <h1>Recently Release</h1>
                 <span class="veiw_all"><a href="#">view more</a></span>
             </div>
+
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <!-- Bài 1 -->
-                    <div class="swiper-slide">
+                    <!-- Lặp qua danh sách bài hát -->
+                    <div class="swiper-slide" th:each="song : ${songs}">
                         <div class="ms_rcnt_box">
                             <div class="ms_rcnt_box_img">
-                                <img src="images/music/r_music1.jpg" alt="">
+                                <img th:src="${song.photo}" th:alt="${song.name}" >
                                 <div class="ms_main_overlay">
                                     <div class="ms_box_overlay"></div>
                                     <div class="ms_more_icon">
@@ -78,78 +91,32 @@
                                         <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
                                         <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
                                     </ul>
-                                    <div class="ms_play_icon">
+                                    <div class="ms_play_icon play-song"
+                                         th:data-song-id="${song.id}"
+                                         th:data-song-name="${song.name}"
+                                         th:data-song-url="${song.urlSource}">
                                         <img src="images/svg/play.svg" alt="">
                                     </div>
                                 </div>
                             </div>
                             <div class="ms_rcnt_box_text">
-                                <h3><a href="#">Dream Your Moments (Duet)</a></h3>
-                                <p>Ava Cornish & Brian Hill</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Bài 2 -->
-                    <div class="swiper-slide">
-                        <div class="ms_rcnt_box">
-                            <div class="ms_rcnt_box_img">
-                                <img src="images/music/r_music2.jpg" alt="">
-                                <div class="ms_main_overlay">
-                                    <div class="ms_box_overlay"></div>
-                                    <div class="ms_more_icon">
-                                        <img src="images/svg/more.svg" alt="">
-                                    </div>
-                                    <ul class="more_option">
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                                    </ul>
-                                    <div class="ms_play_icon">
-                                        <img src="images/svg/play.svg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms_rcnt_box_text">
-                                <h3><a href="#">Until I Met You</a></h3>
-                                <p>Ava Cornish & Brian Hill</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Bài 3 -->
-                    <div class="swiper-slide">
-                        <div class="ms_rcnt_box">
-                            <div class="ms_rcnt_box_img">
-                                <img src="images/music/r_music3.jpg" alt="">
-                                <div class="ms_main_overlay">
-                                    <div class="ms_box_overlay"></div>
-                                    <div class="ms_more_icon">
-                                        <img src="images/svg/more.svg" alt="">
-                                    </div>
-                                    <ul class="more_option">
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                                    </ul>
-                                    <div class="ms_play_icon">
-                                        <img src="images/svg/play.svg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms_rcnt_box_text">
-                                <h3><a href="#">Gimme Some Courage</a></h3>
-                                <p>Ava Cornish & Brian Hill</p>
+                                <h3><a th:text="${song.name}"></a></h3>
+                                <p th:if="${song.artists != null}">
+    <span th:each="artist, iterStat : ${song.artists}">
+        <span th:text="${artist.stageName}"></span>
+        <span th:if="${!iterStat.last}">, </span>
+    </span>
+                                </p>
+
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next slider_nav_next"></div>
-            <div class="swiper-button-prev slider_nav_prev"></div>
         </div>
 
         <!--weekly top 15-->
@@ -161,544 +128,110 @@
                             <h1>weekly top 15</h1>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 padding_right40">
-                        <div class="ms_weekly_box">
+
+                    <!-- Cột trái: Top 1 - 5 -->
+                    <div class="col-lg-4 col-md-12 padding_right40" th:if="${songs.size() >= 1}">
+                        <div th:each="song, iterStat : ${songs}" th:if="${iterStat.index < 5}" class="ms_weekly_box">
                             <div class="weekly_left">
-                                    <span class="w_top_no">
-										01
-									</span>
+                                <span class="w_top_no" th:text="${iterStat.index + 1}">01</span>
                                 <div class="w_top_song">
                                     <div class="w_tp_song_img">
-                                        <img src="images/weekly/song1.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
+                                        <img th:src="@{${song.photo}}" alt="" class="img-fluid">
+                                        <div class="ms_song_overlay"></div>
                                         <div class="ms_play_icon">
                                             <img src="images/svg/play.svg" alt="">
                                         </div>
                                     </div>
                                     <div class="w_tp_song_name">
-                                        <h3><a href="#">Until I Met You</a></h3>
-                                        <p>Ava Cornish</p>
+                                        <h3><a href="#" th:text="${song.name}">Song Name</a></h3>
+                                        <p th:if="${song.artists != null}">
+    <span th:each="artist, iterStat : ${song.artists}">
+        <span th:text="${artist.stageName}"></span>
+        <span th:if="${!iterStat.last}">, </span>
+    </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
+                                <span class="w_song_time" th:text="songduration">5:10</span>
                                 <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
+                            <img src="images/svg/more.svg" alt="">
+                        </span>
                             </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										02
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song2.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Walking Promises</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										03
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song3.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Gimme Some Courage</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										04
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song4.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Desired Games</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										05
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song5.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Dark Alley Acoustic</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 padding_right40">
-                        <div class="ms_weekly_box">
+
+                    <!-- Cột giữa: Top 6 - 10 -->
+                    <div class="col-lg-4 col-md-12 padding_right40" th:if="${songs.size() >= 6}">
+                        <div th:each="song, iterStat : ${songs}" th:if="${iterStat.index >= 5 && iterStat.index < 10}" class="ms_weekly_box">
                             <div class="weekly_left">
-                                    <span class="w_top_no">
-										06
-									</span>
+                                <span class="w_top_no" th:text="${iterStat.index + 1}">06</span>
                                 <div class="w_top_song">
                                     <div class="w_tp_song_img">
-                                        <img src="images/weekly/song6.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
+                                        <img th:src="@{${song.photo}}" alt="" class="img-fluid">
+                                        <div class="ms_song_overlay"></div>
                                         <div class="ms_play_icon">
                                             <img src="images/svg/play.svg" alt="">
                                         </div>
                                     </div>
                                     <div class="w_tp_song_name">
-                                        <h3><a href="#">Walking Promises</a></h3>
-                                        <p>Ava Cornish</p>
+                                        <h3><a href="#" th:text="${song.name}">Song Name</a></h3>
+                                        <p th:if="${song.artists != null}">
+    <span th:each="artist, iterStat : ${song.artists}">
+        <span th:text="${artist.stageName}"></span>
+        <span th:if="${!iterStat.last}">, </span>
+    </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
+                                <span class="w_song_time" th:text="songduration">5:10</span>
                                 <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
+                            <img src="images/svg/more.svg" alt="">
+                        </span>
                             </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										07
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song7.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Endless Things</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box ms_active_play">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										08
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song8.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <div class="ms_bars">
-                                                <div class="bar"></div>
-                                                <div class="bar"></div>
-                                                <div class="bar"></div>
-                                                <div class="bar"></div>
-                                                <div class="bar"></div>
-                                                <div class="bar"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Dream Your Moments</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										09
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song9.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Until I Met You</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										10
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song5.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Gimme Some Courage</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="ms_weekly_box">
+
+                    <!-- Cột phải: Top 11 - 15 -->
+                    <div class="col-lg-4 col-md-12 padding_right40" th:if="${songs.size() >= 11}">
+                        <div th:each="song, iterStat : ${songs}" th:if="${iterStat.index >= 10}" class="ms_weekly_box">
                             <div class="weekly_left">
-                                    <span class="w_top_no">
-										11
-									</span>
+                                <span class="w_top_no" th:text="${iterStat.index + 1}">11</span>
                                 <div class="w_top_song">
                                     <div class="w_tp_song_img">
-                                        <img src="images/weekly/song2.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
+                                        <img th:src="@{${song.photo}}" alt="" class="img-fluid">
+                                        <div class="ms_song_overlay"></div>
                                         <div class="ms_play_icon">
                                             <img src="images/svg/play.svg" alt="">
                                         </div>
                                     </div>
                                     <div class="w_tp_song_name">
-                                        <h3><a href="#">Dark Alley Acoustic</a></h3>
-                                        <p>Ava Cornish</p>
+                                        <h3><a href="#" th:text="${song.name}">Song Name</a></h3>
+                                        <p th:if="${song.artists != null}">
+    <span th:each="artist, iterStat : ${song.artists}">
+        <span th:text="${artist.stageName}"></span>
+        <span th:if="${!iterStat.last}">, </span>
+    </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
+                                <span class="w_song_time" th:text="duration">5:10</span>
                                 <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
+                            <img src="images/svg/more.svg" alt="">
+                        </span>
                             </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										12
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song11.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">The Heartbeat Stops</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										13
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song12.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">One More Stranger</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										14
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song13.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Walking Promises</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
-                        </div>
-                        <div class="ms_divider"></div>
-                        <div class="ms_weekly_box">
-                            <div class="weekly_left">
-                                    <span class="w_top_no">
-										15
-									</span>
-                                <div class="w_top_song">
-                                    <div class="w_tp_song_img">
-                                        <img src="images/weekly/song14.jpg" alt="" class="img-fluid">
-                                        <div class="ms_song_overlay">
-                                        </div>
-                                        <div class="ms_play_icon">
-                                            <img src="images/svg/play.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="w_tp_song_name">
-                                        <h3><a href="#">Endless Things</a></h3>
-                                        <p>Ava Cornish</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="weekly_right">
-                                <span class="w_song_time">5:10</span>
-                                <span class="ms_more_icon" data-other="1">
-										<img src="images/svg/more.svg" alt="">
-									</span>
-                            </div>
-                            <ul class="more_option">
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
-                            </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
 
         <!---Featured Artists Music--->
 
@@ -720,13 +253,14 @@
 
     <!----Audio Player Section---->
 <!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
+    <div id="musicPlayerContainer"></div>
 </div>
 <div th:replace="fragments/modalPopUp :: authModal"></div>
 
 <!--script-->
 <!--<head th:replace="fragments/scripts :: scripts"></head>-->
 
- Load jQuery từ CDN (trước Bootstrap)
+<!-- Load jQuery từ CDN (trước Bootstrap)-->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <!-- Load Bootstrap JS từ CDN -->
@@ -741,6 +275,8 @@
 <script type="text/javascript" th:src="@{/js/plugins/nice_select/jquery.nice-select.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plugins/scroll/jquery.mCustomScrollbar.js}"></script>
 <script type="text/javascript" th:src="@{/js/custom.js}"></script>
+<script type="text/javascript" th:src="@{/js/custom1.js}"></script>
+
 
 
 
@@ -1002,7 +538,437 @@
 	});
 
 </script>
+<script>
+	$(document).ready(function () {
+	    $("#btn_request_otp").click(function (e) {
+	        e.preventDefault();
 
+
+	        let email = $("#email_request").val().trim();
+	        if (!email) {
+	            alert("Please enter your email.");
+	            return;
+	        }
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify({ email: email }),
+	            success: function (response, textStatus, xhr) {
+	                console.log("Response:", response);
+	                console.log("Status Code:", xhr.status);
+
+
+	        let email = $("#email_request").val().trim();
+	        if (!email) {
+	            alert("Please enter your email.");
+	            return;
+	        }
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify({ email: email }),
+	            success: function (response, textStatus, xhr) {
+	                console.log("Response:", response);
+	                console.log("Status Code:", xhr.status);
+
+	                if (xhr.status === 200 && response.code === 200) {
+	                    alert(response.message);
+
+	                    // Ẩn modal quên mật khẩu và hiển thị modal OTP
+	                    $("#forgotPasswordModal").modal("hide");
+						
+						sessionStorage.setItem("email_resetpass", email);
+						
+
+	                    setTimeout(function () {
+	                        if (typeof bootstrap !== "undefined") {
+	                            var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
+	                            otpModal.show();
+	                        } else {
+	                            $("#otpForgetPassModal").modal("show");
+	                        }
+	                    }, 500);
+	                } else {
+	                    alert("Request failed: " + response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                if (xhr.responseJSON && xhr.responseJSON.code === 400) {
+	                    alert("Error: " + xhr.responseJSON.message);
+	                } else {
+	                    alert("Failed to send OTP. Please try again.");
+	                }
+	            }
+	        });
+	    });
+	});
+
+</script>
+
+<script>
+	$(document).ready(function () {
+	    $("#btn_verify_forget").click(function (e) {
+	        e.preventDefault();
+
+	        let otp = $("#otp_forget").val().trim();
+	        let email = sessionStorage.getItem("email_resetpass");
+
+	        if (!otp) {
+	            alert("Please enter the OTP.");
+	            return;
+	        }
+
+	        if (!email) {
+	            alert("Session expired. Please request a new OTP.");
+	            return;
+	        }
+
+	        let requestData = {
+	            otp: otp,
+	            email: email
+	        };
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/verify-reset-password",
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify(requestData),
+	            success: function (response, textStatus, xhr) {
+	                console.log("Response:", response);
+	                console.log("Status Code:", xhr.status);
+
+	                if (xhr.status === 200 && response.code === 200) {
+	                    alert(response.message);
+
+	                    // Lưu OTP mới để reset mật khẩu vào sessionStorage
+	                    sessionStorage.setItem("otp_resetpass", response.result);
+
+	                    // Ẩn modal OTP và hiển thị modal Reset Password
+	                    $("#otpForgetPassModal").modal("hide");
+
+	                    setTimeout(function () {
+	                        if (typeof bootstrap !== "undefined") {
+	                            var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+	                            resetPassModal.show();
+	                        } else {
+	                            $("#resetPasswordModal").modal("show");
+	                        }
+	                    }, 500);
+	                } else {
+	                    alert("OTP verification failed: " + response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                if (xhr.responseJSON && xhr.responseJSON.message) {
+	                    alert("Error: " + xhr.responseJSON.message);
+	                } else {
+	                    alert("An unexpected error occurred.");
+	                }
+	            }
+	        });
+	    });
+	});
+
+
+	$(document).ready(function () {
+	    $("#btn_rs_pass").click(function (e) {
+	        e.preventDefault();
+
+	        let email = sessionStorage.getItem("email_resetpass");
+	        let otp = sessionStorage.getItem("otp_resetpass");
+	        let password = $("#new_password_reset").val().trim();
+	        let rePassword = $("#re_password_reset").val().trim();
+
+	        if (!email || !otp) {
+	            alert("Session expired. Please request a new OTP.");
+	            return;
+	        }
+
+	        if (!password || !rePassword) {
+	            alert("Please enter your new password.");
+	            return;
+	        }
+
+	        if (password !== rePassword) {
+	            alert("Passwords do not match.");
+	            return;
+	        }
+
+	        let requestData = {
+	            otp: otp,
+	            email: email,
+	            password: password,
+	            rePassword: rePassword
+	        };
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/reset-password",
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify(requestData),
+	            success: function (response, textStatus, xhr) {
+	                if (xhr.status === 200 && response.code === 200) {
+	                    alert(response.message);
+
+	                    // Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+	                    sessionStorage.removeItem("email_resetpass");
+	                    sessionStorage.removeItem("otp_resetpass");
+
+
+	                    // Chuyển hướng về trang login
+	                    window.location.href = "http://localhost:8086/";
+	                } else {
+	                    alert("Reset password failed: " + response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                if (xhr.responseJSON && xhr.responseJSON.message) {
+	                    alert("Error: " + xhr.responseJSON.message);
+	                } else {
+	                    alert("An unexpected error occurred.");
+	                }
+	            }
+	        });
+	    });
+	});
+
+</script>
+
+<script>
+	$(document).ready(function () {
+	    const userData = sessionStorage.getItem("user");
+
+	    if (userData) {
+	        const user = JSON.parse(userData);
+	        if (user.roles.includes("ROLE_ARTIST")) {
+	            $("#uploadBtn").show(); 
+	        } else {
+	            $("#uploadBtn").hide(); 
+	        }
+	    } else {
+	        $("#uploadBtn").hide();
+	    }
+	});
+
+</script>
+
+<!--tét player-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lắng nghe sự kiện click vào bất kỳ nút play nào
+        document.addEventListener("click", function (event) {
+            if (event.target.closest(".play-song")) {
+                let songElement = event.target.closest(".play-song");
+
+                let songId = songElement.getAttribute("data-song-id");
+                let songName = songElement.getAttribute("data-song-name");
+                let songUrl = songElement.getAttribute("data-song-url");
+
+                playSong(songId, songName, songUrl);
+            }
+        });
+    });
+
+    function playSong(songId, songName, songUrl) {
+        // Cập nhật thông tin bài hát trên player
+        document.querySelector(".jp-track-name").textContent = songName;
+        document.querySelector(".jp-artist-name").textContent = songName; // Nếu có artist, cập nhật lại
+
+        let audioElement = document.querySelector("#jquery_jplayer_1");
+
+        if (audioElement) {
+            // Thay đổi src của trình phát nhạc
+            audioElement.src = songUrl;
+            audioElement.play();
+        } else {
+            console.error("Không tìm thấy player!");
+        }
+    }
+</script>
+
+	                if (xhr.status === 200 && response.code === 200) {
+	                    alert(response.message);
+
+	                    // Ẩn modal quên mật khẩu và hiển thị modal OTP
+	                    $("#forgotPasswordModal").modal("hide");
+						
+						sessionStorage.setItem("email_resetpass", email);
+						
+
+	                    setTimeout(function () {
+	                        if (typeof bootstrap !== "undefined") {
+	                            var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
+	                            otpModal.show();
+	                        } else {
+	                            $("#otpForgetPassModal").modal("show");
+	                        }
+	                    }, 500);
+	                } else {
+	                    alert("Request failed: " + response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                if (xhr.responseJSON && xhr.responseJSON.code === 400) {
+	                    alert("Error: " + xhr.responseJSON.message);
+	                } else {
+	                    alert("Failed to send OTP. Please try again.");
+	                }
+	            }
+	        });
+	    });
+	});
+
+</script>
+
+<script>
+	$(document).ready(function () {
+	    $("#btn_verify_forget").click(function (e) {
+	        e.preventDefault();
+
+	        let otp = $("#otp_forget").val().trim();
+	        let email = sessionStorage.getItem("email_resetpass");
+
+	        if (!otp) {
+	            alert("Please enter the OTP.");
+	            return;
+	        }
+
+	        if (!email) {
+	            alert("Session expired. Please request a new OTP.");
+	            return;
+	        }
+
+	        let requestData = {
+	            otp: otp,
+	            email: email
+	        };
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/verify-reset-password",
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify(requestData),
+	            success: function (response, textStatus, xhr) {
+	                console.log("Response:", response);
+	                console.log("Status Code:", xhr.status);
+
+	                if (xhr.status === 200 && response.code === 200) {
+	                    alert(response.message);
+
+	                    // Lưu OTP mới để reset mật khẩu vào sessionStorage
+	                    sessionStorage.setItem("otp_resetpass", response.result);
+
+	                    // Ẩn modal OTP và hiển thị modal Reset Password
+	                    $("#otpForgetPassModal").modal("hide");
+
+	                    setTimeout(function () {
+	                        if (typeof bootstrap !== "undefined") {
+	                            var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+	                            resetPassModal.show();
+	                        } else {
+	                            $("#resetPasswordModal").modal("show");
+	                        }
+	                    }, 500);
+	                } else {
+	                    alert("OTP verification failed: " + response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                if (xhr.responseJSON && xhr.responseJSON.message) {
+	                    alert("Error: " + xhr.responseJSON.message);
+	                } else {
+	                    alert("An unexpected error occurred.");
+	                }
+	            }
+	        });
+	    });
+	});
+
+
+	$(document).ready(function () {
+	    $("#btn_rs_pass").click(function (e) {
+	        e.preventDefault();
+
+	        let email = sessionStorage.getItem("email_resetpass");
+	        let otp = sessionStorage.getItem("otp_resetpass");
+	        let password = $("#new_password_reset").val().trim();
+	        let rePassword = $("#re_password_reset").val().trim();
+
+	        if (!email || !otp) {
+	            alert("Session expired. Please request a new OTP.");
+	            return;
+	        }
+
+	        if (!password || !rePassword) {
+	            alert("Please enter your new password.");
+	            return;
+	        }
+
+	        if (password !== rePassword) {
+	            alert("Passwords do not match.");
+	            return;
+	        }
+
+	        let requestData = {
+	            otp: otp,
+	            email: email,
+	            password: password,
+	            rePassword: rePassword
+	        };
+
+	        $.ajax({
+	            url: "http://localhost:8085/api/users/reset-password",
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify(requestData),
+	            success: function (response, textStatus, xhr) {
+	                if (xhr.status === 200 && response.code === 200) {
+	                    alert(response.message);
+
+	                    // Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+	                    sessionStorage.removeItem("email_resetpass");
+	                    sessionStorage.removeItem("otp_resetpass");
+
+	                    // Chuyển hướng về trang login
+	                    window.location.href = "http://localhost:8086/";
+	                } else {
+	                    alert("Reset password failed: " + response.message);
+	                }
+	            },
+	            error: function (xhr) {
+	                if (xhr.responseJSON && xhr.responseJSON.message) {
+	                    alert("Error: " + xhr.responseJSON.message);
+	                } else {
+	                    alert("An unexpected error occurred.");
+	                }
+	            }
+	        });
+	    });
+	});
+
+</script>
+
+<script>
+	$(document).ready(function () {
+	    const userData = sessionStorage.getItem("user");
+
+	    if (userData) {
+	        const user = JSON.parse(userData);
+	        if (user.roles.includes("ROLE_ARTIST")) {
+	            $("#uploadBtn").show(); 
+	        } else {
+	            $("#uploadBtn").hide(); 
+	        }
+	    } else {
+	        $("#uploadBtn").hide();
+	    }
+	});
+
+</script>
 
 
 </body>
