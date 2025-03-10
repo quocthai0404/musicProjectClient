@@ -103,8 +103,8 @@
                             <div class="play_song_name">
                                 <a href="javascript:void(0);" id="playlist-text">
                                     <div class="jp-now-playing flex-item">
-                                        <div class="jp-track-name" th:text="${currentSong}"></div>
-                                        <div class="jp-artist-name" th:text="${currentSong}"></div>
+                                        <div class="jp-track-name" th:text="${currentSong.name}"></div>
+                                        <div class="jp-artist-name" th:text="${currentSong.artist}"></div>
                                     </div>
                                 </a>
                             </div>
@@ -125,8 +125,8 @@
                             <div class="jp_queue_list_inner">
                                 <ul>
                                     <li th:each="song : ${queueSongs}">
-                                        <span th:text="${song}"></span> -
-                                        <span th:text="${song}"></span>
+                                        <span th:text="${song.name}"></span> -
+                                        <span th:text="${song.artist}"></span>
                                     </li>
                                 </ul>
                             </div>
@@ -161,14 +161,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="jp_quality_optn custom_select">
-                                <select>
-                                    <option>Quality</option>
-                                    <option value="1">HD</option>
-                                    <option value="2">High</option>
-                                    <option value="3">Medium</option>
-                                    <option value="4">Low</option>
-                                </select>
+                            <div class="jp_quality_optn flex-item">
+                                <i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 24px; margin-right: 10px;"></i>
+                                <i class="fa fa-thumbs-o-down" aria-hidden="true" style="font-size: 24px;"></i>
                             </div>
                         </div>
                     </div>

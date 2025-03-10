@@ -16,722 +16,722 @@
 </head>
 
 <body>
-<!----Loader Start---->
-<!--<div class="ms_loader">-->
-<!--    <div class="wrap">-->
-<!--        <img th:src="@{/images/loader.gif}" alt="">-->
-<!--    </div>-->
-<!--</div>-->
-<!----Main Wrapper Start---->
-<div class="ms_main_wrapper">
-	<!---Side Menu Start--->
-	<div th:replace="fragments/sidebar :: sidebar"></div>
+	<!----Loader Start---->
+	<!--<div class="ms_loader">-->
+	<!--    <div class="wrap">-->
+	<!--        <img th:src="@{/images/loader.gif}" alt="">-->
+	<!--    </div>-->
+	<!--</div>-->
+	<!----Main Wrapper Start---->
+	<div class="ms_main_wrapper">
+		<!---Side Menu Start--->
+		<div th:replace="fragments/sidebar :: sidebar"></div>
 
-	<!--main content -->
-	<div class="ms_content_wrapper padder_top80">
+		<!--main content -->
+		<div class="ms_content_wrapper padder_top80">
 
-		<!--header-->
-		<div th:replace="fragments/header :: header"></div>
+			<!--header-->
+			<div th:replace="fragments/header :: header"></div>
 
-		<!----Upload and Share Wrapper Start---->
-		<div class="ms_upload_wrapper marger_top60">
+			<!----Upload and Share Wrapper Start---->
+			<div class="ms_upload_wrapper marger_top60">
 
-			<!--
-                <div class="ms_upload_box">
-                                    <h2>Upload & Share Your Music With The World</h2>
-                                    <img src="images/svg/upload.svg" alt="">
-                                    <div class="ms_upload_btn">
-                                        <a href="#" class="ms_btn">save files</a>
-                                    </div>
-                                    <span> or </span>
-                                    <p>Drag And Drop Music Files</p>
-                                </div>
-            -->
-			<div class="ms_upload_box" id="dropZone">
-				<h2>Upload & Share Your Music With The World</h2>
-				<img src="images/svg/upload.svg" alt="">
+				<!--
+					<div class="ms_upload_box">
+										<h2>Upload & Share Your Music With The World</h2>
+										<img src="images/svg/upload.svg" alt="">
+										<div class="ms_upload_btn">
+											<a href="#" class="ms_btn">save files</a>
+										</div>
+										<span> or </span>
+										<p>Drag And Drop Music Files</p>
+									</div>
+				-->
+				<div class="ms_upload_box" id="dropZone">
+					<h2>Upload & Share Your Music With The World</h2>
+					<img src="images/svg/upload.svg" alt="">
 
-				<!-- Hiển thị tên file -->
-				<p id="fileName" class="text-muted"></p>
+					<!-- Hiển thị tên file -->
+					<p id="fileName" class="text-muted"></p>
 
-				<div class="ms_upload_btn">
-					<a href="javascript:void(0);" class="ms_btn" id="uploadTrigger">Upload File</a>
+					<div class="ms_upload_btn">
+						<a href="javascript:void(0);" class="ms_btn" id="uploadTrigger">Upload File</a>
+					</div>
+
+
+
+
+					<!-- Input file bị ẩn -->
+					<input type="file" id="fileInput" class="d-none" accept="audio/*">
 				</div>
 
-
-
-
-				<!-- Input file bị ẩn -->
-				<input type="file" id="fileInput" class="d-none" accept="audio/*">
-			</div>
-
-			<div class=" marger_top60">
-				<div class="ms_upload_box">
-					<div class="ms_heading">
-						<h1>Track Information</h1>
-					</div>
-					<div class="ms_pro_form">
-						<div class="form-group">
-							<label>Track Name *</label>
-							<input type="text" placeholder="Dream Your Moments" class="form-control">
+				<div class=" marger_top60">
+					<div class="ms_upload_box">
+						<div class="ms_heading">
+							<h1>Track Information</h1>
 						</div>
-						<div class="form-group">
-							<label>Photo *</label>
-							<input type="file" class="form-control">
-						</div>
-						<div class="form-group">
-							<label>Number of Artist *</label>
-							<input type="number" class="form-control" id="noa">
-						</div>
+						<div class="ms_pro_form">
+							<div class="form-group">
+								<label>Track Name *</label>
+								<input type="text" placeholder="Dream Your Moments" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Photo *</label>
+								<input type="file" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Number of Artist *</label>
+								<input type="number" class="form-control" id="noa">
+							</div>
 
-						<div class="form-group">
-							<label>Number of Genre *</label>
-							<input type="number" class="form-control" id="nog">
-						</div>
-						<div class="form-group" id="fillOptionArtist">
+							<div class="form-group">
+								<label>Number of Genre *</label>
+								<input type="number" class="form-control" id="nog">
+							</div>
+							<div class="form-group" id="fillOptionArtist">
 
-						</div>
-						<div class="form-group" id="fillOptionGenre">
+							</div>
+							<div class="form-group" id="fillOptionGenre">
 
-						</div>
+							</div>
 
-						<!--
-                        <div class="form-group">
-                                                    <label>Select Album</label>
-                                                    <select class="form-control">
-                                                        <option>Cloud Nine</option>
-                                                        <option value="1">Cyber Sonnet </option>
-                                                        <option value="2">Cloud Nine</option>
-                                                        <option value="3">Cyber Sonnet</option>
-                                                        <option value="4">Cloud Nine</option>
-                                                    </select>
-                                                </div>
-                    -->
+							<!--
+							<div class="form-group">
+							                            <label>Select Album</label>
+							                            <select class="form-control">
+							                                <option>Cloud Nine</option>
+							                                <option value="1">Cyber Sonnet </option>
+							                                <option value="2">Cloud Nine</option>
+							                                <option value="3">Cyber Sonnet</option>
+							                                <option value="4">Cloud Nine</option>
+							                            </select>
+							                        </div>
+						-->
 
 
-						<div class="pro-form-btn text-center marger_top15">
-							<div class="ms_upload_btn">
-								<a href="#" class="ms_btn">Upload Now</a>
-								<a href="#" class="ms_btn">cancle</a>
+							<div class="pro-form-btn text-center marger_top15">
+								<div class="ms_upload_btn">
+									<a href="#" class="ms_btn">Upload Now</a>
+									<a href="#" class="ms_btn">cancle</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!---main footer--->
+		<div th:replace="fragments/footer :: footer"></div>
+
+		<!----Audio Player Section---->
+		<!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
 	</div>
+	<div th:replace="fragments/modalPopUp :: authModal"></div>
 
-	<!---main footer--->
-	<div th:replace="fragments/footer :: footer"></div>
+	<!--script-->
+	<!--<head th:replace="fragments/scripts :: scripts"></head>-->
 
-	<!----Audio Player Section---->
-	<!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
-</div>
-<div th:replace="fragments/modalPopUp :: authModal"></div>
+	Load jQuery từ CDN (trước Bootstrap)
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<!--script-->
-<!--<head th:replace="fragments/scripts :: scripts"></head>-->
+	<!-- Load Bootstrap JS từ CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-Load jQuery từ CDN (trước Bootstrap)
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Load Bootstrap JS từ CDN -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Các file JS khác -->
-<script type="text/javascript" th:src="@{/js/plugins/swiper/js/swiper.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/plugins/player/jplayer.playlist.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/plugins/player/jquery.jplayer.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/plugins/player/audio-player.js}"></script>
-<script type="text/javascript" th:src="@{/js/plugins/player/volume.js}"></script>
-<script type="text/javascript" th:src="@{/js/plugins/nice_select/jquery.nice-select.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/plugins/scroll/jquery.mCustomScrollbar.js}"></script>
-<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+	<!-- Các file JS khác -->
+	<script type="text/javascript" th:src="@{/js/plugins/swiper/js/swiper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins/player/jplayer.playlist.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins/player/jquery.jplayer.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins/player/audio-player.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins/player/volume.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins/nice_select/jquery.nice-select.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins/scroll/jquery.mCustomScrollbar.js}"></script>
+	<script type="text/javascript" th:src="@{/js/custom.js}"></script>
 
 
 
-<!--<script>
-date picker
+	<!--<script>
+    date picker
 </script>-->
-<!-- jQuery và jQuery UI -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- jQuery và jQuery UI -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script>
-	$(document).ready(function () {
-		$("#dob").datepicker({
-			dateFormat: "dd/mm/yy", // Định dạng ngày
-			changeMonth: true, // Hiển thị chọn tháng
-			changeYear: true, // Hiển thị chọn năm
-			yearRange: "1900:2025", // Giới hạn năm từ 1900 đến 2025
-			maxDate: new Date() // Không cho chọn ngày trong tương lai
-		});
-	});
-</script>
+	<script>
+	    $(document).ready(function () {
+	        $("#dob").datepicker({
+	            dateFormat: "dd/mm/yy", // Định dạng ngày
+	            changeMonth: true, // Hiển thị chọn tháng
+	            changeYear: true, // Hiển thị chọn năm
+	            yearRange: "1900:2025", // Giới hạn năm từ 1900 đến 2025
+	            maxDate: new Date() // Không cho chọn ngày trong tương lai
+	        });
+	    });
+	</script>
 
-<script>
-	$(document).ready(function () {
-		$("#btn_register").click(function () {
-			var user = {
-				email: $("#email").val(),
-				password: $("#password").val(),
-				fullname: $("#fullname").val(),
-				dob: $("#dob").val(),
-				photo: "https://res.cloudinary.com/dhee9ysz4/image/upload/v1741076584/ypj7xyshwjq9zhuazfq9.webp",
-				isActive: true
-			};
+	<script>
+	    $(document).ready(function () {
+	        $("#btn_register").click(function () {
+	            var user = {
+	                email: $("#email").val(),
+	                password: $("#password").val(),
+	                fullname: $("#fullname").val(),
+	                dob: $("#dob").val(),
+	                photo: "https://res.cloudinary.com/dhee9ysz4/image/upload/v1741076584/ypj7xyshwjq9zhuazfq9.webp",
+	                isActive: true
+	            };
 
-			$.ajax({
-				url: "http://localhost:8085/api/users/register",
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(user),
-				success: function (response, textStatus, xhr) {
-					console.log("Response:", response);
-					console.log("Status Code:", xhr.status);
-
-					if (xhr.status === 200 && response.code === 200) { //
-						console.log("User registered successfully");
-
-						// Ẩn modal đăng ký và hiển thị modal OTP
-						$("#myModal").modal("hide");
-
-						sessionStorage.setItem("registeredEmail", response.result.email);
-
-						setTimeout(function () {
-							if (typeof bootstrap !== "undefined") {
-								var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
-								otpModal.show();
-							} else {
-								$("#otpModal").modal("show");
-							}
-						}, 500);
-					} else {
-						alert("Registration failed: " + response.message);
-					}
-				},
-
-				error: function (xhr) {
-					if (xhr.responseJSON && xhr.responseJSON.message) {
-						alert("Error: " + xhr.responseJSON.message);
-					} else {
-						alert("An unexpected error occurred.");
-					}
-				}
-			});
-		});
-	});
-</script>
-
-<script>
-	$(document).ready(function () {
-		$(document).ready(function () {
-			$("#btn_verify").click(function () {
-				var otp = $("#otp").val();
-				var email = sessionStorage.getItem("registeredEmail"); // Lấy email từ sessionStorage
-
-				if (!email) {
-					alert("Error: No registered email found. Please register again.");
-					return;
-				}
-
-				var requestData = {
-					otp: otp,
-					email: email
-				};
-
-				$.ajax({
-					url: "http://localhost:8085/api/users/active-account",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(requestData),
+	            $.ajax({
+	                url: "http://localhost:8085/api/users/register",
+	                type: "POST",
+	                contentType: "application/json",
+	                data: JSON.stringify(user),
 					success: function (response, textStatus, xhr) {
-						console.log("Response:", response);
-						console.log("Status Code:", xhr.status);
+					    console.log("Response:", response);
+					    console.log("Status Code:", xhr.status);
 
-						if (xhr.status === 200 && response.code === 200) {
-							alert("Registration successful! Please log in.");
-							sessionStorage.removeItem("registeredEmail"); // Xóa email sau khi kích hoạt thành công
-							location.reload(); // Reload lại trang
-						} else {
-							alert("Error: " + response.message);
-						}
+					    if (xhr.status === 200 && response.code === 200) { //
+					        console.log("User registered successfully");
+
+					        // Ẩn modal đăng ký và hiển thị modal OTP
+					        $("#myModal").modal("hide");
+
+							sessionStorage.setItem("registeredEmail", response.result.email);
+
+					        setTimeout(function () {
+					            if (typeof bootstrap !== "undefined") {
+					                var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+					                otpModal.show();
+					            } else {
+					                $("#otpModal").modal("show");
+					            }
+					        }, 500);
+					    } else {
+					        alert("Registration failed: " + response.message);
+					    }
 					},
-					error: function (xhr) {
-						if (xhr.responseJSON && xhr.responseJSON.message) {
-							alert("Error: " + xhr.responseJSON.message);
-						} else {
-							alert("An unexpected error occurred.");
-						}
-					}
-				});
+
+	                error: function (xhr) {
+	                    if (xhr.responseJSON && xhr.responseJSON.message) {
+	                        alert("Error: " + xhr.responseJSON.message);
+	                    } else {
+	                        alert("An unexpected error occurred.");
+	                    }
+	                }
+	            });
+	        });
+	    });
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			$(document).ready(function () {
+			    $("#btn_verify").click(function () {
+			        var otp = $("#otp").val();
+			        var email = sessionStorage.getItem("registeredEmail"); // Lấy email từ sessionStorage
+
+			        if (!email) {
+			            alert("Error: No registered email found. Please register again.");
+			            return;
+			        }
+
+			        var requestData = {
+			            otp: otp,
+			            email: email
+			        };
+
+			        $.ajax({
+			            url: "http://localhost:8085/api/users/active-account",
+			            type: "POST",
+			            contentType: "application/json",
+			            data: JSON.stringify(requestData),
+			            success: function (response, textStatus, xhr) {
+			                console.log("Response:", response);
+			                console.log("Status Code:", xhr.status);
+
+			                if (xhr.status === 200 && response.code === 200) {
+			                    alert("Registration successful! Please log in.");
+			                    sessionStorage.removeItem("registeredEmail"); // Xóa email sau khi kích hoạt thành công
+			                    location.reload(); // Reload lại trang
+			                } else {
+			                    alert("Error: " + response.message);
+			                }
+			            },
+			            error: function (xhr) {
+			                if (xhr.responseJSON && xhr.responseJSON.message) {
+			                    alert("Error: " + xhr.responseJSON.message);
+			                } else {
+			                    alert("An unexpected error occurred.");
+			                }
+			            }
+			        });
+			    });
 			});
+
+
+		});
+
+	</script>
+
+	<script>
+		$(document).ready(function () {
+		    $("#btnLogin").click(function (e) {
+		        e.preventDefault(); // Ngăn chặn reload form
+
+		        let email = $("#emailLogin").val().trim();
+		        let password = $("#passwordLogin").val().trim();
+
+		        if (!email || !password) {
+		            alert("Please enter email and password.");
+		            return;
+		        }
+
+		        $.ajax({
+		            url: "http://localhost:8085/api/users/sign-in",
+		            type: "POST",
+		            contentType: "application/json",
+		            data: JSON.stringify({ email: email, password: password }),
+		            success: function (response) {
+		                if (response.code === 200) {
+		                    let result = response.result;
+
+
+		                    sessionStorage.setItem("token", result.token);
+		                    sessionStorage.setItem("user", JSON.stringify(result));
+
+
+		                    alert("Login successful! Redirecting...");
+		                    location.reload();
+		                } else {
+		                    alert("Login failed: " + response.message);
+		                }
+		            },
+		            error: function (xhr) {
+		                let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "Unknown error!";
+		                alert("Error: " + errorMessage);
+		            }
+		        });
+		    });
 		});
 
 
-	});
+	</script>
 
-</script>
+	<script>
+		$(document).ready(function () {
+		    // Ban đầu ẩn profileBtn
+		    $("#profileBtn").hide();
 
-<script>
-	$(document).ready(function () {
-		$("#btnLogin").click(function (e) {
-			e.preventDefault(); // Ngăn chặn reload form
+		    // Lấy thông tin user và token từ sessionStorage
+		    var token = sessionStorage.getItem("token");
+		    var user = sessionStorage.getItem("user");
 
-			let email = $("#emailLogin").val().trim();
-			let password = $("#passwordLogin").val().trim();
+		    if (token && user) {
+		        var userData = JSON.parse(user);
 
-			if (!email || !password) {
-				alert("Please enter email and password.");
-				return;
-			}
+		        // Ẩn div ms_top_btn chứa các nút đăng ký & đăng nhập (không tính profileBtn)
+		        $(".ms_top_btn:not(#profileBtn)").hide();
 
-			$.ajax({
-				url: "http://localhost:8085/api/users/sign-in",
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify({ email: email, password: password }),
-				success: function (response) {
-					if (response.code === 200) {
-						let result = response.result;
+		        // Cập nhật text cho profileBtn với fullname của user
+		        $("#profileBtn a span").text(userData.fullname);
 
-
-						sessionStorage.setItem("token", result.token);
-						sessionStorage.setItem("user", JSON.stringify(result));
+		        // Hiển thị profileBtn
+		        $("#profileBtn").show();
+				
+				$("#emailOld").val(userData.email);
+				$("#new_fullname").val(userData.fullname);
+		    }
+		});
 
 
-						alert("Login successful! Redirecting...");
-						location.reload();
-					} else {
-						alert("Login failed: " + response.message);
-					}
-				},
-				error: function (xhr) {
-					let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "Unknown error!";
-					alert("Error: " + errorMessage);
+	</script>
+
+	<script>
+		$(document).ready(function () {
+		    $("#btn_changeInfo").click(function () {
+		        let token = sessionStorage.getItem("token");
+		        if (!token) {
+		            alert("You are not logged in!");
+		            return;
+		        }
+
+		        // Lấy thông tin từ input
+		        let changeInfoData = {
+		            email: $("#emailOld").val().trim(), 
+		            fullname: $("#new_fullname").val().trim(),
+		            password: $("#new_password").val().trim(),
+		            rePassword: $("#re_password").val().trim()
+		        };
+
+		        // Kiểm tra mật khẩu nhập lại có trùng khớp không
+		        if (changeInfoData.password !== changeInfoData.rePassword) {
+		            alert("Passwords do not match!");
+		            return;
+		        }
+
+		        $.ajax({
+		            url: "http://localhost:8085/api/users/change-info",
+		            type: "POST",
+		            contentType: "application/json",
+		            data: JSON.stringify(changeInfoData),
+		            headers: {
+		                Authorization: "Bearer " + token
+		            },
+		            success: function (response) {
+		                if (response.code === 200) {
+		                    alert("User info updated successfully!");
+
+		                    // Cập nhật lại token và user trong sessionStorage
+		                    let updatedUser = response.result;
+		                    sessionStorage.setItem("user", JSON.stringify(updatedUser));
+		                    sessionStorage.setItem("token", updatedUser.token); // Cập nhật lại token mới
+
+		                    location.reload();
+		                } else {
+		                    alert(response.message);
+		                }
+		            },
+		            error: function (xhr) {
+		                let errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : "An error occurred!";
+		                alert("Error: " + errorMessage);
+		            }
+		        });
+		    });
+
+		    $("#btn_logOut").click(function () {
+		        sessionStorage.removeItem("token");
+		        sessionStorage.removeItem("user");
+		        alert("Logged out successfully");
+		        location.reload();
+		    });
+		});
+
+	</script>
+	<script>
+		$(document).ready(function () {
+		    $("#btn_request_otp").click(function (e) {
+		        e.preventDefault();
+
+		        let email = $("#email_request").val().trim();
+		        if (!email) {
+		            alert("Please enter your email.");
+		            return;
+		        }
+
+		        $.ajax({
+		            url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
+		            type: "POST",
+		            contentType: "application/json",
+		            data: JSON.stringify({ email: email }),
+		            success: function (response, textStatus, xhr) {
+		                console.log("Response:", response);
+		                console.log("Status Code:", xhr.status);
+
+		                if (xhr.status === 200 && response.code === 200) {
+		                    alert(response.message);
+
+		                    // Ẩn modal quên mật khẩu và hiển thị modal OTP
+		                    $("#forgotPasswordModal").modal("hide");
+							
+							sessionStorage.setItem("email_resetpass", email);
+							
+
+		                    setTimeout(function () {
+		                        if (typeof bootstrap !== "undefined") {
+		                            var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
+		                            otpModal.show();
+		                        } else {
+		                            $("#otpForgetPassModal").modal("show");
+		                        }
+		                    }, 500);
+		                } else {
+		                    alert("Request failed: " + response.message);
+		                }
+		            },
+		            error: function (xhr) {
+		                if (xhr.responseJSON && xhr.responseJSON.code === 400) {
+		                    alert("Error: " + xhr.responseJSON.message);
+		                } else {
+		                    alert("Failed to send OTP. Please try again.");
+		                }
+		            }
+		        });
+		    });
+		});
+
+	</script>
+
+	<script>
+		$(document).ready(function () {
+		    $("#btn_verify_forget").click(function (e) {
+		        e.preventDefault();
+
+		        let otp = $("#otp_forget").val().trim();
+		        let email = sessionStorage.getItem("email_resetpass");
+
+		        if (!otp) {
+		            alert("Please enter the OTP.");
+		            return;
+		        }
+
+		        if (!email) {
+		            alert("Session expired. Please request a new OTP.");
+		            return;
+		        }
+
+		        let requestData = {
+		            otp: otp,
+		            email: email
+		        };
+
+		        $.ajax({
+		            url: "http://localhost:8085/api/users/verify-reset-password",
+		            type: "POST",
+		            contentType: "application/json",
+		            data: JSON.stringify(requestData),
+		            success: function (response, textStatus, xhr) {
+		                console.log("Response:", response);
+		                console.log("Status Code:", xhr.status);
+
+		                if (xhr.status === 200 && response.code === 200) {
+		                    alert(response.message);
+
+		                    // Lưu OTP mới để reset mật khẩu vào sessionStorage
+		                    sessionStorage.setItem("otp_resetpass", response.result);
+
+		                    // Ẩn modal OTP và hiển thị modal Reset Password
+		                    $("#otpForgetPassModal").modal("hide");
+
+		                    setTimeout(function () {
+		                        if (typeof bootstrap !== "undefined") {
+		                            var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+		                            resetPassModal.show();
+		                        } else {
+		                            $("#resetPasswordModal").modal("show");
+		                        }
+		                    }, 500);
+		                } else {
+		                    alert("OTP verification failed: " + response.message);
+		                }
+		            },
+		            error: function (xhr) {
+		                if (xhr.responseJSON && xhr.responseJSON.message) {
+		                    alert("Error: " + xhr.responseJSON.message);
+		                } else {
+		                    alert("An unexpected error occurred.");
+		                }
+		            }
+		        });
+		    });
+		});
+
+
+		$(document).ready(function () {
+		    $("#btn_rs_pass").click(function (e) {
+		        e.preventDefault();
+
+		        let email = sessionStorage.getItem("email_resetpass");
+		        let otp = sessionStorage.getItem("otp_resetpass");
+		        let password = $("#new_password_reset").val().trim();
+		        let rePassword = $("#re_password_reset").val().trim();
+
+		        if (!email || !otp) {
+		            alert("Session expired. Please request a new OTP.");
+		            return;
+		        }
+
+		        if (!password || !rePassword) {
+		            alert("Please enter your new password.");
+		            return;
+		        }
+
+		        if (password !== rePassword) {
+		            alert("Passwords do not match.");
+		            return;
+		        }
+
+		        let requestData = {
+		            otp: otp,
+		            email: email,
+		            password: password,
+		            rePassword: rePassword
+		        };
+
+		        $.ajax({
+		            url: "http://localhost:8085/api/users/reset-password",
+		            type: "POST",
+		            contentType: "application/json",
+		            data: JSON.stringify(requestData),
+		            success: function (response, textStatus, xhr) {
+		                if (xhr.status === 200 && response.code === 200) {
+		                    alert(response.message);
+
+		                    // Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+		                    sessionStorage.removeItem("email_resetpass");
+		                    sessionStorage.removeItem("otp_resetpass");
+
+		                    // Chuyển hướng về trang login
+		                    window.location.href = "http://localhost:8086/";
+		                } else {
+		                    alert("Reset password failed: " + response.message);
+		                }
+		            },
+		            error: function (xhr) {
+		                if (xhr.responseJSON && xhr.responseJSON.message) {
+		                    alert("Error: " + xhr.responseJSON.message);
+		                } else {
+		                    alert("An unexpected error occurred.");
+		                }
+		            }
+		        });
+		    });
+		});
+
+	</script>
+
+	<script>
+		$(document).ready(function () {
+		    const userData = sessionStorage.getItem("user");
+
+		    if (userData) {
+		        const user = JSON.parse(userData);
+		        if (user.roles.includes("ROLE_ARTIST")) {
+		            $("#uploadBtn").show(); 
+		        } else {
+		            $("#uploadBtn").hide(); 
+		        }
+		    } else {
+		        $("#uploadBtn").hide();
+		    }
+		});
+
+	</script>
+
+	<script>
+		//js moi cua upload
+		$(document).ready(function () {
+			// Khi nhấn nút sẽ mở hộp thoại chọn file
+			$("#uploadTrigger").click(function () {
+				$("#fileInput").click();
+			});
+
+			// Khi người dùng chọn file từ hộp thoại
+			$("#fileInput").change(function () {
+				let file = this.files[0]; // Lấy file đầu tiên
+				if (file) {
+					$("#fileName").text("Selected File: " + file.name);
+				} else {
+					$("#fileName").text(""); // Xóa nội dung nếu không có file nào được chọn
 				}
 			});
 		});
-	});
+		
+		$(document).ready(function () {
+		        let artistOptions = [];
+		        let genreOptions = [];
 
+		        // Gọi API để lấy danh sách nghệ sĩ
+		        $.ajax({
+		            url: "http://localhost:8085/api/artist-guess-access/findAllArtistOptions",
+		            method: "GET",
+		            success: function (data) {
+		                artistOptions = data;
+		                $("#noa").attr("max", artistOptions.length);
+		            }
+		        });
 
-</script>
+		        // Gọi API để lấy danh sách thể loại
+		        $.ajax({
+		            url: "http://localhost:8085/api/genre/findAllGenreOptions",
+		            method: "GET",
+		            success: function (data) {
+		                genreOptions = data;
+		                $("#nog").attr("max", genreOptions.length);
+		            }
+		        });
 
-<script>
-	$(document).ready(function () {
-		// Ban đầu ẩn profileBtn
-		$("#profileBtn").hide();
+		        // Hàm cập nhật danh sách chọn nghệ sĩ
+		        function updateArtistOptions() {
+		            let count = parseInt($("#noa").val()) || 0;
+		            let maxArtists = parseInt($("#noa").attr("max")) || 0;
+		            if (count > maxArtists) {
+		                $("#noa").val(maxArtists);
+		                count = maxArtists;
+		            }
 
-		// Lấy thông tin user và token từ sessionStorage
-		var token = sessionStorage.getItem("token");
-		var user = sessionStorage.getItem("user");
-
-		if (token && user) {
-			var userData = JSON.parse(user);
-
-			// Ẩn div ms_top_btn chứa các nút đăng ký & đăng nhập (không tính profileBtn)
-			$(".ms_top_btn:not(#profileBtn)").hide();
-
-			// Cập nhật text cho profileBtn với fullname của user
-			$("#profileBtn a span").text(userData.fullname);
-
-			// Hiển thị profileBtn
-			$("#profileBtn").show();
-
-			$("#emailOld").val(userData.email);
-			$("#new_fullname").val(userData.fullname);
-		}
-	});
-
-
-</script>
-
-<script>
-	$(document).ready(function () {
-		$("#btn_changeInfo").click(function () {
-			let token = sessionStorage.getItem("token");
-			if (!token) {
-				alert("You are not logged in!");
-				return;
-			}
-
-			// Lấy thông tin từ input
-			let changeInfoData = {
-				email: $("#emailOld").val().trim(),
-				fullname: $("#new_fullname").val().trim(),
-				password: $("#new_password").val().trim(),
-				rePassword: $("#re_password").val().trim()
-			};
-
-			// Kiểm tra mật khẩu nhập lại có trùng khớp không
-			if (changeInfoData.password !== changeInfoData.rePassword) {
-				alert("Passwords do not match!");
-				return;
-			}
-
-			$.ajax({
-				url: "http://localhost:8085/api/users/change-info",
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(changeInfoData),
-				headers: {
-					Authorization: "Bearer " + token
-				},
-				success: function (response) {
-					if (response.code === 200) {
-						alert("User info updated successfully!");
-
-						// Cập nhật lại token và user trong sessionStorage
-						let updatedUser = response.result;
-						sessionStorage.setItem("user", JSON.stringify(updatedUser));
-						sessionStorage.setItem("token", updatedUser.token); // Cập nhật lại token mới
-
-						location.reload();
-					} else {
-						alert(response.message);
-					}
-				},
-				error: function (xhr) {
-					let errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : "An error occurred!";
-					alert("Error: " + errorMessage);
-				}
-			});
-		});
-
-		$("#btn_logOut").click(function () {
-			sessionStorage.removeItem("token");
-			sessionStorage.removeItem("user");
-			alert("Logged out successfully");
-			location.reload();
-		});
-	});
-
-</script>
-<script>
-	$(document).ready(function () {
-		$("#btn_request_otp").click(function (e) {
-			e.preventDefault();
-
-			let email = $("#email_request").val().trim();
-			if (!email) {
-				alert("Please enter your email.");
-				return;
-			}
-
-			$.ajax({
-				url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify({ email: email }),
-				success: function (response, textStatus, xhr) {
-					console.log("Response:", response);
-					console.log("Status Code:", xhr.status);
-
-					if (xhr.status === 200 && response.code === 200) {
-						alert(response.message);
-
-						// Ẩn modal quên mật khẩu và hiển thị modal OTP
-						$("#forgotPasswordModal").modal("hide");
-
-						sessionStorage.setItem("email_resetpass", email);
-
-
-						setTimeout(function () {
-							if (typeof bootstrap !== "undefined") {
-								var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
-								otpModal.show();
-							} else {
-								$("#otpForgetPassModal").modal("show");
-							}
-						}, 500);
-					} else {
-						alert("Request failed: " + response.message);
-					}
-				},
-				error: function (xhr) {
-					if (xhr.responseJSON && xhr.responseJSON.code === 400) {
-						alert("Error: " + xhr.responseJSON.message);
-					} else {
-						alert("Failed to send OTP. Please try again.");
-					}
-				}
-			});
-		});
-	});
-
-</script>
-
-<script>
-	$(document).ready(function () {
-		$("#btn_verify_forget").click(function (e) {
-			e.preventDefault();
-
-			let otp = $("#otp_forget").val().trim();
-			let email = sessionStorage.getItem("email_resetpass");
-
-			if (!otp) {
-				alert("Please enter the OTP.");
-				return;
-			}
-
-			if (!email) {
-				alert("Session expired. Please request a new OTP.");
-				return;
-			}
-
-			let requestData = {
-				otp: otp,
-				email: email
-			};
-
-			$.ajax({
-				url: "http://localhost:8085/api/users/verify-reset-password",
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(requestData),
-				success: function (response, textStatus, xhr) {
-					console.log("Response:", response);
-					console.log("Status Code:", xhr.status);
-
-					if (xhr.status === 200 && response.code === 200) {
-						alert(response.message);
-
-						// Lưu OTP mới để reset mật khẩu vào sessionStorage
-						sessionStorage.setItem("otp_resetpass", response.result);
-
-						// Ẩn modal OTP và hiển thị modal Reset Password
-						$("#otpForgetPassModal").modal("hide");
-
-						setTimeout(function () {
-							if (typeof bootstrap !== "undefined") {
-								var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
-								resetPassModal.show();
-							} else {
-								$("#resetPasswordModal").modal("show");
-							}
-						}, 500);
-					} else {
-						alert("OTP verification failed: " + response.message);
-					}
-				},
-				error: function (xhr) {
-					if (xhr.responseJSON && xhr.responseJSON.message) {
-						alert("Error: " + xhr.responseJSON.message);
-					} else {
-						alert("An unexpected error occurred.");
-					}
-				}
-			});
-		});
-	});
-
-
-	$(document).ready(function () {
-		$("#btn_rs_pass").click(function (e) {
-			e.preventDefault();
-
-			let email = sessionStorage.getItem("email_resetpass");
-			let otp = sessionStorage.getItem("otp_resetpass");
-			let password = $("#new_password_reset").val().trim();
-			let rePassword = $("#re_password_reset").val().trim();
-
-			if (!email || !otp) {
-				alert("Session expired. Please request a new OTP.");
-				return;
-			}
-
-			if (!password || !rePassword) {
-				alert("Please enter your new password.");
-				return;
-			}
-
-			if (password !== rePassword) {
-				alert("Passwords do not match.");
-				return;
-			}
-
-			let requestData = {
-				otp: otp,
-				email: email,
-				password: password,
-				rePassword: rePassword
-			};
-
-			$.ajax({
-				url: "http://localhost:8085/api/users/reset-password",
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify(requestData),
-				success: function (response, textStatus, xhr) {
-					if (xhr.status === 200 && response.code === 200) {
-						alert(response.message);
-
-						// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
-						sessionStorage.removeItem("email_resetpass");
-						sessionStorage.removeItem("otp_resetpass");
-
-						// Chuyển hướng về trang login
-						window.location.href = "http://localhost:8086/";
-					} else {
-						alert("Reset password failed: " + response.message);
-					}
-				},
-				error: function (xhr) {
-					if (xhr.responseJSON && xhr.responseJSON.message) {
-						alert("Error: " + xhr.responseJSON.message);
-					} else {
-						alert("An unexpected error occurred.");
-					}
-				}
-			});
-		});
-	});
-
-</script>
-
-<script>
-	$(document).ready(function () {
-		const userData = sessionStorage.getItem("user");
-
-		if (userData) {
-			const user = JSON.parse(userData);
-			if (user.roles.includes("ROLE_ARTIST")) {
-				$("#uploadBtn").show();
-			} else {
-				$("#uploadBtn").hide();
-			}
-		} else {
-			$("#uploadBtn").hide();
-		}
-	});
-
-</script>
-
-<script>
-	//js moi cua upload
-	$(document).ready(function () {
-		// Khi nhấn nút sẽ mở hộp thoại chọn file
-		$("#uploadTrigger").click(function () {
-			$("#fileInput").click();
-		});
-
-		// Khi người dùng chọn file từ hộp thoại
-		$("#fileInput").change(function () {
-			let file = this.files[0]; // Lấy file đầu tiên
-			if (file) {
-				$("#fileName").text("Selected File: " + file.name);
-			} else {
-				$("#fileName").text(""); // Xóa nội dung nếu không có file nào được chọn
-			}
-		});
-	});
-
-	$(document).ready(function () {
-		let artistOptions = [];
-		let genreOptions = [];
-
-		// Gọi API để lấy danh sách nghệ sĩ
-		$.ajax({
-			url: "http://localhost:8085/api/artist-guess-access/findAllArtistOptions",
-			method: "GET",
-			success: function (data) {
-				artistOptions = data;
-				$("#noa").attr("max", artistOptions.length);
-			}
-		});
-
-		// Gọi API để lấy danh sách thể loại
-		$.ajax({
-			url: "http://localhost:8085/api/genre/findAllGenreOptions",
-			method: "GET",
-			success: function (data) {
-				genreOptions = data;
-				$("#nog").attr("max", genreOptions.length);
-			}
-		});
-
-		// Hàm cập nhật danh sách chọn nghệ sĩ
-		function updateArtistOptions() {
-			let count = parseInt($("#noa").val()) || 0;
-			let maxArtists = parseInt($("#noa").attr("max")) || 0;
-			if (count > maxArtists) {
-				$("#noa").val(maxArtists);
-				count = maxArtists;
-			}
-
-			let html = "";
-			for (let i = 0; i < count; i++) {
-				html += `<div class="form-group">
+		            let html = "";
+		            for (let i = 0; i < count; i++) {
+		                html += `<div class="form-group">
 		                            <label>Artist ${i + 1}</label>
 		                            <select class="form-control artist-select">
 		                                <option value="">Select Artist</option>`;
-				artistOptions.forEach(artist => {
-					html += `<option value="${artist.id}">${artist.stageName}</option>`;
-				});
-				html += `</select></div>`;
-			}
-			$("#fillOptionArtist").html(html);
-		}
+		                artistOptions.forEach(artist => {
+		                    html += `<option value="${artist.id}">${artist.stageName}</option>`;
+		                });
+		                html += `</select></div>`;
+		            }
+		            $("#fillOptionArtist").html(html);
+		        }
 
-		// Hàm cập nhật danh sách chọn thể loại
-		function updateGenreOptions() {
-			let count = parseInt($("#nog").val()) || 0;
-			let maxGenres = parseInt($("#nog").attr("max")) || 0;
-			if (count > maxGenres) {
-				$("#nog").val(maxGenres);
-				count = maxGenres;
-			}
+		        // Hàm cập nhật danh sách chọn thể loại
+		        function updateGenreOptions() {
+		            let count = parseInt($("#nog").val()) || 0;
+		            let maxGenres = parseInt($("#nog").attr("max")) || 0;
+		            if (count > maxGenres) {
+		                $("#nog").val(maxGenres);
+		                count = maxGenres;
+		            }
 
-			let html = "";
-			for (let i = 0; i < count; i++) {
-				html += `<div class="form-group">
+		            let html = "";
+		            for (let i = 0; i < count; i++) {
+		                html += `<div class="form-group">
 		                            <label>Genre ${i + 1}</label>
 		                            <select class="form-control genre-select">
 		                                <option value="">Select Genre</option>`;
-				genreOptions.forEach(genre => {
-					html += `<option value="${genre.id}">${genre.name}</option>`;
-				});
-				html += `</select></div>`;
-			}
-			$("#fillOptionGenre").html(html);
-		}
+		                genreOptions.forEach(genre => {
+		                    html += `<option value="${genre.id}">${genre.name}</option>`;
+		                });
+		                html += `</select></div>`;
+		            }
+		            $("#fillOptionGenre").html(html);
+		        }
 
-		// Cập nhật danh sách khi nhập số
-		$("#noa").on("input", updateArtistOptions);
-		$("#nog").on("input", updateGenreOptions);
+		        // Cập nhật danh sách khi nhập số
+		        $("#noa").on("input", updateArtistOptions);
+		        $("#nog").on("input", updateGenreOptions);
 
-		// Ngăn chọn trùng lặp
-		function preventDuplicateSelection(selector, dataList) {
-			$(document).on("change", selector, function () {
-				let selectedValues = $(selector).map(function () {
-					return $(this).val();
-				}).get().filter(id => id !== ""); // Lọc bỏ giá trị rỗng
+		        // Ngăn chọn trùng lặp
+		        function preventDuplicateSelection(selector, dataList) {
+		            $(document).on("change", selector, function () {
+		                let selectedValues = $(selector).map(function () {
+		                    return $(this).val();
+		                }).get().filter(id => id !== ""); // Lọc bỏ giá trị rỗng
 
-				$(selector).each(function () {
-					let currentSelect = $(this);
-					let currentValue = currentSelect.val();
+		                $(selector).each(function () {
+		                    let currentSelect = $(this);
+		                    let currentValue = currentSelect.val();
 
-					currentSelect.find("option").each(function () {
-						let optionValue = $(this).val();
-						if (optionValue !== "" && optionValue !== currentValue && selectedValues.includes(optionValue)) {
-							$(this).prop("disabled", true);
-						} else {
-							$(this).prop("disabled", false);
-						}
-					});
-				});
+		                    currentSelect.find("option").each(function () {
+		                        let optionValue = $(this).val();
+		                        if (optionValue !== "" && optionValue !== currentValue && selectedValues.includes(optionValue)) {
+		                            $(this).prop("disabled", true);
+		                        } else {
+		                            $(this).prop("disabled", false);
+		                        }
+		                    });
+		                });
 
-				console.log("Selected IDs:", selectedValues);
-			});
-		}
+		                console.log("Selected IDs:", selectedValues);
+		            });
+		        }
 
-		// Ngăn chọn trùng lặp cho nghệ sĩ và thể loại
-		preventDuplicateSelection(".artist-select", artistOptions);
-		preventDuplicateSelection(".genre-select", genreOptions);
-	});
+		        // Ngăn chọn trùng lặp cho nghệ sĩ và thể loại
+		        preventDuplicateSelection(".artist-select", artistOptions);
+		        preventDuplicateSelection(".genre-select", genreOptions);
+		    });
 
-</script>
+	</script>
 
 
 
