@@ -11,7 +11,6 @@
     <!--Start Style -->
     <!-- Bootstrap CSS từ CDN -->
     <head th:replace="fragments/head :: head"></head>
-    <script th:src="@{/js/musicPlayer.js}" defer></script> <!-- Load JavaScript -->
 </head>
 <body>
 <!----Loader Start---->
@@ -93,7 +92,6 @@
 
     <!----Audio Player Section---->
     <!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
-    <div id="musicPlayerContainer"></div>
 </div>
 <div th:replace="fragments/modalPopUp :: authModal"></div>
 
@@ -312,38 +310,7 @@ Load jQuery từ CDN (trước Bootstrap)
 
 </script>
 
-<!--tét player-->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Lắng nghe sự kiện click vào bất kỳ nút play nào
-        document.addEventListener("click", function (event) {
-            if (event.target.closest(".play-song")) {
-                let songElement = event.target.closest(".play-song");
 
-                let songId = songElement.getAttribute("data-song-id");
-                let songName = songElement.getAttribute("data-song-name");
-                let songUrl = songElement.getAttribute("data-song-url");
 
-                playSong(songId, songName, songUrl);
-            }
-        });
-    });
-
-    function playSong(songId, songName, songUrl) {
-        // Cập nhật thông tin bài hát trên player
-        document.querySelector(".jp-track-name").textContent = songName;
-        document.querySelector(".jp-artist-name").textContent = songName; // Nếu có artist, cập nhật lại
-
-        let audioElement = document.querySelector("#jquery_jplayer_1");
-
-        if (audioElement) {
-            // Thay đổi src của trình phát nhạc
-            audioElement.src = songUrl;
-            audioElement.play();
-        } else {
-            console.error("Không tìm thấy player!");
-        }
-    }
-</script>
 </body>
 </html>
