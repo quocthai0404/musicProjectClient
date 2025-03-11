@@ -32,7 +32,7 @@ public class APIClient {
 		OkHttpClient client = new OkHttpClient.Builder()
 				.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
 				.build();
-		retrofit = new Retrofit.Builder().baseUrl("http://localhost:8090/api/")
+		retrofit = new Retrofit.Builder().baseUrl("http://localhost:8085/api/")
 				.addConverterFactory(GsonConverterFactory.create(gson)).client(client).build();
 		return retrofit;
 	}

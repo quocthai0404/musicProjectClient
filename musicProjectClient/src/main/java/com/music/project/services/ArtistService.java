@@ -11,6 +11,7 @@ import com.music.project.apis.APIClient;
 import com.music.project.apis.ArtistApi;
 import com.music.project.models.ArtistModel;
 import com.music.project.models.ResponseObject;
+import com.music.project.models.SongResultDTO;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -59,16 +60,13 @@ public class ArtistService {
         }
     }
     
-    public ArtistModel getArtistById(int artistId) {
+    public List<ArtistModel> getAllArtistInfo() {
         try {
-            Call<ResponseObject> call = artistApi.getById(artistId);
-            Response<ResponseObject> response = call.execute();
-            
+            Call<List<ArtistModel>> call = artistApi.getAllArtistInfo();
+            Response<List<ArtistModel>> response = call.execute();
+
             if (response.isSuccessful() && response.body() != null) {
-                ResponseObject responseObj = response.body();
-                // Convert result JSON to ArtistModel
-                String jsonResult = gson.toJson(responseObj.getResult());
-                return gson.fromJson(jsonResult, ArtistModel.class);
+                return response.body(); // Trả về trực tiếp danh sách ArtistModel
             }
             return null;
         } catch (IOException e) {
@@ -76,4 +74,52 @@ public class ArtistService {
             return null;
         }
     }
+
+    
+//    public ArtistModel getArtistById(int artistId) {
+//        try {
+//            Call<ResponseObject> call = artistApi.getById(artistId);
+//            Response<ResponseObject> response = call.execute();
+//            
+//            if (response.isSuccessful() && response.body() != null) {
+//                ResponseObject responseObj = response.body();
+//                // Convert result JSON to ArtistModel
+//                String jsonResult = gson.toJson(responseObj.getResult());
+//                return gson.fromJson(jsonResult, ArtistModel.class);
+//            }
+//            return null;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+    
+    public ArtistModel getArtistById(int artistId) {
+        try {
+            Call<ArtistModel> call = artistApi.getArtistById(artistId);
+            Response<ArtistModel> response = call.execute();
+
+            if (response.isSuccessful() && response.body() != null) {
+                return response.body();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public List<SongResultDTO> getSongsByArtist(int artistId) {
+        try {
+            Call<List<SongResultDTO>> call = artistApi.getSongsByArtist(artistId);
+            Response<List<SongResultDTO>> response = call.execute();
+
+            if (response.isSuccessful() && response.body() != null) {
+                return response.body();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

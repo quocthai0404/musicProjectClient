@@ -9,8 +9,7 @@ public class ArtistModel {
     private String about;
     private String avatar;
     private String cover;
-    private Date createdAt;
-    private Date updateAt;
+    
     
 
     public Integer getId() {
@@ -61,19 +60,5 @@ public class ArtistModel {
         this.cover = cover;
     }
     
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-    
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-    
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-    
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
+   
 }
