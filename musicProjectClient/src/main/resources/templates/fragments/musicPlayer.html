@@ -103,8 +103,8 @@
                             <div class="play_song_name">
                                 <a href="javascript:void(0);" id="playlist-text">
                                     <div class="jp-now-playing flex-item">
-                                        <div class="jp-track-name" th:text="${currentSong.name}"></div>
-                                        <div class="jp-artist-name" th:text="${currentSong.artist}"></div>
+                                        <div class="jp-track-name" th:text="${currentSong}"></div>
+                                        <div class="jp-artist-name" th:text="${currentSong}"></div>
                                     </div>
                                 </a>
                             </div>
@@ -125,8 +125,8 @@
                             <div class="jp_queue_list_inner">
                                 <ul>
                                     <li th:each="song : ${queueSongs}">
-                                        <span th:text="${song.name}"></span> -
-                                        <span th:text="${song.artist}"></span>
+                                        <span th:text="${song}"></span> -
+                                        <span th:text="${song}"></span>
                                     </li>
                                 </ul>
                             </div>
