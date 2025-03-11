@@ -757,36 +757,69 @@
 
 	<!--tét player-->
 	<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				// Lắng nghe sự kiện click vào bất kỳ nút play nào
-				document.addEventListener("click", function (event) {
-					if (event.target.closest(".play-song")) {
-						let songElement = event.target.closest(".play-song");
+		/*
+		document.addEventListener("DOMContentLoaded", function () {
+						// Lắng nghe sự kiện click vào bất kỳ nút play nào
+						document.addEventListener("click", function (event) {
+							if (event.target.closest(".play-song")) {
+								let songElement = event.target.closest(".play-song");
 
-						let songId = songElement.getAttribute("data-song-id");
-						let songName = songElement.getAttribute("data-song-name");
-						let songUrl = songElement.getAttribute("data-song-url");
+								let songId = songElement.getAttribute("data-song-id");
+								let songName = songElement.getAttribute("data-song-name");
+								let songUrl = songElement.getAttribute("data-song-url");
 
-						playSong(songId, songName, songUrl);
+								playSong(songId, songName, songUrl);
+							}
+						});
+					});
+
+					function playSong(songId, songName, songUrl) {
+						// Cập nhật thông tin bài hát trên player
+						document.querySelector(".jp-track-name").textContent = songName;
+						document.querySelector(".jp-artist-name").textContent = songName; // Nếu có artist, cập nhật lại
+
+						let audioElement = document.querySelector("#jquery_jplayer_1");
+
+						if (audioElement) {
+							// Thay đổi src của trình phát nhạc
+							audioElement.src = songUrl;
+							audioElement.play();
+						} else {
+							console.error("Không tìm thấy player!");
+						}
 					}
-				});
+		*/
+			
+			
+			$(document).ready(function () {
+			    let audioPlayer = null; // Biến lưu trình phát nhạc
+
+			    $(document).on("click", ".play-song", function () {
+			        let songId = $(this).data("song-id");
+			        let songName = $(this).data("song-name");
+			        let songUrl = $(this).data("song-url");
+
+			        playSong(songId, songName, songUrl);
+			    });
+
+			    function playSong(songId, songName, songUrl) {
+			        // Cập nhật thông tin bài hát trên player
+			        $(".jp-track-name").text(songName);
+			        $(".jp-artist-name").text(songName);
+
+			        // Nếu trình phát nhạc chưa tồn tại, tạo mới
+			        if (!audioPlayer) {
+			            audioPlayer = $("<audio>", { controls: true }).appendTo("#musicPlayer")[0];
+			        }
+
+			        // Cập nhật nguồn và phát nhạc
+			        audioPlayer.src = songUrl;
+			        audioPlayer.play();
+			    }
 			});
 
-			function playSong(songId, songName, songUrl) {
-				// Cập nhật thông tin bài hát trên player
-				document.querySelector(".jp-track-name").textContent = songName;
-				document.querySelector(".jp-artist-name").textContent = songName; // Nếu có artist, cập nhật lại
-
-				let audioElement = document.querySelector("#jquery_jplayer_1");
-
-				if (audioElement) {
-					// Thay đổi src của trình phát nhạc
-					audioElement.src = songUrl;
-					audioElement.play();
-				} else {
-					console.error("Không tìm thấy player!");
-				}
-			}
+			
+			
 	</script>
 
 	<script>
