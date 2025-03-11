@@ -137,35 +137,44 @@
                         </div>
                     </div>
                     <div class="jp-type-playlist">
-                        <div class="jp-gui jp-interface flex-wrap">
-                            <div class="jp-controls flex-item">
-                                <button class="jp-previous"><i class="ms_play_control"></i></button>
-                                <button class="jp-play"><i class="ms_play_control"></i></button>
-                                <button class="jp-next"><i class="ms_play_control"></i></button>
-                            </div>
-                            <div class="jp-progress-container flex-item">
-                                <div class="jp-progress">
-                                    <div class="jp-seek-bar">
-                                        <div class="jp-play-bar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jp-volume-controls flex-item">
-                                <div class="widget knob-container">
-                                    <div class="knob-mask">
-                                        <div class="knob d3"><span></span></div>
-                                        <div class="handle"></div>
-                                        <div class="round">
-                                            <img th:src="@{/images/svg/volume.svg}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="jp_quality_optn flex-item">
-                                <i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 24px; margin-right: 10px;"></i>
-                                <i class="fa fa-thumbs-o-down" aria-hidden="true" style="font-size: 24px;"></i>
-                            </div>
+<!--                        <div class="jp-gui jp-interface flex-wrap">-->
+<!--                            <div class="jp-controls flex-item">-->
+<!--                                <button class="jp-previous"><i class="ms_play_control"></i></button>-->
+<!--                                <button class="jp-play"><i class="ms_play_control"></i></button>-->
+<!--                                <button class="jp-next"><i class="ms_play_control"></i></button>-->
+<!--                            </div>-->
+<!--                            <div class="jp-progress-container flex-item">-->
+<!--                                <div class="jp-progress">-->
+<!--                                    <div class="jp-seek-bar">-->
+<!--                                        <div class="jp-play-bar"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="jp-volume-controls flex-item">-->
+<!--                                <div class="widget knob-container">-->
+<!--                                    <div class="knob-mask">-->
+<!--                                        <div class="knob d3"><span></span></div>-->
+<!--                                        <div class="handle"></div>-->
+<!--                                        <div class="round">-->
+<!--                                            <img th:src="@{/images/svg/volume.svg}" alt="">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="jp_quality_optn flex-item">-->
+<!--                                <i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 24px; margin-right: 10px;"></i>-->
+<!--                                <i class="fa fa-thumbs-o-down" aria-hidden="true" style="font-size: 24px;"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+                        <div id="musicPlayerBar" style="width: 100%; text-align: center;"></div>
+                        <div class="jp_quality_optn flex-item">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 24px; margin-right: 10px;"></i>
+                            <i class="fa fa-thumbs-o-down" aria-hidden="true" style="font-size: 24px;"></i>
                         </div>
+
+
                     </div>
                 </div>
             </div>

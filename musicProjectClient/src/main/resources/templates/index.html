@@ -263,13 +263,15 @@
 
 			<!----Live Radio Section Start---->
 		</div>
-
+		<div id="musicPlayer"></div>
 		<!---main footer--->
 		<div th:replace="fragments/footer :: footer"></div>
 
 		<!----Audio Player Section---->
 		<!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
 		<div id="musicPlayerContainer"></div>
+
+
 	</div>
 	<div th:replace="fragments/modalPopUp :: authModal"></div>
 
@@ -809,7 +811,7 @@
 
 			        // Nếu trình phát nhạc chưa tồn tại, tạo mới
 			        if (!audioPlayer) {
-			            audioPlayer = $("<audio>", { controls: true }).appendTo("#musicPlayer")[0];
+			            audioPlayer = $("<audio>", { controls: true }).appendTo("#musicPlayerBar")[0];
 			        }
 
 			        // Cập nhật nguồn và phát nhạc
@@ -818,8 +820,8 @@
 			    }
 			});
 
-			
-			
+
+
 	</script>
 
 	<script>
