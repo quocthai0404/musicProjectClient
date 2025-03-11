@@ -551,7 +551,6 @@
 			$("#btn_request_otp").click(function (e) {
 				e.preventDefault();
 
-
 				let email = $("#email_request").val().trim();
 				if (!email) {
 					alert("Please enter your email.");
@@ -562,58 +561,42 @@
 					url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
 					type: "POST",
 					contentType: "application/json",
-					data: JSON.stringify({email: email}),
+					data: JSON.stringify({ email: email }),
 					success: function (response, textStatus, xhr) {
 						console.log("Response:", response);
 						console.log("Status Code:", xhr.status);
 
+						if (xhr.status === 200 && response.code === 200) {
+							alert(response.message);
 
-						let email = $("#email_request").val().trim();
-						if (!email) {
-							alert("Please enter your email.");
-							return;
+							// Ẩn modal quên mật khẩu và hiển thị modal OTP
+							$("#forgotPasswordModal").modal("hide");
+
+							sessionStorage.setItem("email_resetpass", email);
+
+
+							setTimeout(function () {
+								if (typeof bootstrap !== "undefined") {
+									var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
+									otpModal.show();
+								} else {
+									$("#otpForgetPassModal").modal("show");
+								}
+							}, 500);
+						} else {
+							alert("Request failed: " + response.message);
 						}
-
-						$.ajax({
-							url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
-							type: "POST",
-							contentType: "application/json",
-							data: JSON.stringify({email: email}),
-							success: function (response, textStatus, xhr) {
-								console.log("Response:", response);
-								console.log("Status Code:", xhr.status);
-
-								if (xhr.status === 200 && response.code === 200) {
-									alert(response.message);
-
-									// Ẩn modal quên mật khẩu và hiển thị modal OTP
-									$("#forgotPasswordModal").modal("hide");
-
-									sessionStorage.setItem("email_resetpass", email);
-
-
-									setTimeout(function () {
-										if (typeof bootstrap !== "undefined") {
-											var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
-											otpModal.show();
-										} else {
-											$("#otpForgetPassModal").modal("show");
-										}
-									}, 500);
-								} else {
-									alert("Request failed: " + response.message);
-								}
-							},
-							error: function (xhr) {
-								if (xhr.responseJSON && xhr.responseJSON.code === 400) {
-									alert("Error: " + xhr.responseJSON.message);
-								} else {
-									alert("Failed to send OTP. Please try again.");
-								}
-							}
-						});
-					});
-			})
+					},
+					error: function (xhr) {
+						if (xhr.responseJSON && xhr.responseJSON.code === 400) {
+							alert("Error: " + xhr.responseJSON.message);
+						} else {
+							alert("Failed to send OTP. Please try again.");
+						}
+					}
+				});
+			});
+		});
 
 	</script>
 
@@ -798,39 +781,60 @@
 		}
 	</script>
 
-	if (xhr.status === 200 && response.code === 200) {
-	alert(response.message);
+	<script>
+		$(document).ready(function () {
+			$("#btn_request_otp").click(function (e) {
+				e.preventDefault();
 
-	// Ẩn modal quên mật khẩu và hiển thị modal OTP
-	$("#forgotPasswordModal").modal("hide");
+				let email = $("#email_request").val().trim();
+				if (!email) {
+					alert("Please enter your email.");
+					return;
+				}
 
-	sessionStorage.setItem("email_resetpass", email);
+				$.ajax({
+					url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify({ email: email }),
+					success: function (response, textStatus, xhr) {
+						console.log("Response:", response);
+						console.log("Status Code:", xhr.status);
+
+						if (xhr.status === 200 && response.code === 200) {
+							alert(response.message);
+
+							// Ẩn modal quên mật khẩu và hiển thị modal OTP
+							$("#forgotPasswordModal").modal("hide");
+
+							sessionStorage.setItem("email_resetpass", email);
 
 
-	setTimeout(function () {
-	if (typeof bootstrap !== "undefined") {
-	var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
-	otpModal.show();
-	} else {
-	$("#otpForgetPassModal").modal("show");
-	}
-	}, 500);
-	} else {
-	alert("Request failed: " + response.message);
-	}
-	},
-	error: function (xhr) {
-	if (xhr.responseJSON && xhr.responseJSON.code === 400) {
-	alert("Error: " + xhr.responseJSON.message);
-	} else {
-	alert("Failed to send OTP. Please try again.");
-	}
-	}
-	});
-	});
-	});
+							setTimeout(function () {
+								if (typeof bootstrap !== "undefined") {
+									var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
+									otpModal.show();
+								} else {
+									$("#otpForgetPassModal").modal("show");
+								}
+							}, 500);
+						} else {
+							alert("Request failed: " + response.message);
+						}
+					},
+					error: function (xhr) {
+						if (xhr.responseJSON && xhr.responseJSON.code === 400) {
+							alert("Error: " + xhr.responseJSON.message);
+						} else {
+							alert("Failed to send OTP. Please try again.");
+						}
+					}
+				});
+			});
+		});
 
 	</script>
+
 
 	<script>
 		$(document).ready(function () {
