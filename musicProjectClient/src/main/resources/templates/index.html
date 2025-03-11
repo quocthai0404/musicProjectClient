@@ -83,23 +83,28 @@
 						<div class="swiper-slide" th:each="song : ${songs}">
 							<div class="ms_rcnt_box">
 								<div class="ms_rcnt_box_img">
-									<img th:src="${song.photo}" th:alt="${song.name}" >
+									<img th:src="${song.photo}" th:alt="${song.name}">
 									<div class="ms_main_overlay">
 										<div class="ms_box_overlay"></div>
 										<div class="ms_more_icon">
 											<img src="images/svg/more.svg" alt="">
 										</div>
 										<ul class="more_option">
-											<li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
-											<li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
-											<li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
-											<li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
-											<li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+											<li><a href="#"><span class="opt_icon"><span
+															class="icon icon_fav"></span></span>Add To Favourites</a>
+											</li>
+											<li><a href="#"><span class="opt_icon"><span
+															class="icon icon_queue"></span></span>Add To Queue</a></li>
+											<li><a href="#"><span class="opt_icon"><span
+															class="icon icon_dwn"></span></span>Download Now</a></li>
+											<li><a href="#"><span class="opt_icon"><span
+															class="icon icon_playlst"></span></span>Add To Playlist</a>
+											</li>
+											<li><a href="#"><span class="opt_icon"><span
+															class="icon icon_share"></span></span>Share</a></li>
 										</ul>
-										<div class="ms_play_icon play-song"
-											 th:data-song-id="${song.id}"
-											 th:data-song-name="${song.name}"
-											 th:data-song-url="${song.urlSource}">
+										<div class="ms_play_icon play-song" th:data-song-id="${song.id}"
+											th:data-song-name="${song.name}" th:data-song-url="${song.urlSource}">
 											<img src="images/svg/play.svg" alt="">
 										</div>
 									</div>
@@ -107,10 +112,10 @@
 								<div class="ms_rcnt_box_text">
 									<h3><a th:text="${song.name}"></a></h3>
 									<p th:if="${song.artists != null}">
-    <span th:each="artist, iterStat : ${song.artists}">
-        <span th:text="${artist.stageName}"></span>
-        <span th:if="${!iterStat.last}">, </span>
-    </span>
+										<span th:each="artist, iterStat : ${song.artists}">
+											<span th:text="${artist.stageName}"></span>
+											<span th:if="${!iterStat.last}">, </span>
+										</span>
 									</p>
 
 								</div>
@@ -130,13 +135,14 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="ms_heading">
-								<h1>weekly top 15</h1>
+								<h1>Newest Songs</h1>
 							</div>
 						</div>
 
 						<!-- Cột trái: Top 1 - 5 -->
-						<div class="col-lg-4 col-md-12 padding_right40" th:if="${songs.size() >= 1}">
-							<div th:each="song, iterStat : ${songs}" th:if="${iterStat.index < 5}" class="ms_weekly_box">
+						<div class="col-lg-4 col-md-12 padding_right40" th:if="${songsTop15.size() >= 1}">
+							<div th:each="song, iterStat : ${songsTop15}" th:if="${iterStat.index < 5}"
+								class="ms_weekly_box">
 								<div class="weekly_left">
 									<span class="w_top_no" th:text="${iterStat.index + 1}">01</span>
 									<div class="w_top_song">
@@ -150,26 +156,27 @@
 										<div class="w_tp_song_name">
 											<h3><a href="#" th:text="${song.name}">Song Name</a></h3>
 											<p th:if="${song.artists != null}">
-    <span th:each="artist, iterStat : ${song.artists}">
-        <span th:text="${artist.stageName}"></span>
-        <span th:if="${!iterStat.last}">, </span>
-    </span>
+												<span th:each="artist, iterStat : ${song.artists}">
+													<span th:text="${artist.stageName}"></span>
+													<span th:if="${!iterStat.last}">, </span>
+												</span>
 											</p>
 										</div>
 									</div>
 								</div>
 								<div class="weekly_right">
-									<span class="w_song_time" th:text="songduration">5:10</span>
+									<span class="w_song_time"></span>
 									<span class="ms_more_icon" data-other="1">
-                            <img src="images/svg/more.svg" alt="">
-                        </span>
+										<img src="images/svg/more.svg" alt="">
+									</span>
 								</div>
 							</div>
 						</div>
 
 						<!-- Cột giữa: Top 6 - 10 -->
-						<div class="col-lg-4 col-md-12 padding_right40" th:if="${songs.size() >= 6}">
-							<div th:each="song, iterStat : ${songs}" th:if="${iterStat.index >= 5 && iterStat.index < 10}" class="ms_weekly_box">
+						<div class="col-lg-4 col-md-12 padding_right40" th:if="${songsTop15.size() >= 6}">
+							<div th:each="song, iterStat : ${songsTop15}"
+								th:if="${iterStat.index >= 5 && iterStat.index < 10}" class="ms_weekly_box">
 								<div class="weekly_left">
 									<span class="w_top_no" th:text="${iterStat.index + 1}">06</span>
 									<div class="w_top_song">
@@ -183,26 +190,27 @@
 										<div class="w_tp_song_name">
 											<h3><a href="#" th:text="${song.name}">Song Name</a></h3>
 											<p th:if="${song.artists != null}">
-    <span th:each="artist, iterStat : ${song.artists}">
-        <span th:text="${artist.stageName}"></span>
-        <span th:if="${!iterStat.last}">, </span>
-    </span>
+												<span th:each="artist, iterStat : ${song.artists}">
+													<span th:text="${artist.stageName}"></span>
+													<span th:if="${!iterStat.last}">, </span>
+												</span>
 											</p>
 										</div>
 									</div>
 								</div>
 								<div class="weekly_right">
-									<span class="w_song_time" th:text="songduration">5:10</span>
+									<span class="w_song_time"></span>
 									<span class="ms_more_icon" data-other="1">
-                            <img src="images/svg/more.svg" alt="">
-                        </span>
+										<img src="images/svg/more.svg" alt="">
+									</span>
 								</div>
 							</div>
 						</div>
 
 						<!-- Cột phải: Top 11 - 15 -->
-						<div class="col-lg-4 col-md-12 padding_right40" th:if="${songs.size() >= 11}">
-							<div th:each="song, iterStat : ${songs}" th:if="${iterStat.index >= 10}" class="ms_weekly_box">
+						<div class="col-lg-4 col-md-12 padding_right40" th:if="${songsTop15.size() >= 11}">
+							<div th:each="song, iterStat : ${songsTop15}" th:if="${iterStat.index >= 10}"
+								class="ms_weekly_box">
 								<div class="weekly_left">
 									<span class="w_top_no" th:text="${iterStat.index + 1}">11</span>
 									<div class="w_top_song">
@@ -216,19 +224,19 @@
 										<div class="w_tp_song_name">
 											<h3><a href="#" th:text="${song.name}">Song Name</a></h3>
 											<p th:if="${song.artists != null}">
-    <span th:each="artist, iterStat : ${song.artists}">
-        <span th:text="${artist.stageName}"></span>
-        <span th:if="${!iterStat.last}">, </span>
-    </span>
+												<span th:each="artist, iterStat : ${song.artists}">
+													<span th:text="${artist.stageName}"></span>
+													<span th:if="${!iterStat.last}">, </span>
+												</span>
 											</p>
 										</div>
 									</div>
 								</div>
 								<div class="weekly_right">
-									<span class="w_song_time" th:text="duration">5:10</span>
+									<span class="w_song_time"></span>
 									<span class="ms_more_icon" data-other="1">
-                            <img src="images/svg/more.svg" alt="">
-                        </span>
+										<img src="images/svg/more.svg" alt="">
+									</span>
 								</div>
 							</div>
 						</div>
@@ -618,184 +626,184 @@
 	</script>
 
 	<script>
-		$(document).ready(function () {
-			$("#btn_verify_forget").click(function (e) {
-				e.preventDefault();
+			$(document).ready(function () {
+				$("#btn_verify_forget").click(function (e) {
+					e.preventDefault();
 
-				let otp = $("#otp_forget").val().trim();
-				let email = sessionStorage.getItem("email_resetpass");
+					let otp = $("#otp_forget").val().trim();
+					let email = sessionStorage.getItem("email_resetpass");
 
-				if (!otp) {
-					alert("Please enter the OTP.");
-					return;
-				}
-
-				if (!email) {
-					alert("Session expired. Please request a new OTP.");
-					return;
-				}
-
-				let requestData = {
-					otp: otp,
-					email: email
-				};
-
-				$.ajax({
-					url: "http://localhost:8085/api/users/verify-reset-password",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(requestData),
-					success: function (response, textStatus, xhr) {
-						console.log("Response:", response);
-						console.log("Status Code:", xhr.status);
-
-						if (xhr.status === 200 && response.code === 200) {
-							alert(response.message);
-
-							// Lưu OTP mới để reset mật khẩu vào sessionStorage
-							sessionStorage.setItem("otp_resetpass", response.result);
-
-							// Ẩn modal OTP và hiển thị modal Reset Password
-							$("#otpForgetPassModal").modal("hide");
-
-							setTimeout(function () {
-								if (typeof bootstrap !== "undefined") {
-									var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
-									resetPassModal.show();
-								} else {
-									$("#resetPasswordModal").modal("show");
-								}
-							}, 500);
-						} else {
-							alert("OTP verification failed: " + response.message);
-						}
-					},
-					error: function (xhr) {
-						if (xhr.responseJSON && xhr.responseJSON.message) {
-							alert("Error: " + xhr.responseJSON.message);
-						} else {
-							alert("An unexpected error occurred.");
-						}
+					if (!otp) {
+						alert("Please enter the OTP.");
+						return;
 					}
+
+					if (!email) {
+						alert("Session expired. Please request a new OTP.");
+						return;
+					}
+
+					let requestData = {
+						otp: otp,
+						email: email
+					};
+
+					$.ajax({
+						url: "http://localhost:8085/api/users/verify-reset-password",
+						type: "POST",
+						contentType: "application/json",
+						data: JSON.stringify(requestData),
+						success: function (response, textStatus, xhr) {
+							console.log("Response:", response);
+							console.log("Status Code:", xhr.status);
+
+							if (xhr.status === 200 && response.code === 200) {
+								alert(response.message);
+
+								// Lưu OTP mới để reset mật khẩu vào sessionStorage
+								sessionStorage.setItem("otp_resetpass", response.result);
+
+								// Ẩn modal OTP và hiển thị modal Reset Password
+								$("#otpForgetPassModal").modal("hide");
+
+								setTimeout(function () {
+									if (typeof bootstrap !== "undefined") {
+										var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+										resetPassModal.show();
+									} else {
+										$("#resetPasswordModal").modal("show");
+									}
+								}, 500);
+							} else {
+								alert("OTP verification failed: " + response.message);
+							}
+						},
+						error: function (xhr) {
+							if (xhr.responseJSON && xhr.responseJSON.message) {
+								alert("Error: " + xhr.responseJSON.message);
+							} else {
+								alert("An unexpected error occurred.");
+							}
+						}
+					});
 				});
 			});
-		});
 
 
-		$(document).ready(function () {
-			$("#btn_rs_pass").click(function (e) {
-				e.preventDefault();
+			$(document).ready(function () {
+				$("#btn_rs_pass").click(function (e) {
+					e.preventDefault();
 
-				let email = sessionStorage.getItem("email_resetpass");
-				let otp = sessionStorage.getItem("otp_resetpass");
-				let password = $("#new_password_reset").val().trim();
-				let rePassword = $("#re_password_reset").val().trim();
+					let email = sessionStorage.getItem("email_resetpass");
+					let otp = sessionStorage.getItem("otp_resetpass");
+					let password = $("#new_password_reset").val().trim();
+					let rePassword = $("#re_password_reset").val().trim();
 
-				if (!email || !otp) {
-					alert("Session expired. Please request a new OTP.");
-					return;
-				}
-
-				if (!password || !rePassword) {
-					alert("Please enter your new password.");
-					return;
-				}
-
-				if (password !== rePassword) {
-					alert("Passwords do not match.");
-					return;
-				}
-
-				let requestData = {
-					otp: otp,
-					email: email,
-					password: password,
-					rePassword: rePassword
-				};
-
-				$.ajax({
-					url: "http://localhost:8085/api/users/reset-password",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(requestData),
-					success: function (response, textStatus, xhr) {
-						if (xhr.status === 200 && response.code === 200) {
-							alert(response.message);
-
-							// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
-							sessionStorage.removeItem("email_resetpass");
-							sessionStorage.removeItem("otp_resetpass");
-
-
-							// Chuyển hướng về trang login
-							window.location.href = "http://localhost:8086/";
-						} else {
-							alert("Reset password failed: " + response.message);
-						}
-					},
-					error: function (xhr) {
-						if (xhr.responseJSON && xhr.responseJSON.message) {
-							alert("Error: " + xhr.responseJSON.message);
-						} else {
-							alert("An unexpected error occurred.");
-						}
+					if (!email || !otp) {
+						alert("Session expired. Please request a new OTP.");
+						return;
 					}
+
+					if (!password || !rePassword) {
+						alert("Please enter your new password.");
+						return;
+					}
+
+					if (password !== rePassword) {
+						alert("Passwords do not match.");
+						return;
+					}
+
+					let requestData = {
+						otp: otp,
+						email: email,
+						password: password,
+						rePassword: rePassword
+					};
+
+					$.ajax({
+						url: "http://localhost:8085/api/users/reset-password",
+						type: "POST",
+						contentType: "application/json",
+						data: JSON.stringify(requestData),
+						success: function (response, textStatus, xhr) {
+							if (xhr.status === 200 && response.code === 200) {
+								alert(response.message);
+
+								// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+								sessionStorage.removeItem("email_resetpass");
+								sessionStorage.removeItem("otp_resetpass");
+
+
+								// Chuyển hướng về trang login
+								window.location.href = "http://localhost:8086/";
+							} else {
+								alert("Reset password failed: " + response.message);
+							}
+						},
+						error: function (xhr) {
+							if (xhr.responseJSON && xhr.responseJSON.message) {
+								alert("Error: " + xhr.responseJSON.message);
+							} else {
+								alert("An unexpected error occurred.");
+							}
+						}
+					});
 				});
 			});
-		});
 
 	</script>
 
 	<script>
-		$(document).ready(function () {
-			const userData = sessionStorage.getItem("user");
+			$(document).ready(function () {
+				const userData = sessionStorage.getItem("user");
 
-			if (userData) {
-				const user = JSON.parse(userData);
-				if (user.roles.includes("ROLE_ARTIST")) {
-					$("#uploadBtn").show();
+				if (userData) {
+					const user = JSON.parse(userData);
+					if (user.roles.includes("ROLE_ARTIST")) {
+						$("#uploadBtn").show();
+					} else {
+						$("#uploadBtn").hide();
+					}
 				} else {
 					$("#uploadBtn").hide();
 				}
-			} else {
-				$("#uploadBtn").hide();
-			}
-		});
+			});
 
 	</script>
 
 	<!--tét player-->
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Lắng nghe sự kiện click vào bất kỳ nút play nào
-			document.addEventListener("click", function (event) {
-				if (event.target.closest(".play-song")) {
-					let songElement = event.target.closest(".play-song");
+			document.addEventListener("DOMContentLoaded", function () {
+				// Lắng nghe sự kiện click vào bất kỳ nút play nào
+				document.addEventListener("click", function (event) {
+					if (event.target.closest(".play-song")) {
+						let songElement = event.target.closest(".play-song");
 
-					let songId = songElement.getAttribute("data-song-id");
-					let songName = songElement.getAttribute("data-song-name");
-					let songUrl = songElement.getAttribute("data-song-url");
+						let songId = songElement.getAttribute("data-song-id");
+						let songName = songElement.getAttribute("data-song-name");
+						let songUrl = songElement.getAttribute("data-song-url");
 
-					playSong(songId, songName, songUrl);
-				}
+						playSong(songId, songName, songUrl);
+					}
+				});
 			});
-		});
 
-		function playSong(songId, songName, songUrl) {
-			// Cập nhật thông tin bài hát trên player
-			document.querySelector(".jp-track-name").textContent = songName;
-			document.querySelector(".jp-artist-name").textContent = songName; // Nếu có artist, cập nhật lại
+			function playSong(songId, songName, songUrl) {
+				// Cập nhật thông tin bài hát trên player
+				document.querySelector(".jp-track-name").textContent = songName;
+				document.querySelector(".jp-artist-name").textContent = songName; // Nếu có artist, cập nhật lại
 
-			let audioElement = document.querySelector("#jquery_jplayer_1");
+				let audioElement = document.querySelector("#jquery_jplayer_1");
 
-			if (audioElement) {
-				// Thay đổi src của trình phát nhạc
-				audioElement.src = songUrl;
-				audioElement.play();
-			} else {
-				console.error("Không tìm thấy player!");
+				if (audioElement) {
+					// Thay đổi src của trình phát nhạc
+					audioElement.src = songUrl;
+					audioElement.play();
+				} else {
+					console.error("Không tìm thấy player!");
+				}
 			}
-		}
 	</script>
 
 	if (xhr.status === 200 && response.code === 200) {
@@ -833,148 +841,148 @@
 	</script>
 
 	<script>
-		$(document).ready(function () {
-			$("#btn_verify_forget").click(function (e) {
-				e.preventDefault();
+			$(document).ready(function () {
+				$("#btn_verify_forget").click(function (e) {
+					e.preventDefault();
 
-				let otp = $("#otp_forget").val().trim();
-				let email = sessionStorage.getItem("email_resetpass");
+					let otp = $("#otp_forget").val().trim();
+					let email = sessionStorage.getItem("email_resetpass");
 
-				if (!otp) {
-					alert("Please enter the OTP.");
-					return;
-				}
-
-				if (!email) {
-					alert("Session expired. Please request a new OTP.");
-					return;
-				}
-
-				let requestData = {
-					otp: otp,
-					email: email
-				};
-
-				$.ajax({
-					url: "http://localhost:8085/api/users/verify-reset-password",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(requestData),
-					success: function (response, textStatus, xhr) {
-						console.log("Response:", response);
-						console.log("Status Code:", xhr.status);
-
-						if (xhr.status === 200 && response.code === 200) {
-							alert(response.message);
-
-							// Lưu OTP mới để reset mật khẩu vào sessionStorage
-							sessionStorage.setItem("otp_resetpass", response.result);
-
-							// Ẩn modal OTP và hiển thị modal Reset Password
-							$("#otpForgetPassModal").modal("hide");
-
-							setTimeout(function () {
-								if (typeof bootstrap !== "undefined") {
-									var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
-									resetPassModal.show();
-								} else {
-									$("#resetPasswordModal").modal("show");
-								}
-							}, 500);
-						} else {
-							alert("OTP verification failed: " + response.message);
-						}
-					},
-					error: function (xhr) {
-						if (xhr.responseJSON && xhr.responseJSON.message) {
-							alert("Error: " + xhr.responseJSON.message);
-						} else {
-							alert("An unexpected error occurred.");
-						}
+					if (!otp) {
+						alert("Please enter the OTP.");
+						return;
 					}
+
+					if (!email) {
+						alert("Session expired. Please request a new OTP.");
+						return;
+					}
+
+					let requestData = {
+						otp: otp,
+						email: email
+					};
+
+					$.ajax({
+						url: "http://localhost:8085/api/users/verify-reset-password",
+						type: "POST",
+						contentType: "application/json",
+						data: JSON.stringify(requestData),
+						success: function (response, textStatus, xhr) {
+							console.log("Response:", response);
+							console.log("Status Code:", xhr.status);
+
+							if (xhr.status === 200 && response.code === 200) {
+								alert(response.message);
+
+								// Lưu OTP mới để reset mật khẩu vào sessionStorage
+								sessionStorage.setItem("otp_resetpass", response.result);
+
+								// Ẩn modal OTP và hiển thị modal Reset Password
+								$("#otpForgetPassModal").modal("hide");
+
+								setTimeout(function () {
+									if (typeof bootstrap !== "undefined") {
+										var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+										resetPassModal.show();
+									} else {
+										$("#resetPasswordModal").modal("show");
+									}
+								}, 500);
+							} else {
+								alert("OTP verification failed: " + response.message);
+							}
+						},
+						error: function (xhr) {
+							if (xhr.responseJSON && xhr.responseJSON.message) {
+								alert("Error: " + xhr.responseJSON.message);
+							} else {
+								alert("An unexpected error occurred.");
+							}
+						}
+					});
 				});
 			});
-		});
 
 
-		$(document).ready(function () {
-			$("#btn_rs_pass").click(function (e) {
-				e.preventDefault();
+			$(document).ready(function () {
+				$("#btn_rs_pass").click(function (e) {
+					e.preventDefault();
 
-				let email = sessionStorage.getItem("email_resetpass");
-				let otp = sessionStorage.getItem("otp_resetpass");
-				let password = $("#new_password_reset").val().trim();
-				let rePassword = $("#re_password_reset").val().trim();
+					let email = sessionStorage.getItem("email_resetpass");
+					let otp = sessionStorage.getItem("otp_resetpass");
+					let password = $("#new_password_reset").val().trim();
+					let rePassword = $("#re_password_reset").val().trim();
 
-				if (!email || !otp) {
-					alert("Session expired. Please request a new OTP.");
-					return;
-				}
-
-				if (!password || !rePassword) {
-					alert("Please enter your new password.");
-					return;
-				}
-
-				if (password !== rePassword) {
-					alert("Passwords do not match.");
-					return;
-				}
-
-				let requestData = {
-					otp: otp,
-					email: email,
-					password: password,
-					rePassword: rePassword
-				};
-
-				$.ajax({
-					url: "http://localhost:8085/api/users/reset-password",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(requestData),
-					success: function (response, textStatus, xhr) {
-						if (xhr.status === 200 && response.code === 200) {
-							alert(response.message);
-
-							// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
-							sessionStorage.removeItem("email_resetpass");
-							sessionStorage.removeItem("otp_resetpass");
-
-							// Chuyển hướng về trang login
-							window.location.href = "http://localhost:8086/";
-						} else {
-							alert("Reset password failed: " + response.message);
-						}
-					},
-					error: function (xhr) {
-						if (xhr.responseJSON && xhr.responseJSON.message) {
-							alert("Error: " + xhr.responseJSON.message);
-						} else {
-							alert("An unexpected error occurred.");
-						}
+					if (!email || !otp) {
+						alert("Session expired. Please request a new OTP.");
+						return;
 					}
+
+					if (!password || !rePassword) {
+						alert("Please enter your new password.");
+						return;
+					}
+
+					if (password !== rePassword) {
+						alert("Passwords do not match.");
+						return;
+					}
+
+					let requestData = {
+						otp: otp,
+						email: email,
+						password: password,
+						rePassword: rePassword
+					};
+
+					$.ajax({
+						url: "http://localhost:8085/api/users/reset-password",
+						type: "POST",
+						contentType: "application/json",
+						data: JSON.stringify(requestData),
+						success: function (response, textStatus, xhr) {
+							if (xhr.status === 200 && response.code === 200) {
+								alert(response.message);
+
+								// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+								sessionStorage.removeItem("email_resetpass");
+								sessionStorage.removeItem("otp_resetpass");
+
+								// Chuyển hướng về trang login
+								window.location.href = "http://localhost:8086/";
+							} else {
+								alert("Reset password failed: " + response.message);
+							}
+						},
+						error: function (xhr) {
+							if (xhr.responseJSON && xhr.responseJSON.message) {
+								alert("Error: " + xhr.responseJSON.message);
+							} else {
+								alert("An unexpected error occurred.");
+							}
+						}
+					});
 				});
 			});
-		});
 
 	</script>
 
 	<script>
-		$(document).ready(function () {
-			const userData = sessionStorage.getItem("user");
+			$(document).ready(function () {
+				const userData = sessionStorage.getItem("user");
 
-			if (userData) {
-				const user = JSON.parse(userData);
-				if (user.roles.includes("ROLE_ARTIST")) {
-					$("#uploadBtn").show();
+				if (userData) {
+					const user = JSON.parse(userData);
+					if (user.roles.includes("ROLE_ARTIST")) {
+						$("#uploadBtn").show();
+					} else {
+						$("#uploadBtn").hide();
+					}
 				} else {
 					$("#uploadBtn").hide();
 				}
-			} else {
-				$("#uploadBtn").hide();
-			}
-		});
+			});
 
 	</script>
 

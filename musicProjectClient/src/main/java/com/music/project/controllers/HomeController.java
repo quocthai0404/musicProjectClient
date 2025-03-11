@@ -30,6 +30,7 @@ public class HomeController {
 
         // Kiểm tra response có dữ liệu không
         if (response != null && response.getContent() != null) {
+        	
             model.addAttribute("songs", response.getContent()); // Đưa danh sách bài hát vào model
         } else {
             model.addAttribute("songs", List.of()); // Nếu không có dữ liệu, gán danh sách rỗng

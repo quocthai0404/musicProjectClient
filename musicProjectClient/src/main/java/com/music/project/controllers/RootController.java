@@ -11,6 +11,7 @@ import java.util.List;
 @Controller
 public class RootController {
     private final String API_URL = "http://localhost:8085/api/songs/getAll?page=0&size=5";
+    private final String API_URL_TOP_15 = "http://localhost:8085/api/songs/getAll?page=0&size=15";
 
     @GetMapping("/")
     public String redirectToHome(Model model) {
@@ -19,9 +20,13 @@ public class RootController {
         // Gọi API lấy danh sách bài hát
         RestTemplate restTemplate = new RestTemplate();
         SongResponse response = restTemplate.getForObject(API_URL, SongResponse.class);
+        
+        SongResponse responseTop15 = restTemplate.getForObject(API_URL_TOP_15, SongResponse.class);
 
         // Kiểm tra response có dữ liệu không
         if (response != null && response.getContent() != null) {
+        	System.out.println(responseTop15.getContent().size());
+        	model.addAttribute("songsTop15", responseTop15.getContent());
             model.addAttribute("songs", response.getContent()); // Đưa danh sách bài hát vào model
         } else {
             model.addAttribute("songs", List.of()); // Nếu không có dữ liệu, gán danh sách rỗng
