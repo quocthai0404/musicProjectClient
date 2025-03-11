@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Miraculous - Online Music Store Html Template</title>
+    <title th:text="${albums != null ? 'Albums - Miraculous' : 'No Albums - Miraculous'}">Albums - Miraculous</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Music">
@@ -24,8 +24,6 @@
     <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}">
 </head>
 <body>
-<!----Loader Start---->
-<!--<div th:replace="fragments/loader :: loader"></div>-->
 <!----Main Wrapper Start---->
 <div class="ms_main_wrapper">
     <!---Side Menu Start--->
@@ -37,149 +35,60 @@
         <!--header-->
         <div th:replace="fragments/header :: header"></div>
 
-        <!--banner-->
-<!--        <div class="ms-banner">-->
-<!--            <div class="container-fluid">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-12 col-md-12">-->
-<!--                        <div class="ms_banner_img">-->
-<!--                            <img th:src="@{/images/banner.png}" alt="" class="img-fluid">-->
-<!--                        </div>-->
-<!--                        <div class="ms_banner_text">-->
-<!--                            <h1>This Month’s</h1>-->
-<!--                            <h1 class="ms_color">Record Breaking Albums !</h1>-->
-<!--                            <p>Dream your moments, Until I Met You, Gimme Some Courage, Dark Alley, One More Of A Stranger, Endless<br> Things, The Heartbeat Stops, Walking Promises, Desired Games and many more...</p>-->
-<!--                            <div class="ms_banner_btn">-->
-<!--                                <a href="#" class="ms_btn">Listen Now</a>-->
-<!--                                <a href="#" class="ms_btn">Add To Queue</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!--recently played music-->
-<!--        <div class="ms_rcnt_slider">-->
-<!--            <div class="ms_heading">-->
-<!--                <h1>Recently Played</h1>-->
-<!--                <span class="veiw_all"><a href="#">view more</a></span>-->
-<!--            </div>-->
-<!--            <div class="swiper-container">-->
-<!--                <div class="swiper-wrapper">-->
-<!--                    &lt;!&ndash; Lặp qua danh sách bài hát &ndash;&gt;-->
-<!--                    <div class="swiper-slide" th:each="song : ${recentSongs}">-->
-<!--                        <div class="ms_rcnt_box">-->
-<!--                            <div class="ms_rcnt_box_img">-->
-<!--                                <img th:src="@{${song.imageUrl}}" alt="">-->
-<!--                                <div class="ms_main_overlay">-->
-<!--                                    <div class="ms_box_overlay"></div>-->
-<!--                                    <div class="ms_more_icon">-->
-<!--                                        <img th:src="@{/images/svg/more.svg}" alt="">-->
-<!--                                    </div>-->
-<!--                                    <ul class="more_option">-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
-<!--                                    </ul>-->
-<!--                                    <div class="ms_play_icon">-->
-<!--                                        <img th:src="@{/images/svg/play.svg}" alt="">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="ms_rcnt_box_text">-->
-<!--                                <h3><a href="#" th:text="${song.title}"></a></h3>-->
-<!--                                <p th:text="${song.artist}"></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Add Arrows &ndash;&gt;-->
-<!--            <div class="swiper-button-next slider_nav_next"></div>-->
-<!--            <div class="swiper-button-prev slider_nav_prev"></div>-->
-<!--        </div>-->
-
-        <!--weekly top 15-->
-<!--        <div class="ms_weekly_wrapper">-->
-<!--            <div class="ms_weekly_inner">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-12">-->
-<!--                        <div class="ms_heading">-->
-<!--                            <h1>Weekly Top 15</h1>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-4 col-md-12 padding_right40" th:each="song, iterStat : ${songs}">-->
-<!--                        <div class="ms_weekly_box">-->
-<!--                            <div class="weekly_left">-->
-<!--                                <span class="w_top_no" th:text="${iterStat.index + 1}"></span>-->
-<!--                                <div class="w_top_song">-->
-<!--                                    <div class="w_tp_song_img">-->
-<!--                                        <img th:src="@{${song.imageUrl}}" alt="" class="img-fluid">-->
-<!--                                        <div class="ms_song_overlay"></div>-->
-<!--                                        <div class="ms_play_icon">-->
-<!--                                            <img src="images/svg/play.svg" alt="Play">-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="w_tp_song_name">-->
-<!--                                        <h3><a th:href="@{${song.link}}" th:text="${song.title}"></a></h3>-->
-<!--                                        <p th:text="${song.artist}"></p>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="weekly_right">-->
-<!--                                <span class="w_song_time" th:text="${song.duration}"></span>-->
-<!--                                <span class="ms_more_icon" data-other="1">-->
-<!--                                <img src="images/svg/more.svg" alt="More">-->
-<!--                            </span>-->
-<!--                            </div>-->
-<!--                            <ul class="more_option">-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                        <div class="ms_divider"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!---Featured Artists Music--->
-
-        <!----Add Section Start---->
-
-        <!----New Releases Section Start---->
-
-        <!----Featured Albumn Section Start---->
-
-        <!----Top Genres Section Start---->
-
-        <!----Add Section Start---->
-
-        <!----Live Radio Section Start---->
-        <div>album</div>
+        <!----Album Single Section Start---->
+        <div class="ms_album_single_wrapper">
+            <div class="album_single_data">
+                <div class="album_single_img">
+                    <img th:src="${album.photo != null ? album.photo : '/images/album/01.jpg'}" alt="" class="img-fluid">
+                </div>
+                <div class="album_single_text">
+                    <h2 th:text="${album.name}">Album Name</h2>
+                    <p class="singer_name">Released: <span th:text="${#dates.format(album.releaseDay, 'dd MMM yyyy')}">Release Date</span></p>
+                    <div class="album_btn">
+                        <a href="#" class="ms_btn play_btn"><span class="play_all"><img th:src="@{/images/svg/play_all.svg}" alt="">Play All</span><span class="pause_all"><img th:src="@{/images/svg/pause_all.svg}" alt="">Pause</span></a>
+                        <a href="#" class="ms_btn"><span class="play_all"><img th:src="@{/images/svg/add_q.svg}" alt="">Add To Queue</span></a>
+                    </div>
+                </div>
+                <div class="album_more_optn ms_more_icon">
+                    <span><img th:src="@{/images/svg/more.svg}" alt=""></span>
+                </div>
+                <ul class="more_option">
+                    <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                    <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                    <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                    <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+                </ul>
+            </div>
+            <!----Song List---->
+            <div class="album_inner_list">
+                <div class="album_list_wrapper">
+                    <ul class="album_list_name">
+                        <li>#</li>
+                        <li>Song Title</li>
+                        <li>Artist</li>
+                        <li class="text-center">Duration</li>
+                        <li class="text-center">Add To Favourites</li>
+                        <li class="text-center">More</li>
+                    </ul>
+                    <!-- Here we would iterate through songs in the album, but you'd need to fetch them first -->
+                    <div th:if="${album.songs == null || album.songs.isEmpty()}">
+                        <p>No songs available in this album.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!---main footer--->
     <div th:replace="fragments/footer :: footer"></div>
-
-    <!----Audio Player Section---->
-<!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
 </div>
-<div th:replace="fragments/modalPopUp :: authModal "></div>
 
-Load jQuery từ CDN (trước Bootstrap)
+<div th:replace="fragments/modalPopUp :: authModal"></div>
+
+<!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Load Bootstrap JS từ CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Các file JS khác -->
 <script type="text/javascript" th:src="@{/js/plugins/swiper/js/swiper.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plugins/player/jplayer.playlist.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plugins/player/jquery.jplayer.min.js}"></script>
@@ -189,15 +98,23 @@ Load jQuery từ CDN (trước Bootstrap)
 <script type="text/javascript" th:src="@{/js/plugins/scroll/jquery.mCustomScrollbar.js}"></script>
 <script type="text/javascript" th:src="@{/js/custom.js}"></script>
 
+<!-- Authentication Scripts -->
+<script th:inline="javascript">
+    $(document).ready(function () {
+        // Check login status
+        var token = sessionStorage.getItem("token");
+        var user = sessionStorage.getItem("user");
 
-
-<!--<script>
-    date picker
-</script>-->
-<!-- jQuery và jQuery UI -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        if (token && user) {
+            var userData = JSON.parse(user);
+            $(".ms_top_btn:not(#profileBtn)").hide();
+            $("#profileBtn a span").text(userData.fullname);
+            $("#profileBtn").show();
+        } else {
+            $("#profileBtn").hide();
+        }
+    });
+</script>
 
 <script>
     $(document).ready(function () {
@@ -228,30 +145,30 @@ Load jQuery từ CDN (trước Bootstrap)
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(user),
-				success: function (response, textStatus, xhr) {
-				    console.log("Response:", response);
-				    console.log("Status Code:", xhr.status);
+                success: function (response, textStatus, xhr) {
+                    console.log("Response:", response);
+                    console.log("Status Code:", xhr.status);
 
-				    if (xhr.status === 200 && response.code === 200) { //
-				        console.log("User registered successfully");
+                    if (xhr.status === 200 && response.code === 200) { //
+                        console.log("User registered successfully");
 
-				        // Ẩn modal đăng ký và hiển thị modal OTP
-				        $("#myModal").modal("hide");
+                        // Ẩn modal đăng ký và hiển thị modal OTP
+                        $("#myModal").modal("hide");
 
-						sessionStorage.setItem("registeredEmail", response.result.email);
+                        sessionStorage.setItem("registeredEmail", response.result.email);
 
-				        setTimeout(function () {
-				            if (typeof bootstrap !== "undefined") {
-				                var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
-				                otpModal.show();
-				            } else {
-				                $("#otpModal").modal("show");
-				            }
-				        }, 500);
-				    } else {
-				        alert("Registration failed: " + response.message);
-				    }
-				},
+                        setTimeout(function () {
+                            if (typeof bootstrap !== "undefined") {
+                                var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+                                otpModal.show();
+                            } else {
+                                $("#otpModal").modal("show");
+                            }
+                        }, 500);
+                    } else {
+                        alert("Registration failed: " + response.message);
+                    }
+                },
 
                 error: function (xhr) {
                     if (xhr.responseJSON && xhr.responseJSON.message) {
@@ -266,386 +183,387 @@ Load jQuery từ CDN (trước Bootstrap)
 </script>
 
 <script>
-	$(document).ready(function () {
-		$(document).ready(function () {
-		    $("#btn_verify").click(function () {
-		        var otp = $("#otp").val();
-		        var email = sessionStorage.getItem("registeredEmail"); // Lấy email từ sessionStorage
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $("#btn_verify").click(function () {
+                var otp = $("#otp").val();
+                var email = sessionStorage.getItem("registeredEmail"); // Lấy email từ sessionStorage
 
-		        if (!email) {
-		            alert("Error: No registered email found. Please register again.");
-		            return;
-		        }
+                if (!email) {
+                    alert("Error: No registered email found. Please register again.");
+                    return;
+                }
 
-		        var requestData = {
-		            otp: otp,
-		            email: email
-		        };
+                var requestData = {
+                    otp: otp,
+                    email: email
+                };
 
-		        $.ajax({
-		            url: "http://localhost:8085/api/users/active-account",
-		            type: "POST",
-		            contentType: "application/json",
-		            data: JSON.stringify(requestData),
-		            success: function (response, textStatus, xhr) {
-		                console.log("Response:", response);
-		                console.log("Status Code:", xhr.status);
+                $.ajax({
+                    url: "http://localhost:8085/api/users/active-account",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(requestData),
+                    success: function (response, textStatus, xhr) {
+                        console.log("Response:", response);
+                        console.log("Status Code:", xhr.status);
 
-		                if (xhr.status === 200 && response.code === 200) {
-		                    alert("Registration successful! Please log in.");
-		                    sessionStorage.removeItem("registeredEmail"); // Xóa email sau khi kích hoạt thành công
-		                    location.reload(); // Reload lại trang
-		                } else {
-		                    alert("Error: " + response.message);
-		                }
-		            },
-		            error: function (xhr) {
-		                if (xhr.responseJSON && xhr.responseJSON.message) {
-		                    alert("Error: " + xhr.responseJSON.message);
-		                } else {
-		                    alert("An unexpected error occurred.");
-		                }
-		            }
-		        });
-		    });
-		});
-
-
-	});
-
-</script>
-
-<script>
-	$(document).ready(function () {
-	    $("#btnLogin").click(function (e) {
-	        e.preventDefault(); // Ngăn chặn reload form
-
-	        let email = $("#emailLogin").val().trim();
-	        let password = $("#passwordLogin").val().trim();
-
-	        if (!email || !password) {
-	            alert("Please enter email and password.");
-	            return;
-	        }
-
-	        $.ajax({
-	            url: "http://localhost:8085/api/users/sign-in",
-	            type: "POST",
-	            contentType: "application/json",
-	            data: JSON.stringify({ email: email, password: password }),
-	            success: function (response) {
-	                if (response.code === 200) {
-	                    let result = response.result;
+                        if (xhr.status === 200 && response.code === 200) {
+                            alert("Registration successful! Please log in.");
+                            sessionStorage.removeItem("registeredEmail"); // Xóa email sau khi kích hoạt thành công
+                            location.reload(); // Reload lại trang
+                        } else {
+                            alert("Error: " + response.message);
+                        }
+                    },
+                    error: function (xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            alert("Error: " + xhr.responseJSON.message);
+                        } else {
+                            alert("An unexpected error occurred.");
+                        }
+                    }
+                });
+            });
+        });
 
 
-	                    sessionStorage.setItem("token", result.token);
-	                    sessionStorage.setItem("user", JSON.stringify(result));
-
-
-	                    alert("Login successful! Redirecting...");
-	                    location.reload();
-	                } else {
-	                    alert("Login failed: " + response.message);
-	                }
-	            },
-	            error: function (xhr) {
-	                let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "Unknown error!";
-	                alert("Error: " + errorMessage);
-	            }
-	        });
-	    });
-	});
-
+    });
 
 </script>
 
 <script>
-	$(document).ready(function () {
-	    // Ban đầu ẩn profileBtn
-	    $("#profileBtn").hide();
+    $(document).ready(function () {
+        $("#btnLogin").click(function (e) {
+            e.preventDefault(); // Ngăn chặn reload form
 
-	    // Lấy thông tin user và token từ sessionStorage
-	    var token = sessionStorage.getItem("token");
-	    var user = sessionStorage.getItem("user");
+            let email = $("#emailLogin").val().trim();
+            let password = $("#passwordLogin").val().trim();
 
-	    if (token && user) {
-	        var userData = JSON.parse(user);
+            if (!email || !password) {
+                alert("Please enter email and password.");
+                return;
+            }
 
-	        // Ẩn div ms_top_btn chứa các nút đăng ký & đăng nhập (không tính profileBtn)
-	        $(".ms_top_btn:not(#profileBtn)").hide();
+            $.ajax({
+                url: "http://localhost:8085/api/users/sign-in",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ email: email, password: password }),
+                success: function (response) {
+                    if (response.code === 200) {
+                        let result = response.result;
 
-	        // Cập nhật text cho profileBtn với fullname của user
-	        $("#profileBtn a span").text(userData.fullname);
 
-	        // Hiển thị profileBtn
-	        $("#profileBtn").show();
-			
-			$("#emailOld").val(userData.email);
-			$("#new_fullname").val(userData.fullname);
-	    }
-	});
+                        sessionStorage.setItem("token", result.token);
+                        sessionStorage.setItem("user", JSON.stringify(result));
+
+
+                        alert("Login successful! Redirecting...");
+                        location.reload();
+                    } else {
+                        alert("Login failed: " + response.message);
+                    }
+                },
+                error: function (xhr) {
+                    let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "Unknown error!";
+                    alert("Error: " + errorMessage);
+                }
+            });
+        });
+    });
 
 
 </script>
 
 <script>
-	$(document).ready(function () {
-	    $("#btn_changeInfo").click(function () {
-	        let token = sessionStorage.getItem("token");
-	        if (!token) {
-	            alert("You are not logged in!");
-	            return;
-	        }
+    $(document).ready(function () {
+        // Ban đầu ẩn profileBtn
+        $("#profileBtn").hide();
 
-	        // Lấy thông tin từ input
-	        let changeInfoData = {
-	            email: $("#emailOld").val().trim(), 
-	            fullname: $("#new_fullname").val().trim(),
-	            password: $("#new_password").val().trim(),
-	            rePassword: $("#re_password").val().trim()
-	        };
+        // Lấy thông tin user và token từ sessionStorage
+        var token = sessionStorage.getItem("token");
+        var user = sessionStorage.getItem("user");
 
-	        // Kiểm tra mật khẩu nhập lại có trùng khớp không
-	        if (changeInfoData.password !== changeInfoData.rePassword) {
-	            alert("Passwords do not match!");
-	            return;
-	        }
+        if (token && user) {
+            var userData = JSON.parse(user);
 
-	        $.ajax({
-	            url: "http://localhost:8085/api/users/change-info",
-	            type: "POST",
-	            contentType: "application/json",
-	            data: JSON.stringify(changeInfoData),
-	            headers: {
-	                Authorization: "Bearer " + token
-	            },
-	            success: function (response) {
-	                if (response.code === 200) {
-	                    alert("User info updated successfully!");
+            // Ẩn div ms_top_btn chứa các nút đăng ký & đăng nhập (không tính profileBtn)
+            $(".ms_top_btn:not(#profileBtn)").hide();
 
-	                    // Cập nhật lại token và user trong sessionStorage
-	                    let updatedUser = response.result;
-	                    sessionStorage.setItem("user", JSON.stringify(updatedUser));
-	                    sessionStorage.setItem("token", updatedUser.token); // Cập nhật lại token mới
+            // Cập nhật text cho profileBtn với fullname của user
+            $("#profileBtn a span").text(userData.fullname);
 
-	                    location.reload();
-	                } else {
-	                    alert(response.message);
-	                }
-	            },
-	            error: function (xhr) {
-	                let errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : "An error occurred!";
-	                alert("Error: " + errorMessage);
-	            }
-	        });
-	    });
+            // Hiển thị profileBtn
+            $("#profileBtn").show();
 
-	    $("#btn_logOut").click(function () {
-	        sessionStorage.removeItem("token");
-	        sessionStorage.removeItem("user");
-	        alert("Logged out successfully");
-	        location.reload();
-	    });
-	});
+            $("#emailOld").val(userData.email);
+            $("#new_fullname").val(userData.fullname);
+        }
+    });
 
-</script>
-<script>
-	$(document).ready(function () {
-	    $("#btn_request_otp").click(function (e) {
-	        e.preventDefault();
-
-	        let email = $("#email_request").val().trim();
-	        if (!email) {
-	            alert("Please enter your email.");
-	            return;
-	        }
-
-	        $.ajax({
-	            url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
-	            type: "POST",
-	            contentType: "application/json",
-	            data: JSON.stringify({ email: email }),
-	            success: function (response, textStatus, xhr) {
-	                console.log("Response:", response);
-	                console.log("Status Code:", xhr.status);
-
-	                if (xhr.status === 200 && response.code === 200) {
-	                    alert(response.message);
-
-	                    // Ẩn modal quên mật khẩu và hiển thị modal OTP
-	                    $("#forgotPasswordModal").modal("hide");
-						
-						sessionStorage.setItem("email_resetpass", email);
-						
-
-	                    setTimeout(function () {
-	                        if (typeof bootstrap !== "undefined") {
-	                            var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
-	                            otpModal.show();
-	                        } else {
-	                            $("#otpForgetPassModal").modal("show");
-	                        }
-	                    }, 500);
-	                } else {
-	                    alert("Request failed: " + response.message);
-	                }
-	            },
-	            error: function (xhr) {
-	                if (xhr.responseJSON && xhr.responseJSON.code === 400) {
-	                    alert("Error: " + xhr.responseJSON.message);
-	                } else {
-	                    alert("Failed to send OTP. Please try again.");
-	                }
-	            }
-	        });
-	    });
-	});
 
 </script>
 
 <script>
-	$(document).ready(function () {
-	    $("#btn_verify_forget").click(function (e) {
-	        e.preventDefault();
+    $(document).ready(function () {
+        $("#btn_changeInfo").click(function () {
+            let token = sessionStorage.getItem("token");
+            if (!token) {
+                alert("You are not logged in!");
+                return;
+            }
 
-	        let otp = $("#otp_forget").val().trim();
-	        let email = sessionStorage.getItem("email_resetpass");
+            // Lấy thông tin từ input
+            let changeInfoData = {
+                email: $("#emailOld").val().trim(),
+                fullname: $("#new_fullname").val().trim(),
+                password: $("#new_password").val().trim(),
+                rePassword: $("#re_password").val().trim()
+            };
 
-	        if (!otp) {
-	            alert("Please enter the OTP.");
-	            return;
-	        }
+            // Kiểm tra mật khẩu nhập lại có trùng khớp không
+            if (changeInfoData.password !== changeInfoData.rePassword) {
+                alert("Passwords do not match!");
+                return;
+            }
 
-	        if (!email) {
-	            alert("Session expired. Please request a new OTP.");
-	            return;
-	        }
+            $.ajax({
+                url: "http://localhost:8085/api/users/change-info",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(changeInfoData),
+                headers: {
+                    Authorization: "Bearer " + token
+                },
+                success: function (response) {
+                    if (response.code === 200) {
+                        alert("User info updated successfully!");
 
-	        let requestData = {
-	            otp: otp,
-	            email: email
-	        };
+                        // Cập nhật lại token và user trong sessionStorage
+                        let updatedUser = response.result;
+                        sessionStorage.setItem("user", JSON.stringify(updatedUser));
+                        sessionStorage.setItem("token", updatedUser.token); // Cập nhật lại token mới
 
-	        $.ajax({
-	            url: "http://localhost:8085/api/users/verify-reset-password",
-	            type: "POST",
-	            contentType: "application/json",
-	            data: JSON.stringify(requestData),
-	            success: function (response, textStatus, xhr) {
-	                console.log("Response:", response);
-	                console.log("Status Code:", xhr.status);
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (xhr) {
+                    let errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : "An error occurred!";
+                    alert("Error: " + errorMessage);
+                }
+            });
+        });
 
-	                if (xhr.status === 200 && response.code === 200) {
-	                    alert(response.message);
-
-	                    // Lưu OTP mới để reset mật khẩu vào sessionStorage
-	                    sessionStorage.setItem("otp_resetpass", response.result);
-
-	                    // Ẩn modal OTP và hiển thị modal Reset Password
-	                    $("#otpForgetPassModal").modal("hide");
-
-	                    setTimeout(function () {
-	                        if (typeof bootstrap !== "undefined") {
-	                            var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
-	                            resetPassModal.show();
-	                        } else {
-	                            $("#resetPasswordModal").modal("show");
-	                        }
-	                    }, 500);
-	                } else {
-	                    alert("OTP verification failed: " + response.message);
-	                }
-	            },
-	            error: function (xhr) {
-	                if (xhr.responseJSON && xhr.responseJSON.message) {
-	                    alert("Error: " + xhr.responseJSON.message);
-	                } else {
-	                    alert("An unexpected error occurred.");
-	                }
-	            }
-	        });
-	    });
-	});
-
-
-	$(document).ready(function () {
-	    $("#btn_rs_pass").click(function (e) {
-	        e.preventDefault();
-
-	        let email = sessionStorage.getItem("email_resetpass");
-	        let otp = sessionStorage.getItem("otp_resetpass");
-	        let password = $("#new_password_reset").val().trim();
-	        let rePassword = $("#re_password_reset").val().trim();
-
-	        if (!email || !otp) {
-	            alert("Session expired. Please request a new OTP.");
-	            return;
-	        }
-
-	        if (!password || !rePassword) {
-	            alert("Please enter your new password.");
-	            return;
-	        }
-
-	        if (password !== rePassword) {
-	            alert("Passwords do not match.");
-	            return;
-	        }
-
-	        let requestData = {
-	            otp: otp,
-	            email: email,
-	            password: password,
-	            rePassword: rePassword
-	        };
-
-	        $.ajax({
-	            url: "http://localhost:8085/api/users/reset-password",
-	            type: "POST",
-	            contentType: "application/json",
-	            data: JSON.stringify(requestData),
-	            success: function (response, textStatus, xhr) {
-	                if (xhr.status === 200 && response.code === 200) {
-	                    alert(response.message);
-
-	                    // Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
-	                    sessionStorage.removeItem("email_resetpass");
-	                    sessionStorage.removeItem("otp_resetpass");
-
-	                    // Chuyển hướng về trang login
-	                    window.location.href = "http://localhost:8086/";
-	                } else {
-	                    alert("Reset password failed: " + response.message);
-	                }
-	            },
-	            error: function (xhr) {
-	                if (xhr.responseJSON && xhr.responseJSON.message) {
-	                    alert("Error: " + xhr.responseJSON.message);
-	                } else {
-	                    alert("An unexpected error occurred.");
-	                }
-	            }
-	        });
-	    });
-	});
+        $("#btn_logOut").click(function () {
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("user");
+            alert("Logged out successfully");
+            location.reload();
+        });
+    });
 
 </script>
 
 <script>
-	$(document).ready(function () {
-	    const userData = sessionStorage.getItem("user");
+    $(document).ready(function () {
+        $("#btn_request_otp").click(function (e) {
+            e.preventDefault();
 
-	    if (userData) {
-	        const user = JSON.parse(userData);
-	        if (user.roles.includes("ROLE_ARTIST")) {
-	            $("#uploadBtn").show(); 
-	        } else {
-	            $("#uploadBtn").hide(); 
-	        }
-	    } else {
-	        $("#uploadBtn").hide();
-	    }
-	});
+            let email = $("#email_request").val().trim();
+            if (!email) {
+                alert("Please enter your email.");
+                return;
+            }
+
+            $.ajax({
+                url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ email: email }),
+                success: function (response, textStatus, xhr) {
+                    console.log("Response:", response);
+                    console.log("Status Code:", xhr.status);
+
+                    if (xhr.status === 200 && response.code === 200) {
+                        alert(response.message);
+
+                        // Ẩn modal quên mật khẩu và hiển thị modal OTP
+                        $("#forgotPasswordModal").modal("hide");
+
+                        sessionStorage.setItem("email_resetpass", email);
+
+
+                        setTimeout(function () {
+                            if (typeof bootstrap !== "undefined") {
+                                var otpModal = new bootstrap.Modal(document.getElementById("otpForgetPassModal"));
+                                otpModal.show();
+                            } else {
+                                $("#otpForgetPassModal").modal("show");
+                            }
+                        }, 500);
+                    } else {
+                        alert("Request failed: " + response.message);
+                    }
+                },
+                error: function (xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.code === 400) {
+                        alert("Error: " + xhr.responseJSON.message);
+                    } else {
+                        alert("Failed to send OTP. Please try again.");
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#btn_verify_forget").click(function (e) {
+            e.preventDefault();
+
+            let otp = $("#otp_forget").val().trim();
+            let email = sessionStorage.getItem("email_resetpass");
+
+            if (!otp) {
+                alert("Please enter the OTP.");
+                return;
+            }
+
+            if (!email) {
+                alert("Session expired. Please request a new OTP.");
+                return;
+            }
+
+            let requestData = {
+                otp: otp,
+                email: email
+            };
+
+            $.ajax({
+                url: "http://localhost:8085/api/users/verify-reset-password",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(requestData),
+                success: function (response, textStatus, xhr) {
+                    console.log("Response:", response);
+                    console.log("Status Code:", xhr.status);
+
+                    if (xhr.status === 200 && response.code === 200) {
+                        alert(response.message);
+
+                        // Lưu OTP mới để reset mật khẩu vào sessionStorage
+                        sessionStorage.setItem("otp_resetpass", response.result);
+
+                        // Ẩn modal OTP và hiển thị modal Reset Password
+                        $("#otpForgetPassModal").modal("hide");
+
+                        setTimeout(function () {
+                            if (typeof bootstrap !== "undefined") {
+                                var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+                                resetPassModal.show();
+                            } else {
+                                $("#resetPasswordModal").modal("show");
+                            }
+                        }, 500);
+                    } else {
+                        alert("OTP verification failed: " + response.message);
+                    }
+                },
+                error: function (xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        alert("Error: " + xhr.responseJSON.message);
+                    } else {
+                        alert("An unexpected error occurred.");
+                    }
+                }
+            });
+        });
+    });
+
+
+    $(document).ready(function () {
+        $("#btn_rs_pass").click(function (e) {
+            e.preventDefault();
+
+            let email = sessionStorage.getItem("email_resetpass");
+            let otp = sessionStorage.getItem("otp_resetpass");
+            let password = $("#new_password_reset").val().trim();
+            let rePassword = $("#re_password_reset").val().trim();
+
+            if (!email || !otp) {
+                alert("Session expired. Please request a new OTP.");
+                return;
+            }
+
+            if (!password || !rePassword) {
+                alert("Please enter your new password.");
+                return;
+            }
+
+            if (password !== rePassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            let requestData = {
+                otp: otp,
+                email: email,
+                password: password,
+                rePassword: rePassword
+            };
+
+            $.ajax({
+                url: "http://localhost:8085/api/users/reset-password",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(requestData),
+                success: function (response, textStatus, xhr) {
+                    if (xhr.status === 200 && response.code === 200) {
+                        alert(response.message);
+
+                        // Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+                        sessionStorage.removeItem("email_resetpass");
+                        sessionStorage.removeItem("otp_resetpass");
+
+                        // Chuyển hướng về trang login
+                        window.location.href = "http://localhost:8086/";
+                    } else {
+                        alert("Reset password failed: " + response.message);
+                    }
+                },
+                error: function (xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        alert("Error: " + xhr.responseJSON.message);
+                    } else {
+                        alert("An unexpected error occurred.");
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        const userData = sessionStorage.getItem("user");
+
+        if (userData) {
+            const user = JSON.parse(userData);
+            if (user.roles.includes("ROLE_ARTIST")) {
+                $("#uploadBtn").show();
+            } else {
+                $("#uploadBtn").hide();
+            }
+        } else {
+            $("#uploadBtn").hide();
+        }
+    });
 
 </script>
 

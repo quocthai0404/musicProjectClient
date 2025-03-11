@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Miraculous - Online Music Store Html Template</title>
+    <title>Miraculous - Artists</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Music">
@@ -24,162 +24,72 @@
     <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}">
 </head>
 <body>
-<!----Loader Start---->
-<!--<div th:replace="fragments/loader :: loader"></div>-->
 <!----Main Wrapper Start---->
 <div class="ms_main_wrapper">
     <!---Side Menu Start--->
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
-    <!--main content (albums) -->
+    <!--main content (artists) -->
     <div class="ms_content_wrapper padder_top80">
 
         <!--header-->
         <div th:replace="fragments/header :: header"></div>
 
-        <!--banner-->
-<!--        <div class="ms-banner">-->
-<!--            <div class="container-fluid">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-12 col-md-12">-->
-<!--                        <div class="ms_banner_img">-->
-<!--                            <img th:src="@{/images/banner.png}" alt="" class="img-fluid">-->
-<!--                        </div>-->
-<!--                        <div class="ms_banner_text">-->
-<!--                            <h1>This Month’s</h1>-->
-<!--                            <h1 class="ms_color">Record Breaking Albums !</h1>-->
-<!--                            <p>Dream your moments, Until I Met You, Gimme Some Courage, Dark Alley, One More Of A Stranger, Endless<br> Things, The Heartbeat Stops, Walking Promises, Desired Games and many more...</p>-->
-<!--                            <div class="ms_banner_btn">-->
-<!--                                <a href="#" class="ms_btn">Listen Now</a>-->
-<!--                                <a href="#" class="ms_btn">Add To Queue</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!--recently played music-->
-<!--        <div class="ms_rcnt_slider">-->
-<!--            <div class="ms_heading">-->
-<!--                <h1>Recently Played</h1>-->
-<!--                <span class="veiw_all"><a href="#">view more</a></span>-->
-<!--            </div>-->
-<!--            <div class="swiper-container">-->
-<!--                <div class="swiper-wrapper">-->
-<!--                    &lt;!&ndash; Lặp qua danh sách bài hát &ndash;&gt;-->
-<!--                    <div class="swiper-slide" th:each="song : ${recentSongs}">-->
-<!--                        <div class="ms_rcnt_box">-->
-<!--                            <div class="ms_rcnt_box_img">-->
-<!--                                <img th:src="@{${song.imageUrl}}" alt="">-->
-<!--                                <div class="ms_main_overlay">-->
-<!--                                    <div class="ms_box_overlay"></div>-->
-<!--                                    <div class="ms_more_icon">-->
-<!--                                        <img th:src="@{/images/svg/more.svg}" alt="">-->
-<!--                                    </div>-->
-<!--                                    <ul class="more_option">-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
-<!--                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
-<!--                                    </ul>-->
-<!--                                    <div class="ms_play_icon">-->
-<!--                                        <img th:src="@{/images/svg/play.svg}" alt="">-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="ms_rcnt_box_text">-->
-<!--                                <h3><a href="#" th:text="${song.title}"></a></h3>-->
-<!--                                <p th:text="${song.artist}"></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Add Arrows &ndash;&gt;-->
-<!--            <div class="swiper-button-next slider_nav_next"></div>-->
-<!--            <div class="swiper-button-prev slider_nav_prev"></div>-->
-<!--        </div>-->
-
-        <!--weekly top 15-->
-<!--        <div class="ms_weekly_wrapper">-->
-<!--            <div class="ms_weekly_inner">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-12">-->
-<!--                        <div class="ms_heading">-->
-<!--                            <h1>Weekly Top 15</h1>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-4 col-md-12 padding_right40" th:each="song, iterStat : ${songs}">-->
-<!--                        <div class="ms_weekly_box">-->
-<!--                            <div class="weekly_left">-->
-<!--                                <span class="w_top_no" th:text="${iterStat.index + 1}"></span>-->
-<!--                                <div class="w_top_song">-->
-<!--                                    <div class="w_tp_song_img">-->
-<!--                                        <img th:src="@{${song.imageUrl}}" alt="" class="img-fluid">-->
-<!--                                        <div class="ms_song_overlay"></div>-->
-<!--                                        <div class="ms_play_icon">-->
-<!--                                            <img src="images/svg/play.svg" alt="Play">-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="w_tp_song_name">-->
-<!--                                        <h3><a th:href="@{${song.link}}" th:text="${song.title}"></a></h3>-->
-<!--                                        <p th:text="${song.artist}"></p>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="weekly_right">-->
-<!--                                <span class="w_song_time" th:text="${song.duration}"></span>-->
-<!--                                <span class="ms_more_icon" data-other="1">-->
-<!--                                <img src="images/svg/more.svg" alt="More">-->
-<!--                            </span>-->
-<!--                            </div>-->
-<!--                            <ul class="more_option">-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>-->
-<!--                                <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                        <div class="ms_divider"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!-- test api connection -->
+        <div th:if="${testResult != null}">
+            <p>API Test Result: <span th:text="${testResult}"></span></p>
+        </div>
 
         <!---Featured Artists Music--->
-
-        <!----Add Section Start---->
-
-        <!----New Releases Section Start---->
-
-        <!----Featured Albumn Section Start---->
-
-        <!----Top Genres Section Start---->
-
-        <!----Add Section Start---->
-
-        <!----Live Radio Section Start---->
-        <div>artist</div>
+        <div class="ms_featured_slider">
+            <div class="ms_heading">
+                <h1>Featured Artists</h1>
+            </div>
+            <div class="ms_feature_slider swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" th:each="artist : ${artists}" th:if="${artists != null}">
+                        <div class="ms_rcnt_box">
+                            <div class="ms_rcnt_box_img">
+                                <img th:src="${artist.avatar != null ? artist.avatar : '/images/featured/artist1.jpg'}" alt="">
+                                <div class="ms_main_overlay">
+                                    <div class="ms_box_overlay"></div>
+                                    <div class="ms_more_icon">
+                                        <img th:src="@{/images/svg/more.svg}" alt="">
+                                    </div>
+                                    <ul class="more_option">
+                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a></li>
+                                    </ul>
+                                    <div class="ms_play_icon">
+                                        <img th:src="@{/images/svg/play.svg}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms_rcnt_box_text">
+                                <h3><a th:href="@{'/artist/index/detail/' + ${artist.id}}" th:text="${artist.stageName}">Artist Name</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next slider_nav_next"></div>
+                <div class="swiper-button-prev slider_nav_prev"></div>
+            </div>
+        </div>
     </div>
 
     <!---main footer--->
     <div th:replace="fragments/footer :: footer"></div>
-
-    <!----Audio Player Section---->
-<!--    <div th:replace="fragments/musicPlayer :: musicPlayer"></div>-->
 </div>
-<div th:replace="fragments/modalPopUp :: authModal "></div>
 
-Load jQuery từ CDN (trước Bootstrap)
+<div th:replace="fragments/modalPopUp :: authModal"></div>
+
+<!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Load Bootstrap JS từ CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Các file JS khác -->
 <script type="text/javascript" th:src="@{/js/plugins/swiper/js/swiper.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plugins/player/jplayer.playlist.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plugins/player/jquery.jplayer.min.js}"></script>
@@ -189,18 +99,25 @@ Load jQuery từ CDN (trước Bootstrap)
 <script type="text/javascript" th:src="@{/js/plugins/scroll/jquery.mCustomScrollbar.js}"></script>
 <script type="text/javascript" th:src="@{/js/custom.js}"></script>
 
-
-
-<!--<script>
-    date picker
-</script>-->
-<!-- jQuery và jQuery UI -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script>
+<!-- Authentication Scripts -->
+<script th:inline="javascript">
     $(document).ready(function () {
+
+        // Check login status
+        var token = sessionStorage.getItem("token");
+        var user = sessionStorage.getItem("user");
+
+        if (token && user) {
+            var userData = JSON.parse(user);
+            $(".ms_top_btn:not(#profileBtn)").hide();
+            $("#profileBtn a span").text(userData.fullname);
+            $("#profileBtn").show();
+        } else {
+            $("#profileBtn").hide();
+        }
+    });
+</script>
+
         $("#dob").datepicker({
             dateFormat: "dd/mm/yy", // Định dạng ngày
             changeMonth: true, // Hiển thị chọn tháng
@@ -648,6 +565,7 @@ Load jQuery từ CDN (trước Bootstrap)
 	});
 
 </script>
+
 
 </body>
 </html>
