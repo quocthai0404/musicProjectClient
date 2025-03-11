@@ -73,11 +73,11 @@
 						<div class="ms_pro_form">
 							<div class="form-group">
 								<label>Track Name *</label>
-								<input type="text" placeholder="Dream Your Moments" class="form-control">
+								<input type="text" id="trackName" placeholder="Dream Your Moments" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Photo *</label>
-								<input type="file" class="form-control">
+								<input type="file" id="photoFile" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Number of Artist *</label>
@@ -111,7 +111,7 @@
 
 							<div class="pro-form-btn text-center marger_top15">
 								<div class="ms_upload_btn">
-									<a href="#" class="ms_btn">Upload Now</a>
+									<a class="ms_btn" id="uploadBtn1">Upload Now</a>
 									<a href="#" class="ms_btn">cancle</a>
 								</div>
 							</div>
@@ -733,6 +733,86 @@
 
 	</script>
 
+	<script>
+		$(document).ready(function () {
+		    $("#uploadBtn1").click(function () {
+		        let token = sessionStorage.getItem("token"); // Lấy token từ sessionStorage
+		        if (!token) {
+		            alert("Bạn chưa đăng nhập hoặc token không hợp lệ!");
+		            return;
+		        }
+
+		        let trackName = $("#trackName").val();
+		        let photoFile = $("#photoFile")[0].files[0];
+		        let mp3File = $("#fileInput")[0].files[0];
+
+		        // Lấy danh sách artistIds
+		        let artistIds = $(".artist-select").map(function () {
+		            return $(this).val();
+		        }).get().filter(id => id !== "");
+
+		        // Lấy danh sách genreIds
+		        let genreIds = $(".genre-select").map(function () {
+		            return $(this).val();
+		        }).get().filter(id => id !== "");
+
+		        // Lấy ngày hiện tại định dạng "dd/MM/yyyy"
+		        let today = new Date();
+		        let releaseDay = today.getDate().toString().padStart(2, '0') + '/' +
+		                         (today.getMonth() + 1).toString().padStart(2, '0') + '/' +
+		                         today.getFullYear();
+
+		        // Định dạng dữ liệu JSON
+		        let songData = {
+		            name: trackName,
+		            slug: trackName.toLowerCase().replace(/\s+/g, "-"),
+		            urlSource: "",
+		            photo: "",
+		            releaseDay: releaseDay, // Gán ngày hiện tại
+		            artistIds: artistIds.map(Number),
+		            genreIds: genreIds.map(Number),
+		        };
+
+		        let formData = new FormData();
+		        formData.append("song", JSON.stringify(songData));
+
+		        if (photoFile) {
+		            formData.append("photo", photoFile);
+		        }
+		        if (mp3File) {
+		            formData.append("mp3", mp3File);
+		        }
+
+		        // Gửi request POST với token trong header
+		        $.ajax({
+		            url: "http://localhost:8085/api/songs/add",
+		            method: "POST",
+		            data: formData,
+		            contentType: false,
+		            processData: false,
+		            headers: {
+		                "Authorization": "Bearer " + token  // Gửi token kèm theo request
+		            },
+		            success: function (response) {
+		                alert("Upload Successfully!");
+		                console.log(response);
+						location.reload();
+		            },
+					error: function (xhr) {
+					        try {
+					            let errorResponse = JSON.parse(xhr.responseText); // Parse lỗi JSON
+					            let errorMessage = errorResponse.message || "Error!";
+					            alert(errorMessage);
+					        } catch (e) {
+					            alert("Unknown Error!");
+					        }
+					    }
+		        });
+		    });
+		});
+
+
+	</script>
 
 
 </body>
