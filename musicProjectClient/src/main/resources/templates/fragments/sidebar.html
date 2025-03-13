@@ -19,12 +19,13 @@
                         <span class="nav_text">discover</span>
                     </a>
                 </li>
-                <li>
-                    <a th:href="@{/album/index}" title="Albums" th:classappend="${activePage == 'album/index'} ? 'active'">
-                        <span class="nav_icon"><span class="icon icon_albums"></span></span>
-                        <span class="nav_text">albums</span>
-                    </a>
-                </li>
+                
+				<li>
+				                    <a th:href="@{/playlist/index}" title="Playlist" th:classappend="${activePage == 'playlist/index'} ? 'active'">
+				                        <span class="nav_icon"><span class="icon icon_albums"></span></span>
+				                        <span class="nav_text">playlist</span>
+				                    </a>
+				                </li>
                 <li><a th:href="@{/artist/index}" title="Artists" th:classappend="${activePage == 'artist/index'} ? 'active'">
                     <span class="nav_icon"><span class="icon icon_artists"></span></span>
                     <span class="nav_text">artists</span>

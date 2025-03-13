@@ -1,5 +1,6 @@
 package com.music.project.controllers;
 
+import com.music.project.entities.Song;
 import com.music.project.models.SongResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,10 @@ public class RootController {
 
         // Kiểm tra response có dữ liệu không
         if (response != null && response.getContent() != null) {
+        	 List<Song> songs = response.getContent();
+        	 for (Song song : songs) {
+        	        System.out.println("Song ID: " + song.getId() + " | Name: " + song.getName());
+        	    }
         	System.out.println(responseTop15.getContent().size());
         	model.addAttribute("songsTop15", responseTop15.getContent());
             model.addAttribute("songs", response.getContent()); // Đưa danh sách bài hát vào model

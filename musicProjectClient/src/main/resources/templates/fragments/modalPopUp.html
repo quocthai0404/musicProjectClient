@@ -127,7 +127,7 @@
 							<h2>Forgot Password</h2>
 							<p>Enter your email to receive OTP</p>
 							<div class="form-group">
-								<input type="email" id="email_request"  placeholder="Enter Your Email"
+								<input type="email" id="email_request" placeholder="Enter Your Email"
 									class="form-control">
 								<span class="form_icon">
 									<i class="fa_icon form-envelope" aria-hidden="true"></i>
@@ -136,7 +136,7 @@
 
 
 							<p>
-								
+
 								<a href="javascript:;" class="ms_modal" id="btn_request_otp">Send</a>
 							</p>
 							<p>
@@ -149,84 +149,84 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- OTP forget Modal  -->
-				<div id="otpForgetPassModal" class="modal centered-modal" role="dialog">
-					<div class="modal-dialog otp_dialog">
-						<div class="modal-content">
-							<button type="button" class="close" data-dismiss="modal">
-								<i class="fa_icon form_close"></i>
-							</button>
-							<div class="modal-body">
-								<div class="ms_register_img">
-									<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
-								</div>
-								<div class="ms_register_form">
-									<h2>Enter OTP</h2>
-									<p>We have sent an OTP to your email.</p>
-									<div class="form-group">
-										<input type="text" id="otp_forget" placeholder="Enter OTP" class="form-control">
-										<span class="form_icon">
-											<i class="fa_iconform-key" aria-hidden="true"></i>
-										</span>
-									</div>
-									<a id="btn_verify_forget" class="ms_btn" >Verify OTP</a>
-									<p>
-										
-									</p>
-								</div>
+		<div id="otpForgetPassModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog otp_dialog">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa_icon form_close"></i>
+					</button>
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<h2>Enter OTP</h2>
+							<p>We have sent an OTP to your email.</p>
+							<div class="form-group">
+								<input type="text" id="otp_forget" placeholder="Enter OTP" class="form-control">
+								<span class="form_icon">
+									<i class="fa_iconform-key" aria-hidden="true"></i>
+								</span>
 							</div>
+							<a id="btn_verify_forget" class="ms_btn">Verify OTP</a>
+							<p>
+
+							</p>
 						</div>
 					</div>
 				</div>
-		
-				<!-- change info Modal -->
-						<div id="resetPasswordModal" class="modal centered-modal" role="dialog">
-							<div class="modal-dialog register_dialog">
-								<div class="modal-content">
-									<!--                    <button type="button" class="close" data-dismiss="modal">-->
-									<!--                        <i class="fa_icon form_close"></i>-->
-									<!--                    </button>-->
-									<div class="modal-body">
-										<div class="ms_register_img">
-											<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
-										</div>
-										<div class="ms_register_form">
-											<!--                            <h2 th:text="#{register.title}">Register / Sign Up</h2>-->
-											<h2>Reset Password</h2>
-											
-											
-											<div class="form-group">
-												<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
-												<input type="password" id="new_password_reset" placeholder="New password"
-													class="form-control">
-												<span class="form_icon">
-													<i class="fa_icon form-lock" aria-hidden="true"></i>
-												</span>
-											</div>
-											<div class="form-group">
-												<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
-												<input type="password" id="re_password_reset" placeholder="Re-type Password"
-													class="form-control">
-												<span class="form_icon">
-													<i class="fa_icon form-lock" aria-hidden="true"></i>
-												</span>
-											</div>
+			</div>
+		</div>
+
+		<!-- change info Modal -->
+		<div id="resetPasswordModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog register_dialog">
+				<div class="modal-content">
+					<!--                    <button type="button" class="close" data-dismiss="modal">-->
+					<!--                        <i class="fa_icon form_close"></i>-->
+					<!--                    </button>-->
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<!--                            <h2 th:text="#{register.title}">Register / Sign Up</h2>-->
+							<h2>Reset Password</h2>
 
 
-											<!--                            <a th:href="@{/register}" class="ms_btn" th:text="#{register.registerNow}">Register Now</a>-->
-											<a href="javascript:;" id="btn_rs_pass" class="ms_btn">Reset Password</a>
-											
-											<p>
-												<!--                                <span th:text="#{register.alreadyAccount}">Already Have An Account?</span>-->
-
-
-											</p>
-										</div>
-									</div>
-								</div>
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
+								<input type="password" id="new_password_reset" placeholder="New password"
+									class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
 							</div>
-						</div>		
+							<div class="form-group">
+								<!--                                <input type="text" th:placeholder="#{register.email}" class="form-control">-->
+								<input type="password" id="re_password_reset" placeholder="Re-type Password"
+									class="form-control">
+								<span class="form_icon">
+									<i class="fa_icon form-lock" aria-hidden="true"></i>
+								</span>
+							</div>
+
+
+							<!--                            <a th:href="@{/register}" class="ms_btn" th:text="#{register.registerNow}">Register Now</a>-->
+							<a href="javascript:;" id="btn_rs_pass" class="ms_btn">Reset Password</a>
+
+							<p>
+								<!--                                <span th:text="#{register.alreadyAccount}">Already Have An Account?</span>-->
+
+
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- OTP Modal -->
 		<div id="otpModal" class="modal centered-modal" role="dialog">
@@ -320,4 +320,70 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Add playlist Modal -->
+	<div id="addPlayListModal" class="modal centered-modal" role="dialog">
+		<div class="modal-dialog forgot_password_dialog">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="fa_icon form_close"></i>
+				</button>
+				<div class="modal-body">
+					<div class="ms_register_img">
+						<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+					</div>
+					<div class="ms_register_form">
+						<h2>Playlist Name</h2>
+
+						<div class="form-group">
+							<input type="text" id="playlistName" placeholder="Enter Playlist Name" class="form-control">
+
+						</div>
+						
+						<div class="form-group">
+							<input type="file" id="playlistPhoto" placeholder="photo" class="form-control">
+
+						</div>
+
+
+						<p>
+
+							<a href="javascript:;" class="ms_modal" id="btn_add_playlist">Add</a>
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Add song to playlist Modal -->
+		<div id="addSongToPlayListModal" class="modal centered-modal" role="dialog">
+			<div class="modal-dialog forgot_password_dialog">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal">
+						<i class="fa_icon form_close"></i>
+					</button>
+					<div class="modal-body">
+						<div class="ms_register_img">
+							<img th:src="@{/images/register_img.png}" alt="" class="img-fluid" />
+						</div>
+						<div class="ms_register_form">
+							<h2>Playlist Name</h2>
+
+							<div class="form-group" id="fillOptionPlaylist">
+
+							</div>
+
+
+							<p>
+
+								<a href="javascript:;" class="ms_modal" id="btn_add_song_to_playlist">Add</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </th:block>

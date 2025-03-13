@@ -1,6 +1,7 @@
 package com.music.project.controllers;
 
 
+import com.music.project.entities.Song;
 import com.music.project.models.SongResponse;
 import com.music.project.services.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,10 @@ public class HomeController {
 
         // Kiểm tra response có dữ liệu không
         if (response != null && response.getContent() != null) {
-        	
+        	 List<Song> songs = response.getContent();
+        	 for (Song song : songs) {
+        	        System.out.println("Song ID: " + song.getId() + " | Name: " + song.getName());
+        	    }
             model.addAttribute("songs", response.getContent()); // Đưa danh sách bài hát vào model
         } else {
             model.addAttribute("songs", List.of()); // Nếu không có dữ liệu, gán danh sách rỗng

@@ -90,18 +90,15 @@
 											<img src="images/svg/more.svg" alt="">
 										</div>
 										<ul class="more_option">
-											<li><a href="#"><span class="opt_icon"><span
-															class="icon icon_fav"></span></span>Add To Favourites</a>
-											</li>
-											<li><a href="#"><span class="opt_icon"><span
-															class="icon icon_queue"></span></span>Add To Queue</a></li>
-											<li><a href="#"><span class="opt_icon"><span
-															class="icon icon_dwn"></span></span>Download Now</a></li>
-											<li><a href="#"><span class="opt_icon"><span
+
+
+											<li><a href="#" id="addToPlaylist" data-bs-toggle="modal"
+													th:data-song-id="${song.id}"
+													data-bs-target="#addSongToPlayListModal"><span
+														class="opt_icon"><span
 															class="icon icon_playlst"></span></span>Add To Playlist</a>
 											</li>
-											<li><a href="#"><span class="opt_icon"><span
-															class="icon icon_share"></span></span>Share</a></li>
+
 										</ul>
 										<div class="ms_play_icon play-song" th:data-song-id="${song.id}"
 											th:data-song-name="${song.name}" th:data-song-url="${song.urlSource}">
@@ -571,7 +568,7 @@
 					url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
 					type: "POST",
 					contentType: "application/json",
-					data: JSON.stringify({ email: email }),
+					data: JSON.stringify({email: email}),
 					success: function (response, textStatus, xhr) {
 						console.log("Response:", response);
 						console.log("Status Code:", xhr.status);
@@ -611,149 +608,149 @@
 	</script>
 
 	<script>
-			$(document).ready(function () {
-				$("#btn_verify_forget").click(function (e) {
-					e.preventDefault();
+		$(document).ready(function () {
+			$("#btn_verify_forget").click(function (e) {
+				e.preventDefault();
 
-					let otp = $("#otp_forget").val().trim();
-					let email = sessionStorage.getItem("email_resetpass");
+				let otp = $("#otp_forget").val().trim();
+				let email = sessionStorage.getItem("email_resetpass");
 
-					if (!otp) {
-						alert("Please enter the OTP.");
-						return;
-					}
+				if (!otp) {
+					alert("Please enter the OTP.");
+					return;
+				}
 
-					if (!email) {
-						alert("Session expired. Please request a new OTP.");
-						return;
-					}
+				if (!email) {
+					alert("Session expired. Please request a new OTP.");
+					return;
+				}
 
-					let requestData = {
-						otp: otp,
-						email: email
-					};
+				let requestData = {
+					otp: otp,
+					email: email
+				};
 
-					$.ajax({
-						url: "http://localhost:8085/api/users/verify-reset-password",
-						type: "POST",
-						contentType: "application/json",
-						data: JSON.stringify(requestData),
-						success: function (response, textStatus, xhr) {
-							console.log("Response:", response);
-							console.log("Status Code:", xhr.status);
+				$.ajax({
+					url: "http://localhost:8085/api/users/verify-reset-password",
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(requestData),
+					success: function (response, textStatus, xhr) {
+						console.log("Response:", response);
+						console.log("Status Code:", xhr.status);
 
-							if (xhr.status === 200 && response.code === 200) {
-								alert(response.message);
+						if (xhr.status === 200 && response.code === 200) {
+							alert(response.message);
 
-								// Lưu OTP mới để reset mật khẩu vào sessionStorage
-								sessionStorage.setItem("otp_resetpass", response.result);
+							// Lưu OTP mới để reset mật khẩu vào sessionStorage
+							sessionStorage.setItem("otp_resetpass", response.result);
 
-								// Ẩn modal OTP và hiển thị modal Reset Password
-								$("#otpForgetPassModal").modal("hide");
+							// Ẩn modal OTP và hiển thị modal Reset Password
+							$("#otpForgetPassModal").modal("hide");
 
-								setTimeout(function () {
-									if (typeof bootstrap !== "undefined") {
-										var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
-										resetPassModal.show();
-									} else {
-										$("#resetPasswordModal").modal("show");
-									}
-								}, 500);
-							} else {
-								alert("OTP verification failed: " + response.message);
-							}
-						},
-						error: function (xhr) {
-							if (xhr.responseJSON && xhr.responseJSON.message) {
-								alert("Error: " + xhr.responseJSON.message);
-							} else {
-								alert("An unexpected error occurred.");
-							}
+							setTimeout(function () {
+								if (typeof bootstrap !== "undefined") {
+									var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+									resetPassModal.show();
+								} else {
+									$("#resetPasswordModal").modal("show");
+								}
+							}, 500);
+						} else {
+							alert("OTP verification failed: " + response.message);
 						}
-					});
+					},
+					error: function (xhr) {
+						if (xhr.responseJSON && xhr.responseJSON.message) {
+							alert("Error: " + xhr.responseJSON.message);
+						} else {
+							alert("An unexpected error occurred.");
+						}
+					}
 				});
 			});
+		});
 
 
-			$(document).ready(function () {
-				$("#btn_rs_pass").click(function (e) {
-					e.preventDefault();
+		$(document).ready(function () {
+			$("#btn_rs_pass").click(function (e) {
+				e.preventDefault();
 
-					let email = sessionStorage.getItem("email_resetpass");
-					let otp = sessionStorage.getItem("otp_resetpass");
-					let password = $("#new_password_reset").val().trim();
-					let rePassword = $("#re_password_reset").val().trim();
+				let email = sessionStorage.getItem("email_resetpass");
+				let otp = sessionStorage.getItem("otp_resetpass");
+				let password = $("#new_password_reset").val().trim();
+				let rePassword = $("#re_password_reset").val().trim();
 
-					if (!email || !otp) {
-						alert("Session expired. Please request a new OTP.");
-						return;
-					}
+				if (!email || !otp) {
+					alert("Session expired. Please request a new OTP.");
+					return;
+				}
 
-					if (!password || !rePassword) {
-						alert("Please enter your new password.");
-						return;
-					}
+				if (!password || !rePassword) {
+					alert("Please enter your new password.");
+					return;
+				}
 
-					if (password !== rePassword) {
-						alert("Passwords do not match.");
-						return;
-					}
+				if (password !== rePassword) {
+					alert("Passwords do not match.");
+					return;
+				}
 
-					let requestData = {
-						otp: otp,
-						email: email,
-						password: password,
-						rePassword: rePassword
-					};
+				let requestData = {
+					otp: otp,
+					email: email,
+					password: password,
+					rePassword: rePassword
+				};
 
-					$.ajax({
-						url: "http://localhost:8085/api/users/reset-password",
-						type: "POST",
-						contentType: "application/json",
-						data: JSON.stringify(requestData),
-						success: function (response, textStatus, xhr) {
-							if (xhr.status === 200 && response.code === 200) {
-								alert(response.message);
+				$.ajax({
+					url: "http://localhost:8085/api/users/reset-password",
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(requestData),
+					success: function (response, textStatus, xhr) {
+						if (xhr.status === 200 && response.code === 200) {
+							alert(response.message);
 
-								// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
-								sessionStorage.removeItem("email_resetpass");
-								sessionStorage.removeItem("otp_resetpass");
+							// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+							sessionStorage.removeItem("email_resetpass");
+							sessionStorage.removeItem("otp_resetpass");
 
 
-								// Chuyển hướng về trang login
-								window.location.href = "http://localhost:8086/";
-							} else {
-								alert("Reset password failed: " + response.message);
-							}
-						},
-						error: function (xhr) {
-							if (xhr.responseJSON && xhr.responseJSON.message) {
-								alert("Error: " + xhr.responseJSON.message);
-							} else {
-								alert("An unexpected error occurred.");
-							}
+							// Chuyển hướng về trang login
+							window.location.href = "http://localhost:8086/";
+						} else {
+							alert("Reset password failed: " + response.message);
 						}
-					});
+					},
+					error: function (xhr) {
+						if (xhr.responseJSON && xhr.responseJSON.message) {
+							alert("Error: " + xhr.responseJSON.message);
+						} else {
+							alert("An unexpected error occurred.");
+						}
+					}
 				});
 			});
+		});
 
 	</script>
 
 	<script>
-			$(document).ready(function () {
-				const userData = sessionStorage.getItem("user");
+		$(document).ready(function () {
+			const userData = sessionStorage.getItem("user");
 
-				if (userData) {
-					const user = JSON.parse(userData);
-					if (user.roles.includes("ROLE_ARTIST")) {
-						$("#uploadBtn").show();
-					} else {
-						$("#uploadBtn").hide();
-					}
+			if (userData) {
+				const user = JSON.parse(userData);
+				if (user.roles.includes("ROLE_ARTIST")) {
+					$("#uploadBtn").show();
 				} else {
 					$("#uploadBtn").hide();
 				}
-			});
+			} else {
+				$("#uploadBtn").hide();
+			}
+		});
 
 	</script>
 
@@ -791,34 +788,34 @@
 						}
 					}
 		*/
-			
-			
-			$(document).ready(function () {
-			    let audioPlayer = null; // Biến lưu trình phát nhạc
 
-			    $(document).on("click", ".play-song", function () {
-			        let songId = $(this).data("song-id");
-			        let songName = $(this).data("song-name");
-			        let songUrl = $(this).data("song-url");
 
-			        playSong(songId, songName, songUrl);
-			    });
+		$(document).ready(function () {
+			let audioPlayer = null; // Biến lưu trình phát nhạc
 
-			    function playSong(songId, songName, songUrl) {
-			        // Cập nhật thông tin bài hát trên player
-			        $(".jp-track-name").text(songName);
-			        $(".jp-artist-name").text(songName);
+			$(document).on("click", ".play-song", function () {
+				let songId = $(this).data("song-id");
+				let songName = $(this).data("song-name");
+				let songUrl = $(this).data("song-url");
 
-			        // Nếu trình phát nhạc chưa tồn tại, tạo mới
-			        if (!audioPlayer) {
-			            audioPlayer = $("<audio>", { controls: true }).appendTo("#musicPlayerBar")[0];
-			        }
-
-			        // Cập nhật nguồn và phát nhạc
-			        audioPlayer.src = songUrl;
-			        audioPlayer.play();
-			    }
+				playSong(songId, songName, songUrl);
 			});
+
+			function playSong(songId, songName, songUrl) {
+				// Cập nhật thông tin bài hát trên player
+				$(".jp-track-name").text(songName);
+				$(".jp-artist-name").text(songName);
+
+				// Nếu trình phát nhạc chưa tồn tại, tạo mới
+				if (!audioPlayer) {
+					audioPlayer = $("<audio>", {controls: true}).appendTo("#musicPlayerBar")[0];
+				}
+
+				// Cập nhật nguồn và phát nhạc
+				audioPlayer.src = songUrl;
+				audioPlayer.play();
+			}
+		});
 
 
 
@@ -839,7 +836,7 @@
 					url: "http://localhost:8085/api/users/request-otp?email=" + encodeURIComponent(email),
 					type: "POST",
 					contentType: "application/json",
-					data: JSON.stringify({ email: email }),
+					data: JSON.stringify({email: email}),
 					success: function (response, textStatus, xhr) {
 						console.log("Response:", response);
 						console.log("Status Code:", xhr.status);
@@ -880,151 +877,221 @@
 
 
 	<script>
-			$(document).ready(function () {
-				$("#btn_verify_forget").click(function (e) {
-					e.preventDefault();
+		$(document).ready(function () {
+			$("#btn_verify_forget").click(function (e) {
+				e.preventDefault();
 
-					let otp = $("#otp_forget").val().trim();
-					let email = sessionStorage.getItem("email_resetpass");
+				let otp = $("#otp_forget").val().trim();
+				let email = sessionStorage.getItem("email_resetpass");
 
-					if (!otp) {
-						alert("Please enter the OTP.");
-						return;
-					}
+				if (!otp) {
+					alert("Please enter the OTP.");
+					return;
+				}
 
-					if (!email) {
-						alert("Session expired. Please request a new OTP.");
-						return;
-					}
+				if (!email) {
+					alert("Session expired. Please request a new OTP.");
+					return;
+				}
 
-					let requestData = {
-						otp: otp,
-						email: email
-					};
+				let requestData = {
+					otp: otp,
+					email: email
+				};
 
-					$.ajax({
-						url: "http://localhost:8085/api/users/verify-reset-password",
-						type: "POST",
-						contentType: "application/json",
-						data: JSON.stringify(requestData),
-						success: function (response, textStatus, xhr) {
-							console.log("Response:", response);
-							console.log("Status Code:", xhr.status);
+				$.ajax({
+					url: "http://localhost:8085/api/users/verify-reset-password",
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(requestData),
+					success: function (response, textStatus, xhr) {
+						console.log("Response:", response);
+						console.log("Status Code:", xhr.status);
 
-							if (xhr.status === 200 && response.code === 200) {
-								alert(response.message);
+						if (xhr.status === 200 && response.code === 200) {
+							alert(response.message);
 
-								// Lưu OTP mới để reset mật khẩu vào sessionStorage
-								sessionStorage.setItem("otp_resetpass", response.result);
+							// Lưu OTP mới để reset mật khẩu vào sessionStorage
+							sessionStorage.setItem("otp_resetpass", response.result);
 
-								// Ẩn modal OTP và hiển thị modal Reset Password
-								$("#otpForgetPassModal").modal("hide");
+							// Ẩn modal OTP và hiển thị modal Reset Password
+							$("#otpForgetPassModal").modal("hide");
 
-								setTimeout(function () {
-									if (typeof bootstrap !== "undefined") {
-										var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
-										resetPassModal.show();
-									} else {
-										$("#resetPasswordModal").modal("show");
-									}
-								}, 500);
-							} else {
-								alert("OTP verification failed: " + response.message);
-							}
-						},
-						error: function (xhr) {
-							if (xhr.responseJSON && xhr.responseJSON.message) {
-								alert("Error: " + xhr.responseJSON.message);
-							} else {
-								alert("An unexpected error occurred.");
-							}
+							setTimeout(function () {
+								if (typeof bootstrap !== "undefined") {
+									var resetPassModal = new bootstrap.Modal(document.getElementById("resetPasswordModal"));
+									resetPassModal.show();
+								} else {
+									$("#resetPasswordModal").modal("show");
+								}
+							}, 500);
+						} else {
+							alert("OTP verification failed: " + response.message);
 						}
-					});
+					},
+					error: function (xhr) {
+						if (xhr.responseJSON && xhr.responseJSON.message) {
+							alert("Error: " + xhr.responseJSON.message);
+						} else {
+							alert("An unexpected error occurred.");
+						}
+					}
 				});
 			});
+		});
 
 
-			$(document).ready(function () {
-				$("#btn_rs_pass").click(function (e) {
-					e.preventDefault();
+		$(document).ready(function () {
+			$("#btn_rs_pass").click(function (e) {
+				e.preventDefault();
 
-					let email = sessionStorage.getItem("email_resetpass");
-					let otp = sessionStorage.getItem("otp_resetpass");
-					let password = $("#new_password_reset").val().trim();
-					let rePassword = $("#re_password_reset").val().trim();
+				let email = sessionStorage.getItem("email_resetpass");
+				let otp = sessionStorage.getItem("otp_resetpass");
+				let password = $("#new_password_reset").val().trim();
+				let rePassword = $("#re_password_reset").val().trim();
 
-					if (!email || !otp) {
-						alert("Session expired. Please request a new OTP.");
-						return;
-					}
+				if (!email || !otp) {
+					alert("Session expired. Please request a new OTP.");
+					return;
+				}
 
-					if (!password || !rePassword) {
-						alert("Please enter your new password.");
-						return;
-					}
+				if (!password || !rePassword) {
+					alert("Please enter your new password.");
+					return;
+				}
 
-					if (password !== rePassword) {
-						alert("Passwords do not match.");
-						return;
-					}
+				if (password !== rePassword) {
+					alert("Passwords do not match.");
+					return;
+				}
 
-					let requestData = {
-						otp: otp,
-						email: email,
-						password: password,
-						rePassword: rePassword
-					};
+				let requestData = {
+					otp: otp,
+					email: email,
+					password: password,
+					rePassword: rePassword
+				};
 
-					$.ajax({
-						url: "http://localhost:8085/api/users/reset-password",
-						type: "POST",
-						contentType: "application/json",
-						data: JSON.stringify(requestData),
-						success: function (response, textStatus, xhr) {
-							if (xhr.status === 200 && response.code === 200) {
-								alert(response.message);
+				$.ajax({
+					url: "http://localhost:8085/api/users/reset-password",
+					type: "POST",
+					contentType: "application/json",
+					data: JSON.stringify(requestData),
+					success: function (response, textStatus, xhr) {
+						if (xhr.status === 200 && response.code === 200) {
+							alert(response.message);
 
-								// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
-								sessionStorage.removeItem("email_resetpass");
-								sessionStorage.removeItem("otp_resetpass");
+							// Xóa OTP và email khỏi sessionStorage sau khi reset password thành công
+							sessionStorage.removeItem("email_resetpass");
+							sessionStorage.removeItem("otp_resetpass");
 
-								// Chuyển hướng về trang login
-								window.location.href = "http://localhost:8086/";
-							} else {
-								alert("Reset password failed: " + response.message);
-							}
-						},
-						error: function (xhr) {
-							if (xhr.responseJSON && xhr.responseJSON.message) {
-								alert("Error: " + xhr.responseJSON.message);
-							} else {
-								alert("An unexpected error occurred.");
-							}
+							// Chuyển hướng về trang login
+							window.location.href = "http://localhost:8086/";
+						} else {
+							alert("Reset password failed: " + response.message);
 						}
-					});
+					},
+					error: function (xhr) {
+						if (xhr.responseJSON && xhr.responseJSON.message) {
+							alert("Error: " + xhr.responseJSON.message);
+						} else {
+							alert("An unexpected error occurred.");
+						}
+					}
 				});
 			});
+		});
 
 	</script>
 
 	<script>
-			$(document).ready(function () {
-				const userData = sessionStorage.getItem("user");
+		$(document).ready(function () {
+			const userData = sessionStorage.getItem("user");
 
-				if (userData) {
-					const user = JSON.parse(userData);
-					if (user.roles.includes("ROLE_ARTIST")) {
-						$("#uploadBtn").show();
-					} else {
-						$("#uploadBtn").hide();
-					}
+			if (userData) {
+				const user = JSON.parse(userData);
+				if (user.roles.includes("ROLE_ARTIST")) {
+					$("#uploadBtn").show();
 				} else {
 					$("#uploadBtn").hide();
 				}
-			});
+			} else {
+				$("#uploadBtn").hide();
+			}
+		});
 
 	</script>
 
+	<script>
+		$(document).ready(function () {
+			$(document).on("click", "#addToPlaylist", function () {
+				fetchPlaylists();
+				console.log("ok");
+				let songId = $(this).data("song-id"); // Lấy song-id
+				console.log("Song ID:", songId);
+				sessionStorage.setItem("selectedSongId", songId);
+
+			});
+			$(document).on("click", "#btn_add_song_to_playlist", function () {
+			        let songId = sessionStorage.getItem("selectedSongId");
+			        let playListId = $("#playlistSelect").val(); // Lấy playlist ID đã chọn
+
+			        if (!playListId) {
+			            alert("Please select a playlist!");
+			            return;
+			        }
+
+			        if (!songId) {
+			            alert("No song selected. Please try again.");
+			            return;
+			        }
+
+					$.ajax({
+					        url: `http://localhost:8085/api/playlist/addSongToPlaylist?playListId=${playListId}&songId=${songId}`,
+					        type: "POST",
+					        success: function (response) {
+					            alert(response.message);
+					            $("#addSongToPlayListModal").modal("hide");
+					        },
+					        error: function (xhr) {
+					            alert(xhr.responseJSON?.message || "Failed to add song to playlist.");
+					        }
+					    });
+			    });
+
+			function fetchPlaylists() {
+				$.ajax({
+					url: "http://localhost:8085/api/playlist",
+					type: "GET",
+					dataType: "json",
+					success: function (data) {
+						if (data.length === 0) {
+							$("#fillOptionPlaylist").html("<p>No playlists available.</p>");
+							return;
+						}
+
+						let html = `<label>Select a Playlist</label>
+		                            <select class="form-control" id="playlistSelect">
+		                                <option value="">-- Select Playlist --</option>`;
+
+						data.forEach(playlist => {
+							html += `<option value="${playlist.id}">${playlist.name}</option>`;
+						});
+
+						html += `</select>`;
+
+						$("#fillOptionPlaylist").html(html);
+					},
+					error: function (xhr, status, error) {
+						console.error("Error fetching playlists:", error);
+						$("#fillOptionPlaylist").html("<p>Error loading playlists.</p>");
+					}
+				});
+			}
+		});
+
+
+	</script>
 
 </body>
 
